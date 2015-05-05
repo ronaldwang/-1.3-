@@ -1,0 +1,118 @@
+/* 
+  Localizable.strings
+  Currenci
+
+  Created by Aries on 15/1/26.
+  Copyright (c) 2015年 MR_ZhangM. All rights reserved.
+*/
+CFBundleDisplayName ="汇率转换";
+"search" = "搜索";
+"color" = "主题";
+"number" = "数字";
+"Favorites" = "收藏";
+"ALL" = "所有";
+"JustNow" = "刚刚";
+
+//  设置页面
+"Rate us" = "评价";
+"Feedback" = "反馈";
+"DefaultValue" = "默认值";
+"KeypadTone" = "按键音";
+"Done_Button" = "完成";
+"Upgrade" = "升级";
+"Rate us" = "打分";
+"Feedback" = "反馈";
+"RightsMessage" = "Currenci uses up-to-date data from multiple sources to convert currencies.Please only take it as refference.";
+
+"LanguageVCTitle" = "语言";
+"PullHeaderPulling" = "释放增加";
+"PullHeaderNormal" = "上拉增加";
+
+//介绍页
+"PullDownMessage" = "右滑切换到反向模式";
+"PullUpMessage" = "上提增加币种";
+"TapMessage" = "单击进行汇率换算";
+"TapMessageForSetting" = "单击打开设置";
+"AlertViewTitle" = "开始使用";
+"AlertViewMessage" = "获取更多信息请前往设置中查看";
+"AlertViewCancleButton" = "确定";
+
+//  评价
+"iRateMessageTitle" = "为 Currenci 评分";
+"iRateAppMessage" = "如果您觉得Currenci很好用，可否为其评一个分数？评分过程只需花费很少的时间。感谢您的支持！";
+"iRateCancelButton" = "不了，谢谢";
+"iRateRateButton" = "现在去评分";
+"iRateRemindButton" = "稍后再说";
+
+// 功能介绍
+"SwipeRight"  = "右滑";
+"SwipeRightMessage"  = "右滑一下，删除一位";
+"Hold&Drag"  = "长按拖动";
+"Hold&DragMessage"  = "长按拖动改变货币排序位置";
+"SwipeLeft"  = "左滑";
+"SwipeLeftMessage"  = "向左滑动删除货币";
+"SwipeRightOnSearch"  = "右滑";
+"SwipeRightOnSearchMessage"  = "搜索页面右滑收藏货币";
+"Shake"  = "摇一摇";
+"ShakeMessage"  = "摇晃可快速更改主题色";
+
+"LongPress" = "拖动或两指滑动";
+"LongPressMessage" = "拖动看汇率，两指滑动改变时间范围";
+"TipsTitle" = "技巧";
+
+"TargertCurrenci" = "右滑";
+"TargertCurrenciMessage" = "右滑切换到反向模式";
+
+//watch setting
+"watchsetting" = "手表设置";
+
+
+// 内购页面
+"AppPurchaseAlert_Title" = "错误提示";
+"AppPurchaseAlert_Message" = "连接到iTunes Store时出现错误,请再次尝试";
+"AppPurchaseAlert_CancleButton" = "确定";
+
+"AppPurchaseCompleteAlert_Title" = "内购完成";
+"AppPurchaseCompleteAlert_Message" = "感谢您的支持,祝您使用愉快";
+"AppPurchaseCompleteAlert_CancleButton" = "确定";
+
+"AppPurchaseFreeAlert_Title" = "限时免费";
+"AppPurchaseFreeAlert_Message" = "给予评价,免费解锁此功能";
+"AppPurchaseFreeAlert_CancleButton" = "下次再说";
+"AppPurchaseFreeAlert_RateButton" = "立即好评";
+
+"UnlockHistoricalChart" = "升级到专业版";
+"UnlockHistoricalChart_description" = "解锁所有功能";
+
+"UpgradePlusVersion" = "支持我们";
+"UpgradePlusVersion_description_1" = "解锁所有功能并且支持我们";
+
+
+"RestorePurchases" = "恢复购买";
+
+// 升级提示
+"UpgradeAlert_Title" = "需要升级";
+"UpgradeAlert_Message" = "高级版才能解锁此功能,查看详情？";
+"UpgradeAlert_CancleButton" = "取消";
+"UpgradeAlert_SureButton" = "确定";
+
+// 小数点
+"Integer" = "整数";
+"Decimals_One" = "一位";
+"Decimals_Two" = "两位";
+"Decimals_Three" = "三位";
+"Decimals_Four" = "四位";
+
+// 基准值
+"ReferenceValue" = "基准值";
+"TargetCurrency" = "目标货币";
+
+
+"en" = "English";
+"zh-Hans" = "简体中文";
+"zh-Hant" = "繁体中文";
+"ja" = "日本語";
+"de" = "Deutsch";
+"fr" = "Français";
+"es" = "Español";
+"pt" = "Português";

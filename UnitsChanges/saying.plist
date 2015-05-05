@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Aesop</string>
+		<key>sayingContent</key>
+		<string>&quot;After all is said and done, more is said than done.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aristotle</string>
+		<key>sayingContent</key>
+		<string>&quot;Wit is educated insolence.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aristotle</string>
+		<key>sayingContent</key>
+		<string>&quot;Pleasure in the job puts perfection in the work.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Sir Francis Bacon</string>
+		<key>sayingContent</key>
+		<string>&quot;Knowledge is power.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Honore de Balzac</string>
+		<key>sayingContent</key>
+		<string>&quot;Behind every great fortune there is a crime.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Orlando A; Battisa</string>
+		<key>sayingContent</key>
+		<string>&quot;An error doesn&apos;t become a mistake until you refuse to correct it.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Ingrid Bergman</string>
+		<key>sayingContent</key>
+		<string>&quot;Happiness lies in good health and a bad memory.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Napoleon Bonaparte</string>
+		<key>sayingContent</key>
+		<string>&quot;Ability is nothing without opportunity.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Napoleon Bonaparte</string>
+		<key>sayingContent</key>
+		<string>&quot;Glory is fleeting but obscurity is forever.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Miguel de Cervantes</string>
+		<key>sayingContent</key>
+		<string>&quot;Never stand begging for that which you have the power to earn.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Coco Chanel</string>
+		<key>sayingContent</key>
+		<string>&quot;There are people who have money and people who are rich.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>G.K. Chesterton</string>
+		<key>sayingContent</key>
+		<string>&quot;Don&apos;t ever take a fence down until you know the reason it was put up.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Winston Churchill</string>
+		<key>sayingContent</key>
+		<string>&quot;We make a living by what we get. We make a life by what we give.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Winston Churchill</string>
+		<key>sayingContent</key>
+		<string>&quot;If you are going through hell, keep going.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Winston Churchill</string>
+		<key>sayingContent</key>
+		<string>&quot;The price of greatness is responsibility.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Conficius</string>
+		<key>sayingContent</key>
+		<string>&quot;Everything has beauty, but not everyone sees it.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Conficius</string>
+		<key>sayingContent</key>
+		<string>&quot;Respect yourself and others will respect you.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Benjamin Disraeli</string>
+		<key>sayingContent</key>
+		<string>&quot;Talk to a man about himself and he will listen for hours.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Benjamin Disraeli</string>
+		<key>sayingContent</key>
+		<string>&quot;The secret of success is constancy of purpose.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Alexandre Dumas</string>
+		<key>sayingContent</key>
+		<string>&quot;All for one and one for all.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Albert Einstein</string>
+		<key>sayingContent</key>
+		<string>&quot;Anyone who has never made a mistake has never tried anything new.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Albert Einstein</string>
+		<key>sayingContent</key>
+		<string>&quot;I never think of the future.  It comes soon enough.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Benjamin Franklin</string>
+		<key>sayingContent</key>
+		<string>“In order for three people to keep a secret, two must be dead.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Benjamin Franklin</string>
+		<key>sayingContent</key>
+		<string>&quot;Most fools think they are only ignorant.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Bill Gates</string>
+		<key>sayingContent</key>
+		<string>&quot;Don&apos;t let yourself be lulled into inaction.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>J. Paul Getty</string>
+		<key>sayingContent</key>
+		<string>&quot;If you can actually count your money then you are not a rich man.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>J.W. van Goethe</string>
+		<key>sayingContent</key>
+		<string>&quot;Enjoy when you can and endure when you must.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>J.W. van Goethe</string>
+		<key>sayingContent</key>
+		<string>&quot;Whatever you can do or dream, begin it.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Stephen Hawking</string>
+		<key>sayingContent</key>
+		<string>&quot;Intelligence is the ability to adapt to change.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Ernest Hemmingway</string>
+		<key>sayingContent</key>
+		<string>&quot;There is no better friend than a book.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Horace</string>
+		<key>sayingContent</key>
+		<string>&quot;Seize the day, put no trust in tomorrow.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aldous Huxley</string>
+		<key>sayingContent</key>
+		<string>&quot;Maybe this world is another planet&apos;s hell.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Immanuel Kant</string>
+		<key>sayingContent</key>
+		<string>&quot;Science is organized knowledge. Wisdom is organized life.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Rudyard Kipling</string>
+		<key>sayingContent</key>
+		<string>&quot;A woman&apos;s guess is much more accurate than a man&apos;s certainty.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Somerset Maugham</string>
+		<key>sayingContent</key>
+		<string>&quot;People ask for criticism, but they only want praise.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Friedrich Nietzsche</string>
+		<key>sayingContent</key>
+		<string>&quot;What doesn&apos;t kill you will make you stronger.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Anais Nin</string>
+		<key>sayingContent</key>
+		<string>&quot;We don&apos;t see things as they are; we see things as we are.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>William Penn</string>
+		<key>sayingContent</key>
+		<string>&quot;Avoid popularity; it has many snares and no real benefit.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>William Penn</string>
+		<key>sayingContent</key>
+		<string>&quot;Time is what we want most, but what we use worst.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Cesar Ritz</string>
+		<key>sayingContent</key>
+		<string>&quot;The customer is never wrong.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>F. de la Rochefoucauld</string>
+		<key>sayingContent</key>
+		<string>&quot;Many people despise wealth but few know how to give it away.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Franklin D. Roosevelt</string>
+		<key>sayingContent</key>
+		<string>&quot;The only thing we have to fear is fear itself.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Franklin D. Roosevelt </string>
+		<key>sayingContent</key>
+		<string>&quot;Rules are not necessarily sacred; principles are.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Franklin D. Roosevelt </string>
+		<key>sayingContent</key>
+		<string>&quot;I ask you to judge me by the enemies I have made.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Salman Rushdie</string>
+		<key>sayingContent</key>
+		<string>&quot;If it can&apos;t be cured it must be endured.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>John Ruskin</string>
+		<key>sayingContent</key>
+		<string>&quot;When love and skill work together, expect a masterpiece.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Sir Walter Scott</string>
+		<key>sayingContent</key>
+		<string>&quot;For success, attitude is equally as important as ability.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Lucius Annaeus Seneca</string>
+		<key>sayingContent</key>
+		<string>&quot;Luck is what happens when preparation meets opportunity.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>William Shakespeare</string>
+		<key>sayingContent</key>
+		<string>&quot;Love all, trust a few, do wrong to none.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>William Shakespeare</string>
+		<key>sayingContent</key>
+		<string>&quot;All that glitters is not gold.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>William Shakespeare</string>
+		<key>sayingContent</key>
+		<string>&quot;Our bodies are our gardens to which our wills are gardeners.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Alexander Solzhenitsyn</string>
+		<key>sayingContent</key>
+		<string>&quot;Can a man who is warm understand one who is freezing?&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Jonathan Swift</string>
+		<key>sayingContent</key>
+		<string>&quot;Vision is the art of seeing things invisible.</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Margaret Thatcher</string>
+		<key>sayingContent</key>
+		<string>&quot;It may be the cock that crows, but it is the hen that lays the eggs.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Mark Twain</string>
+		<key>sayingContent</key>
+		<string>&quot;Wrinkles should merely indicate where smiles have been.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Unknown</string>
+		<key>sayingContent</key>
+		<string>&quot;The only thing in life achieved without effort is failure.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Oscar Wilde</string>
+		<key>sayingContent</key>
+		<string>&quot;Wisdom is knowing how little we know.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Oscar Wilde</string>
+		<key>sayingContent</key>
+		<string>&quot;No man is rich enough to buy back his past.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Oscar Wilde</string>
+		<key>sayingContent</key>
+		<string>&quot;True friends stab you in the front.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Abba Eban</string>
+		<key>sayingContent</key>
+		<string>“His ignorance is encyclopedic.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Adolph Hitler</string>
+		<key>sayingContent</key>
+		<string>“Brutality creates respect.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aeschylus</string>
+		<key>sayingContent</key>
+		<string>“Sweet is a grief well ended.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Alfred du Masset</string>
+		<key>sayingContent</key>
+		<string>“Great artists have no country.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>American Proverb</string>
+		<key>sayingContent</key>
+		<string>“Hope is the nurse of misery.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aneurin Bevan</string>
+		<key>sayingContent</key>
+		<string>“Virtue is its own punishment.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Anonymous</string>
+		<key>sayingContent</key>
+		<string>“A dreamer lives for eternity.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Arab Proverb</string>
+		<key>sayingContent</key>
+		<string>“Never give advice in a crowd.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Arabic Proverb</string>
+		<key>sayingContent</key>
+		<string>“All sunshine makes a desert.” </string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aristotle</string>
+		<key>sayingContent</key>
+		<string>“Wit is educated insolence.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aristotle</string>
+		<key>sayingContent</key>
+		<string>“We are what we repeatedly do.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aristotle</string>
+		<key>sayingContent</key>
+		<string>“Nature does nothing uselessly.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Arthur Schlesinger</string>
+		<key>sayingContent</key>
+		<string>“History is full of surprises.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Aulus Gellius</string>
+		<key>sayingContent</key>
+		<string>“Truth is the daughter of time.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Ausonius</string>
+		<key>sayingContent</key>
+		<string>“Truth is the mother of hatred.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Anonymous </string>
+		<key>sayingContent</key>
+		<string>“Age withers only the outside.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Barbara Sher</string>
+		<key>sayingContent</key>
+		<string>“Isolation is a dream killer.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Benjamin Franklin</string>
+		<key>sayingContent</key>
+		<string>“Remember that time is money.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Branch Rickey</string>
+		<key>sayingContent</key>
+		<string>“Luck is the residue of design.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Calvin Trillin</string>
+		<key>sayingContent</key>
+		<string>“Health food makes me sick.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Carl Lotus Becker</string>
+		<key>sayingContent</key>
+		<string>“My own mind is my own church.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Carol Burnett</string>
+		<key>sayingContent</key>
+		<string>“Comedy is tragedy plus time.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Carolyn Wells</string>
+		<key>sayingContent</key>
+		<string>“Actions lie louder than words.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Cecil John Rhodes </string>
+		<key>sayingContent</key>
+		<string>“So little done–so much to do.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Charles Haddon </string>
+		<key>sayingContent</key>
+		<string>“Of two evils choose neither.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Charles M. Schultz</string>
+		<key>sayingContent</key>
+		<string>“Happiness is a warm puppy.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Charlotte Bronte</string>
+		<key>sayingContent</key>
+		<string>“Look twice before you leap.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Cheryl Grossman</string>
+		<key>sayingContent</key>
+		<string>“I dream, therefore I become.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Chinese Proverb</string>
+		<key>sayingContent</key>
+		<string>“If you bow at all, bow low.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Christopher North</string>
+		<key>sayingContent</key>
+		<string>“Laws were made to be broken.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Cicero</string>
+		<key>sayingContent</key>
+		<string>“By doubting we come at truth.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Claudianus</string>
+		<key>sayingContent</key>
+		<string>“He who desires is always poor.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Dan Bellack</string>
+		<key>sayingContent</key>
+		<string>“Life is too short for traffic.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Demosthenes</string>
+		<key>sayingContent</key>
+		<string>“The fact speak for themselves.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Denny Crum</string>
+		<key>sayingContent</key>
+		<string>“Most of our future lies ahead.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Douglas Adams</string>
+		<key>sayingContent</key>
+		<string>“Life is wasted on the living.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>E. B. White</string>
+		<key>sayingContent</key>
+		<string>“Loneliness is a strange gift.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Elizabeth Taylor</string>
+		<key>sayingContent</key>
+		<string>“Success is a great deodorant.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Emanuel Swedenborg</string>
+		<key>sayingContent</key>
+		<string>“Love is the life of humanity.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>English Proverb</string>
+		<key>sayingContent</key>
+		<string>“A stumble may prevent a fall.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>English Proverb</string>
+		<key>sayingContent</key>
+		<string>“The shortest answer is doing.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Epictetus</string>
+		<key>sayingContent</key>
+		<string>“Only the educated are free.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>William Bourdillon</string>
+		<key>sayingContent</key>
+		<string>“The mind has a thousand eyes.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Francois Marie </string>
+		<key>sayingContent</key>
+		<string>“Love truth, but pardon error.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>French Proverb</string>
+		<key>sayingContent</key>
+		<string>“Anger is a bad counselor.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>French Proverb</string>
+		<key>sayingContent</key>
+		<string>“He is rich who owes nothing.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>French Proverb</string>
+		<key>sayingContent</key>
+		<string>“Set a thief to catch a thief.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Friedrich Nietzsche</string>
+		<key>sayingContent</key>
+		<string>Thinking evil is making evil.</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Gene Oliver</string>
+		<key>sayingContent</key>
+		<string>“Every path serves a purpose.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>George Carlin</string>
+		<key>sayingContent</key>
+		<string>“Keep thy religion to thyself.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>George Herbert</string>
+		<key>sayingContent</key>
+		<string>“Every mile is two in winter.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>George Herbert</string>
+		<key>sayingContent</key>
+		<string>“Hope is the poor man’s bread.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Gerald Jampolsky</string>
+		<key>sayingContent</key>
+		<string>“Love is letting go of fear.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>German proverb</string>
+		<key>sayingContent</key>
+		<string>“No answer is also an answer.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>German Proverb</string>
+		<key>sayingContent</key>
+		<string>“Anger without power is folly.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>German proverb</string>
+		<key>sayingContent</key>
+		<string>“Old birds are hard to pluck.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Haddon W. Robinson</string>
+		<key>sayingContent</key>
+		<string>“What worries you masters you.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Henry Adams</string>
+		<key>sayingContent</key>
+		<string>“Friends are born, not made.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Henry Ford</string>
+		<key>sayingContent</key>
+		<string>“History is more or less bunk.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Henry J. Tillman</string>
+		<key>sayingContent</key>
+		<string>“Oregano is the spice of life.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Henry Wadsworth </string>
+		<key>sayingContent</key>
+		<string>“Learn to labour and to wait.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Heraclitus</string>
+		<key>sayingContent</key>
+		<string>“Nothing endures but change.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Hofni Samuel</string>
+		<key>sayingContent</key>
+		<string>“When in doubt, do without.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Irving Cohen</string>
+		<key>sayingContent</key>
+		<string>“Truth is shorter than fiction.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>J. Mark Wallace</string>
+		<key>sayingContent</key>
+		<string>“Life is a continual upgrade.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>J. R. R. Tolkien</string>
+		<key>sayingContent</key>
+		<string>“Not all who wander are lost.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Jack Nicklaus</string>
+		<key>sayingContent</key>
+		<string>“Focus on remedies, not faults.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Jeseph Joubert</string>
+		<key>sayingContent</key>
+		<string>“To teach is to learn twice.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Jeseph Joubert</string>
+		<key>sayingContent</key>
+		<string>“Never cut what you can untie.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Kenyan Proverb</string>
+		<key>sayingContent</key>
+		<string>“Blind belief is dangerous.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Khrushchev</string>
+		<key>sayingContent</key>
+		<string>“Life is short; live it up.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Lao-tzu</string>
+		<key>sayingContent</key>
+		<string>“To have little is to possess.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Mae West</string>
+		<key>sayingContent</key>
+		<string>“Sex is emotion in motion.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Marc Allen</string>
+		<key>sayingContent</key>
+		<string>“What we think about, expands.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Marcus Tullius</string>
+		<key>sayingContent</key>
+		<string>“The spirit is the true self.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Ovid</string>
+		<key>sayingContent</key>
+		<string>“Courage conquers all things.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Ralph Waldo Emerson</string>
+		<key>sayingContent</key>
+		<string>“The first wealth is health.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Ralph Waldo Emerson</string>
+		<key>sayingContent</key>
+		<string>“Money often costs too much.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Anonymous </string>
+		<key>sayingContent</key>
+		<string>“Life teaches, Love reveals”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Yiddish Proverb</string>
+		<key>sayingContent</key>
+		<string>“Live and let live.”</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Anonymous </string>
+		<key>sayingContent</key>
+		<string>&quot;Life is a choice.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Anonymous </string>
+		<key>sayingContent</key>
+		<string>&quot;Nothing ventured,nothing gained.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>William Shakespeare</string>
+		<key>sayingContent</key>
+		<string>&quot;What&apos;s done is done.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Bible </string>
+		<key>sayingContent</key>
+		<string>&quot;This too, shall pass.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Mary Anne Radmacher </string>
+		<key>sayingContent</key>
+		<string>&quot;Courage doesn&apos;t always roar.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Seneca </string>
+		<key>sayingContent</key>
+		<string>&quot;You are your choices.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>John Galsworth</string>
+		<key>sayingContent</key>
+		<string>&quot;Beginnings are always messy&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Robert Schumann</string>
+		<key>sayingContent</key>
+		<string>&quot;Talent works, genius creates.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Socrates </string>
+		<key>sayingContent</key>
+		<string>&quot;Wisdom begins in wonder.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Maya Angelou</string>
+		<key>sayingContent</key>
+		<string>&quot;A mother&apos;s love liberates.&quot;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Norman Vaughan</string>
+		<key>sayingContent</key>
+		<string>“Dream big and dare to fail.” </string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Oscar Wilde</string>
+		<key>sayingContent</key>
+		<string>I don’t want to earn my living; I want to live.</string>
+	</dict>
+</array>
+</plist>

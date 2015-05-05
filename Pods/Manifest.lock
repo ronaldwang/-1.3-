@@ -1,0 +1,16 @@
+PODS:
+  - AnimatedGIFImageSerialization (0.2.0)
+  - pop (1.0.7)
+  - UzysAnimatedGifPullToRefresh (0.9.4):
+    - AnimatedGIFImageSerialization (~> 0.2.0)
+
+DEPENDENCIES:
+  - pop (~> 1.0)
+  - UzysAnimatedGifPullToRefresh (~> 0.9.4)
+
+SPEC CHECKSUMS:
+  AnimatedGIFImageSerialization: ee2b8f04ec1143dd196cac160a7b119753891825
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  UzysAnimatedGifPullToRefresh: 54f5f42dbd6b6e27b9e18395b0d167575c3bfcb6
+
+COCOAPODS: 0.35.0

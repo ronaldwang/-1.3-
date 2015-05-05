@@ -1,0 +1,8 @@
+CLANG_CXX_LANGUAGE_STANDARD = c++11
+CLANG_CXX_LIBRARY = libc++
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AnimatedGIFImageSerialization" "${PODS_ROOT}/Headers/Public/UzysAnimatedGifPullToRefresh" "${PODS_ROOT}/Headers/Public/pop"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AnimatedGIFImageSerialization" -isystem "${PODS_ROOT}/Headers/Public/UzysAnimatedGifPullToRefresh" -isystem "${PODS_ROOT}/Headers/Public/pop"
+OTHER_LDFLAGS = -ObjC -l"Pods-AnimatedGIFImageSerialization" -l"Pods-UzysAnimatedGifPullToRefresh" -l"Pods-pop" -l"c++" -framework "CoreGraphics" -framework "ImageIO" -framework "MobileCoreServices"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods

@@ -1,0 +1,118 @@
+/* 
+  Localizable.strings
+  Currenci
+
+  Created by Aries on 15/1/26.
+  Copyright (c) 2015年 MR_ZhangM. All rights reserved.
+*/
+CFBundleDisplayName ="汇率转换";
+"search" = "Suchen nach";
+"color" = "Thema";
+"number" = "Anzahl";
+"Favorites" = "Favorit";
+"ALL" = "Alle";
+"LanguageVCTitle" = "Sprache";
+
+"JustNow" = "Soeben";
+
+"Rate us" = "Bewerten Sie uns";
+"Feedback" = "Rückkopplung";
+"DefaultValue" = "Standardwert";
+"KeypadTone" = "Tastentöne";
+"Done_Button" = "Done";
+"Upgrade" = "Upgrade";
+//watch setting
+"watchsetting" = "Apple Watch";
+
+"PullHeaderPulling" = "Frei hinzufügen";
+"PullHeaderNormal" = "Ziehen hinzufügen";
+
+"PullDownMessage" = "Swipe right for reverse mode";
+"PullUpMessage" = "Pull up to add currency";
+"TapMessage" = "Tap number to start";
+"TapMessageForSetting" = "Tap here to open setting";
+"AlertViewTitle" = "Enjoy";
+"AlertViewMessage" = "Open setting for more information";
+"AlertViewCancleButton" = "OK";
+
+
+
+
+"iRateMessageTitle" = "Bewerte Currenci";
+"iRateAppMessage" = "Wenn dir Currenci gefällt, würdest Du es bitte bewerten? Dies wird nicht länger als eine Minute dauern. Danke für die Unterstützung!";
+
+"iRateCancelButton" = "Nein, danke";
+"iRateRateButton" = "Jetzt bewerten";
+"iRateRemindButton" = "Später erinnern";
+
+"SwipeRight"  = "Swipe right";
+"SwipeRightMessage"  = "Swipe right to backspace";
+"Hold&Drag"  = "Hold & Drag";
+"Hold&DragMessage"  = "Hold & Drag to change order";
+"SwipeLeft"  = "Swipe left";
+"SwipeLeftMessage"  = "Swipe left to delete";
+"SwipeRightOnSearch"  = "Swipe right";
+"SwipeRightOnSearchMessage"  = "Swipe right to add to favor";
+"Shake"  = "Shake";
+"ShakeMessage"  = "Shaking also changes theme color ";
+"TipsTitle" = "Tipps";
+"LongPress" = "Pan or 2-finger Swipe";
+"LongPressMessage" = "Pan for detail,2-finger swipe to change date range";
+"TargertCurrenci" = "Swipe Right";
+"TargertCurrenciMessage" = "Swipe right for reverse mode";
+
+
+
+"RightsMessage" = "Currenci uses up-to-date data from multiple sources to convert currencies.Please only take it as a reference.";
+
+
+// 内购页面
+"AppPurchaseAlert_Title" = "Connect Wrong";
+"AppPurchaseAlert_Message" = "Something went wrong whilst trying to connect to the iTunes Store. Please try again.";
+"AppPurchaseAlert_CancleButton" = "OK";
+
+"AppPurchaseCompleteAlert_Title" = "AppPurchase Complete";
+"AppPurchaseCompleteAlert_Message" = "Thanks for your support, we hope you enjoy using our app.";
+"AppPurchaseCompleteAlert_CancleButton" = "OK";
+
+"AppPurchaseFreeAlert_Title" = "Free for limited time";
+"AppPurchaseFreeAlert_Message" = "Rate and review us, unlock this feature for free";
+"AppPurchaseFreeAlert_CancleButton" = "No,Thanks";
+"AppPurchaseFreeAlert_RateButton" = "Rate It Now";
+
+"UnlockHistoricalChart" = "Upgrade to Pro Version";
+"UnlockHistoricalChart_description" = "Unlock All Features. ";
+
+"UpgradePlusVersion" = "Sponsor us";
+"UpgradePlusVersion_description_1" = "Unlock All Features and Sponsor us.";
+
+"RestorePurchases" = "Restore";
+
+// 升级提示
+"UpgradeAlert_Title" = "Upgrade Needed";
+"UpgradeAlert_Message" = "In order to unlock this feature, you need to upgrade. Would you like to learn more?";
+"UpgradeAlert_CancleButton" = "NO";
+"UpgradeAlert_SureButton" = "YES";
+
+
+// 小数点
+"Integer" = "Ganze Zahl";
+"Decimals_One" = "Einer";
+"Decimals_Two" = "Zwei";
+"Decimals_Three" = "Drei";
+"Decimals_Four" = "Vier";
+
+
+// 基准值
+"ReferenceValue" = "Wert";
+"TargetCurrency" = "Standard";
+
+
+"en" = "English";
+"zh-Hans" = "简体中文";
+"zh-Hant" = "繁体中文";
+"ja" = "日本語";
+"de" = "Deutsch";
+"fr" = "Français";
+"es" = "Español";
+"pt" = "Português";

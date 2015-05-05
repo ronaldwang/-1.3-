@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Currenci-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="mainInterface" title="Currenci" id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <table alignment="left" id="Blj-oV-BS9">
+                            <items>
+                                <tableRow identifier="CurrencyRowIdentifier" id="DIu-Ze-Vo1" customClass="CurrencyRowController">
+                                    <group key="rootItem" width="1" height="35" alignment="left" spacing="0.0" id="Tsy-cK-Cjt">
+                                        <items>
+                                            <imageView width="22" height="22" alignment="left" verticalAlignment="center" image="BTN.png" id="Iuc-LT-suh"/>
+                                            <label width="66" height="30" alignment="right" verticalAlignment="center" textAlignment="right" minimumScaleFactor="0.5" id="bdf-ht-Uph">
+                                                <fontDescription key="font" type="system" pointSize="15"/>
+                                            </label>
+                                            <label width="35" height="30" alignment="left" verticalAlignment="center" textAlignment="center" id="xCa-U3-pcJ">
+                                                <fontDescription key="font" type="system" pointSize="15"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <variation key="device=watch42mm" height="30"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="currcncyImage" destination="Iuc-LT-suh" id="SlN-XF-e9R"/>
+                                        <outlet property="currencyName" destination="xCa-U3-pcJ" id="ezo-jR-5Gf"/>
+                                        <outlet property="currencyRowGroup" destination="Tsy-cK-Cjt" id="VuU-pf-mb2"/>
+                                        <outlet property="currencyValue" destination="bdf-ht-Uph" id="9Zv-bS-Rf5"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </table>
+                    </items>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="interFaceTable" destination="Blj-oV-BS9" id="9cX-Wx-XjT"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="460" y="193"/>
+        </scene>
+        <!--keyBoardIdentifier-->
+        <scene sceneID="eSb-aU-Fzt">
+            <objects>
+                <controller identifier="keyBoardIdentifier" spacing="0.0" id="2GU-oA-jk5" customClass="KeyBoardInterfaceController">
+                    <items>
+                        <group width="1" height="29" alignment="center" spacing="0.0" id="gVA-E8-5ko">
+                            <items>
+                                <imageView width="23" height="23" alignment="left" verticalAlignment="center" image="ALL.png" id="gU0-fn-xdn"/>
+                                <label height="27" alignment="right" verticalAlignment="center" text="0" textAlignment="right" minimumScaleFactor="0.60000000000000009" id="DAf-Nv-ngk"/>
+                            </items>
+                            <edgeInsets key="margins" left="5" right="5" top="0.0" bottom="0.0"/>
+                        </group>
+                        <group width="136" height="124" alignment="center" verticalAlignment="center" layout="vertical" spacing="0.0" id="VRY-d7-wVi">
+                            <items>
+                                <group width="0.0" height="31" alignment="center" spacing="0.0" id="sfU-6X-HSL">
+                                    <items>
+                                        <button width="45" height="31" alignment="center" verticalAlignment="center" title="7" id="37l-0W-r95">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_7" destination="2GU-oA-jk5" id="Ule-ZF-Myv"/>
+                                            </connections>
+                                        </button>
+                                        <button width="45" height="31" alignment="center" title="8" id="GfO-lY-FCh">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_8" destination="2GU-oA-jk5" id="Wgu-2d-SaI"/>
+                                            </connections>
+                                        </button>
+                                        <button width="45" height="31" alignment="center" title="9" id="vDy-06-qN1">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_9" destination="2GU-oA-jk5" id="lKS-h8-Pvl"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                    <variation key="device=watch42mm" height="36"/>
+                                </group>
+                                <group width="0.0" height="31" alignment="center" spacing="0.0" id="h5s-jf-zYF">
+                                    <items>
+                                        <button width="45" height="31" alignment="center" title="4" id="tSV-4E-BoK">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_4" destination="2GU-oA-jk5" id="PiO-d8-TAg"/>
+                                            </connections>
+                                        </button>
+                                        <button width="45" height="31" alignment="center" title="5" id="6uO-Kq-wZx">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_5" destination="2GU-oA-jk5" id="gCq-gE-VU6"/>
+                                            </connections>
+                                        </button>
+                                        <button width="45" height="31" alignment="center" title="6" id="TVS-qX-C6s">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_6" destination="2GU-oA-jk5" id="CbM-LN-sTz"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                    <variation key="device=watch42mm" height="36"/>
+                                </group>
+                                <group width="0.0" height="31" alignment="center" spacing="0.0" id="R7m-Uf-kRd">
+                                    <items>
+                                        <button width="45" height="31" alignment="center" title="1" id="ggs-rR-22V">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_1" destination="2GU-oA-jk5" id="ren-Lp-Sux"/>
+                                            </connections>
+                                        </button>
+                                        <button width="45" height="31" alignment="center" title="2" id="qrl-5o-j5e">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_2" destination="2GU-oA-jk5" id="e80-rp-985"/>
+                                            </connections>
+                                        </button>
+                                        <button width="45" height="31" alignment="center" title="3" id="00X-QK-4C1">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_3" destination="2GU-oA-jk5" id="um9-0f-74O"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                    <variation key="device=watch42mm" height="36"/>
+                                </group>
+                                <group width="0.0" height="31" alignment="center" spacing="0.0" id="NiA-Js-RQa">
+                                    <items>
+                                        <button width="45" height="31" alignment="center" title="0" id="uL4-dm-E8w">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_0" destination="2GU-oA-jk5" id="0yK-Na-hnx"/>
+                                            </connections>
+                                        </button>
+                                        <button width="45" height="31" alignment="center" title="C" id="ZSY-Hh-GWB">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_C" destination="2GU-oA-jk5" id="NQn-6e-Aew"/>
+                                            </connections>
+                                        </button>
+                                        <button width="45" height="31" alignment="center" title="✓" id="VFV-ez-IsH">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="font" type="system" pointSize="30"/>
+                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <connections>
+                                                <action selector="clickButton_OK" destination="2GU-oA-jk5" id="bwS-pm-I8R"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                    <variation key="device=watch42mm" height="36"/>
+                                </group>
+                            </items>
+                            <variation key="device=watch42mm" height="147" width="156"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="InputGroup" destination="gVA-E8-5ko" id="c7f-3P-Dyc"/>
+                        <outlet property="currencyFlag" destination="gU0-fn-xdn" id="VC9-Sj-0Xq"/>
+                        <outlet property="resultLable" destination="DAf-Nv-ngk" id="7gD-jv-FIO"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="729" y="196"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="qsh-vP-A2j">
+            <objects>
+                <glanceController id="aDn-7C-epN" customClass="GlanceController">
+                    <items>
+                        <group alignment="left" id="7hT-bI-cX0">
+                            <items>
+                                <imageView alignment="left" verticalAlignment="center" image="watchIcon.png" id="bKW-SS-IMc"/>
+                            </items>
+                            <edgeInsets key="margins" left="10" right="0.0" top="0.0" bottom="0.0"/>
+                            <variation key="device=watch38mm">
+                                <edgeInsets key="margins" left="5" right="0.0" top="0.0" bottom="0.0"/>
+                            </variation>
+                        </group>
+                        <group alignment="left" layout="vertical" id="Ylp-Bb-qii">
+                            <items>
+                                <group width="1" alignment="left" layout="vertical" id="vgE-LT-vx1">
+                                    <items>
+                                        <label width="129" alignment="center" verticalAlignment="center" text="Label" textAlignment="left" id="dG8-4s-UfH">
+                                            <color key="textColor" red="0.10196078431372549" green="0.71764705882352942" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                        </label>
+                                        <label width="128" alignment="center" verticalAlignment="center" text="Label" textAlignment="left" id="QPz-lu-9uf">
+                                            <color key="textColor" red="0.1019607843" green="0.71764705880000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" height="64" alignment="left" verticalAlignment="center" layout="vertical" id="ioA-L3-VCA">
+                                    <items>
+                                        <label width="135" alignment="center" text="Label" textAlignment="left" numberOfLines="0" minimumScaleFactor="0.60000000000000009" id="x1X-ie-1N0">
+                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                            <variation key="device=watch38mm">
+                                                <fontDescription key="font" type="system" pointSize="11"/>
+                                            </variation>
+                                        </label>
+                                        <label width="135" alignment="left" text="Label" textAlignment="right" minimumScaleFactor="0.79999999999999993" id="Wtc-Yx-JCK">
+                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                            <variation key="device=watch38mm">
+                                                <fontDescription key="font" type="system" pointSize="11"/>
+                                            </variation>
+                                        </label>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                            <variation key="device=watch38mm">
+                                <edgeInsets key="margins" left="5" right="0.0" top="0.0" bottom="0.0"/>
+                            </variation>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="bottomLable" destination="QPz-lu-9uf" id="dNU-PN-oOF"/>
+                        <outlet property="nameLable" destination="Wtc-Yx-JCK" id="COk-u8-CeV"/>
+                        <outlet property="sayingLable" destination="x1X-ie-1N0" id="vAP-4a-09A"/>
+                        <outlet property="topLable" destination="dG8-4s-UfH" id="CPn-3n-kx6"/>
+                    </connections>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="460" y="454"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.1019607843" green="0.71764705880000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+</document>
