@@ -20,8 +20,6 @@
 #import <pop/POP.h>
 #import "UIScrollView+UzysAnimatedGifPullToRefresh.h"
 
-#import "PulsingHaloLayer.h"
-
 #import "UIViewController+Tutorial.h"
 #import <AudioToolbox/AudioToolbox.h>
 
@@ -1956,32 +1954,8 @@ static  int  requestCount = 0;
     [button.layer pop_addAnimation:scaleAnimation forKey:@"scale"];
     [button.titleLabel  pop_addAnimation:colcorAnimation forKey:@"pop"];
     
-//  [self.calcuatorView.layer addSublayer:[self  createHaloAt:[self  takeTouchPoint:button] WithRadius:15]];
-
 }
 
-
-// Touch Radius
-- (PulsingHaloLayer*)createHaloAt:(CGPoint)location WithRadius:(CGFloat)radius{
-    
-    PulsingHaloLayer   *haoLayer = [[PulsingHaloLayer  alloc ] init];
-    haoLayer.repeatCount = 1;
-    haoLayer.position = location;
-    if (iPhone6plus) {
-        haoLayer.radius = radius * 2.5;
-    }else if (iPhone6){
-       haoLayer.radius = radius * 2.0;
-    }else{
-       haoLayer.radius = radius * 1.5;
-    }
-    
-    haoLayer.fromValueForRadius = 0.5;
-    haoLayer.keyTimeForHalfOpacity = 0.5;
-    haoLayer.animationDuration = 0.3;
-    haoLayer.backColor = [Util  shareInstance].themeColor;
-    
-    return  haoLayer;
-}
 
 - (CGPoint)takeTouchPoint:(UIButton*)sneder{
    

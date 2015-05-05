@@ -14,6 +14,8 @@
 		<string>https://github.com/bayicaidao/-.git</string>
 		<key>8A3BE37F911DE6FFDE7B7C5EA13D02BB75493A92</key>
 		<string>https://github.com/bayicaidao/-1.1.git</string>
+		<key>E9F7DB3EEBDAFEFD4CC64BB25149EBE0747E182B</key>
+		<string>https://github.com/bayicaidao/-1.3-.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>UnitsChanges.xcworkspace</string>
@@ -22,14 +24,16 @@
 		<key>1B653C8081ED59BBFB72691548F6210438CE8C66</key>
 		<string>../../%E6%B1%87%E7%8E%87%E8%AE%A1%E7%AE%97%20%20%E4%B8%8B%E6%8B%89%20%20%E6%97%B6%E9%97%B4%20%20%20%E5%A4%9A%E8%AF%AD%E8%A8%80</string>
 		<key>8A3BE37F911DE6FFDE7B7C5EA13D02BB75493A92</key>
+		<string>../../%E6%B1%87%E7%8E%87%E8%AE%A1%E7%AE%97%20%201.1</string>
+		<key>E9F7DB3EEBDAFEFD4CC64BB25149EBE0747E182B</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/bayicaidao/-1.1.git</string>
+	<string>https://github.com/bayicaidao/-1.3-.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8A3BE37F911DE6FFDE7B7C5EA13D02BB75493A92</string>
+	<string>E9F7DB3EEBDAFEFD4CC64BB25149EBE0747E182B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -47,6 +51,14 @@
 			<string>8A3BE37F911DE6FFDE7B7C5EA13D02BB75493A92</string>
 			<key>IDESourceControlWCCName</key>
 			<string>%E6%B1%87%E7%8E%87%E8%AE%A1%E7%AE%97%20%201.1</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E9F7DB3EEBDAFEFD4CC64BB25149EBE0747E182B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>%E6%B1%87%E7%8E%87%E8%AE%A1%E7%AE%97%20%201.3%20</string>
 		</dict>
 	</array>
 </dict>

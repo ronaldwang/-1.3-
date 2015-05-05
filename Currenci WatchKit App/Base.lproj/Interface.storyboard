@@ -153,10 +153,10 @@
                                                 <action selector="clickButton_C" destination="2GU-oA-jk5" id="NQn-6e-Aew"/>
                                             </connections>
                                         </button>
-                                        <button width="45" height="31" alignment="center" title="✓" id="VFV-ez-IsH">
+                                        <button width="45" height="31" alignment="center" backgroundImage="38-watch.png" id="VFV-ez-IsH">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="font" type="system" pointSize="30"/>
-                                            <variation key="device=watch42mm" height="36" width="52"/>
+                                            <variation key="device=watch42mm" backgroundImage="42-watch.png" height="36" width="52"/>
                                             <connections>
                                                 <action selector="clickButton_OK" destination="2GU-oA-jk5" id="bwS-pm-I8R"/>
                                             </connections>

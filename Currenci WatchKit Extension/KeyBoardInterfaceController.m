@@ -47,6 +47,7 @@
 -(void) calculator_init{
 
     display = [[NSMutableString alloc] initWithCapacity:40];
+    [self.resultLable  setTextColor:[Util  shareInstance].themeColor];
    }
 
 

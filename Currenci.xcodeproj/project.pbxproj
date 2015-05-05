@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1809BF0F1AF221D100EF9ADD /* watch对号@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1809BF0D1AF221D100EF9ADD /* watch对号@2x.png */; };
-		1809BF101AF221D100EF9ADD /* watch对号@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1809BF0D1AF221D100EF9ADD /* watch对号@2x.png */; };
-		1809BF111AF221D100EF9ADD /* watch对号@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1809BF0E1AF221D100EF9ADD /* watch对号@3x.png */; };
-		1809BF121AF221D100EF9ADD /* watch对号@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1809BF0E1AF221D100EF9ADD /* watch对号@3x.png */; };
 		180A2AAD1A9DB09400E6FF0F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A2AAC1A9DB09400E6FF0F /* AudioToolbox.framework */; };
 		181CFEF61A8071F100E8C39E /* #15bd39-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 181CFEEA1A8071F100E8C39E /* #15bd39-2.gif */; };
 		181CFEF71A8071F100E8C39E /* #15bd39.gif in Resources */ = {isa = PBXBuildFile; fileRef = 181CFEEB1A8071F100E8C39E /* #15bd39.gif */; };
@@ -740,6 +736,12 @@
 		1841CA441AA01950002CFB1C /* LanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1841CA421AA01950002CFB1C /* LanguageCell.xib */; };
 		1841CA481AA0199C002CFB1C /* DecimalsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841CA461AA0199C002CFB1C /* DecimalsCell.m */; };
 		1841CA491AA0199C002CFB1C /* DecimalsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1841CA471AA0199C002CFB1C /* DecimalsCell.xib */; };
+		18449DA21AF8B7A000FEBE16 /* 38-watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18449DA01AF8B7A000FEBE16 /* 38-watch@2x.png */; };
+		18449DA31AF8B7A000FEBE16 /* 38-watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18449DA01AF8B7A000FEBE16 /* 38-watch@2x.png */; };
+		18449DA41AF8B7A000FEBE16 /* 38-watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18449DA01AF8B7A000FEBE16 /* 38-watch@2x.png */; };
+		18449DA51AF8B7A000FEBE16 /* 42-watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18449DA11AF8B7A000FEBE16 /* 42-watch@2x.png */; };
+		18449DA61AF8B7A000FEBE16 /* 42-watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18449DA11AF8B7A000FEBE16 /* 42-watch@2x.png */; };
+		18449DA71AF8B7A000FEBE16 /* 42-watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18449DA11AF8B7A000FEBE16 /* 42-watch@2x.png */; };
 		185E648B1AF215C80095054F /* KeyBoardInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E648A1AF215C80095054F /* KeyBoardInterfaceController.m */; };
 		18727A331A3AC11B00351A73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18727A321A3AC11B00351A73 /* MapKit.framework */; };
 		1872EB3E1A88B111008BAD82 /* 主题@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872EB3D1A88B111008BAD82 /* 主题@2x.png */; };
@@ -810,7 +812,6 @@
 		18D830011A4129D6002064D4 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D82FFF1A4129D6002064D4 /* SettingViewController.xib */; };
 		18D830251A413AD9002064D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D830241A413AD9002064D4 /* Main.storyboard */; };
 		18D8680F1AAEDE970011E301 /* 网格@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D8680E1AAEDE970011E301 /* 网格@2x.png */; };
-		18D8B7681AC556F9002E9B11 /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8B7671AC556F9002E9B11 /* PulsingHaloLayer.m */; };
 		18D8BB071A5CE4ED0049854C /* 1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D8BB031A5CE4ED0049854C /* 1136.png */; };
 		18D8BB091A5CE4ED0049854C /* 1920.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D8BB051A5CE4ED0049854C /* 1920.png */; };
 		18D8BB0A1A5CE4ED0049854C /* 960.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D8BB061A5CE4ED0049854C /* 960.png */; };
@@ -1307,8 +1308,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1809BF0D1AF221D100EF9ADD /* watch对号@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch对号@2x.png"; sourceTree = "<group>"; };
-		1809BF0E1AF221D100EF9ADD /* watch对号@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watch对号@3x.png"; sourceTree = "<group>"; };
 		180A2AAC1A9DB09400E6FF0F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		181CFEEA1A8071F100E8C39E /* #15bd39-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "#15bd39-2.gif"; sourceTree = "<group>"; };
 		181CFEEB1A8071F100E8C39E /* #15bd39.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "#15bd39.gif"; sourceTree = "<group>"; };
@@ -1351,6 +1350,8 @@
 		1841CA451AA0199C002CFB1C /* DecimalsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecimalsCell.h; sourceTree = "<group>"; };
 		1841CA461AA0199C002CFB1C /* DecimalsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecimalsCell.m; sourceTree = "<group>"; };
 		1841CA471AA0199C002CFB1C /* DecimalsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DecimalsCell.xib; sourceTree = "<group>"; };
+		18449DA01AF8B7A000FEBE16 /* 38-watch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "38-watch@2x.png"; sourceTree = "<group>"; };
+		18449DA11AF8B7A000FEBE16 /* 42-watch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-watch@2x.png"; sourceTree = "<group>"; };
 		185E64891AF215C80095054F /* KeyBoardInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyBoardInterfaceController.h; sourceTree = "<group>"; };
 		185E648A1AF215C80095054F /* KeyBoardInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyBoardInterfaceController.m; sourceTree = "<group>"; };
 		18727A321A3AC11B00351A73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1434,8 +1435,6 @@
 		18D82FFF1A4129D6002064D4 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		18D830241A413AD9002064D4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18D8680E1AAEDE970011E301 /* 网格@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "网格@2x.png"; sourceTree = "<group>"; };
-		18D8B7661AC556F9002E9B11 /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHaloLayer.h; sourceTree = "<group>"; };
-		18D8B7671AC556F9002E9B11 /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
 		18D8BB031A5CE4ED0049854C /* 1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1136.png; sourceTree = "<group>"; };
 		18D8BB051A5CE4ED0049854C /* 1920.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1920.png; sourceTree = "<group>"; };
 		18D8BB061A5CE4ED0049854C /* 960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 960.png; sourceTree = "<group>"; };
@@ -2100,15 +2099,6 @@
 			name = Customization;
 			sourceTree = "<group>";
 		};
-		18D8B7651AC556F9002E9B11 /* PulsingHalo */ = {
-			isa = PBXGroup;
-			children = (
-				18D8B7661AC556F9002E9B11 /* PulsingHaloLayer.h */,
-				18D8B7671AC556F9002E9B11 /* PulsingHaloLayer.m */,
-			);
-			path = PulsingHalo;
-			sourceTree = "<group>";
-		};
 		18D8BB021A5CE4ED0049854C /* LaunchImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -2160,7 +2150,6 @@
 		18E0438C1A7B350F00D1444D /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				18D8B7651AC556F9002E9B11 /* PulsingHalo */,
 				18DCD2261AA97AB2005E9B08 /* BEMLine */,
 				18DD65021AA43F8C00404F89 /* ASBanker */,
 				18D65AF81A89AB140004B4E3 /* libMobClickLibrary.a */,
@@ -2614,8 +2603,8 @@
 		685B57BB1A22D43E0095DE99 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				1809BF0D1AF221D100EF9ADD /* watch对号@2x.png */,
-				1809BF0E1AF221D100EF9ADD /* watch对号@3x.png */,
+				18449DA01AF8B7A000FEBE16 /* 38-watch@2x.png */,
+				18449DA11AF8B7A000FEBE16 /* 42-watch@2x.png */,
 				18E6B8321AE0A8C0000391F5 /* appWatch - 42 */,
 				18E6B8371AE0A8C0000391F5 /* appWatch - 38 */,
 				18E4DCE91ADFA2EB006C2DF4 /* pro@2x.png */,
@@ -2978,6 +2967,7 @@
 				18392FB71AC01CAF00DA2B4B /* EUR@3x.png in Resources */,
 				18392EE91AC01CA200DA2B4B /* AZN@2x.png in Resources */,
 				18392FF01AC01CAF00DA2B4B /* MZN@3x.png in Resources */,
+				18449DA31AF8B7A000FEBE16 /* 38-watch@2x.png in Resources */,
 				18392EE01AC01CA200DA2B4B /* AED@2x.png in Resources */,
 				18392F461AC01CA200DA2B4B /* NAD@2x.png in Resources */,
 				18392FAE1AC01CAF00DA2B4B /* CZK@3x.png in Resources */,
@@ -2986,7 +2976,6 @@
 				18392F901AC01CAF00DA2B4B /* AOA@3x.png in Resources */,
 				18392FA51AC01CAF00DA2B4B /* CHF@3x.png in Resources */,
 				18392F421AC01CA200DA2B4B /* MXN@2x.png in Resources */,
-				1809BF0F1AF221D100EF9ADD /* watch对号@2x.png in Resources */,
 				18392F241AC01CA200DA2B4B /* JMD@2x.png in Resources */,
 				18392F9B1AC01CAF00DA2B4B /* BND@3x.png in Resources */,
 				18392FEE1AC01CAF00DA2B4B /* MXV@3x.png in Resources */,
@@ -3043,6 +3032,7 @@
 				18392FC71AC01CAF00DA2B4B /* IDR@3x.png in Resources */,
 				18392FB21AC01CAF00DA2B4B /* DZD@3x.png in Resources */,
 				18392F7A1AC01CA200DA2B4B /* XAG@2x.png in Resources */,
+				18449DA61AF8B7A000FEBE16 /* 42-watch@2x.png in Resources */,
 				18392FD71AC01CAF00DA2B4B /* KRW@3x.png in Resources */,
 				18392FC21AC01CAF00DA2B4B /* HKD@3x.png in Resources */,
 				1839302D1AC01CAF00DA2B4B /* XPT@3x.png in Resources */,
@@ -3235,7 +3225,6 @@
 				18392F921AC01CAF00DA2B4B /* AUD@3x.png in Resources */,
 				18392F7F1AC01CA200DA2B4B /* XOF@2x.png in Resources */,
 				1839301A1AC01CAF00DA2B4B /* TZS@3x.png in Resources */,
-				1809BF111AF221D100EF9ADD /* watch对号@3x.png in Resources */,
 				18392FF61AC01CAF00DA2B4B /* NZD@3x.png in Resources */,
 				18392FFD1AC01CAF00DA2B4B /* PLN@3x.png in Resources */,
 				18392F151AC01CA200DA2B4B /* GTQ@2x.png in Resources */,
@@ -3398,6 +3387,7 @@
 				183930DD1AC01DD600DA2B4B /* ZMW@2x.png in Resources */,
 				183930B91AC01DD600DA2B4B /* SOS@2x.png in Resources */,
 				183930431AC01DD600DA2B4B /* BBD@2x.png in Resources */,
+				18449DA41AF8B7A000FEBE16 /* 38-watch@2x.png in Resources */,
 				183930A01AC01DD600DA2B4B /* NIO@2x.png in Resources */,
 				183930C11AC01DD600DA2B4B /* TMT@2x.png in Resources */,
 				183931291AC01DE200DA2B4B /* JPY@3x.png in Resources */,
@@ -3435,6 +3425,7 @@
 				183931001AC01DE200DA2B4B /* CNY@3x.png in Resources */,
 				183930F01AC01DE200DA2B4B /* BGN@3x.png in Resources */,
 				1839309B1AC01DD600DA2B4B /* MXV@2x.png in Resources */,
+				18449DA71AF8B7A000FEBE16 /* 42-watch@2x.png in Resources */,
 				183930B11AC01DD600DA2B4B /* SAR@2x.png in Resources */,
 				183931741AC01DE200DA2B4B /* UGX@3x.png in Resources */,
 				183931711AC01DE200DA2B4B /* TWD@3x.png in Resources */,
@@ -3474,8 +3465,6 @@
 				183930971AC01DD600DA2B4B /* MUR@2x.png in Resources */,
 				1839313F1AC01DE200DA2B4B /* MNT@3x.png in Resources */,
 				1839312A1AC01DE200DA2B4B /* KES@3x.png in Resources */,
-				1809BF101AF221D100EF9ADD /* watch对号@2x.png in Resources */,
-				1809BF121AF221D100EF9ADD /* watch对号@3x.png in Resources */,
 				1839308B1AC01DD600DA2B4B /* LSL@2x.png in Resources */,
 				183930FE1AC01DE200DA2B4B /* CLF@3x.png in Resources */,
 				183931651AC01DE200DA2B4B /* SRD@3x.png in Resources */,
@@ -3753,6 +3742,7 @@
 				18E40C131A81F103007D21AC /* BND@2x.png in Resources */,
 				18E40CBF1A81F103007D21AC /* BND@3x.png in Resources */,
 				18E40D3E1A81F103007D21AC /* TRY@3x.png in Resources */,
+				18449DA51AF8B7A000FEBE16 /* 42-watch@2x.png in Resources */,
 				18DB8BAB1AA6F31800AD7DBB /* AppPurcahseViewController.xib in Resources */,
 				18E40D191A81F103007D21AC /* NGN@3x.png in Resources */,
 				18E40CAE1A81F103007D21AC /* AED@3x.png in Resources */,
@@ -4073,6 +4063,7 @@
 				18E40C371A81F103007D21AC /* GMD@2x.png in Resources */,
 				18E40C5F1A81F103007D21AC /* MGA@2x.png in Resources */,
 				18D08B2F1A5BC93000E6BFC8 /* #f42061fangda-2.gif in Resources */,
+				18449DA21AF8B7A000FEBE16 /* 38-watch@2x.png in Resources */,
 				18E40CEA1A81F103007D21AC /* HTG@3x.png in Resources */,
 				18E40CC61A81F103007D21AC /* BZD@3x.png in Resources */,
 				18E40D181A81F103007D21AC /* NAD@3x.png in Resources */,
@@ -4243,7 +4234,6 @@
 				68A4CB9519F9F41000BE1443 /* main.m in Sources */,
 				1841CA481AA0199C002CFB1C /* DecimalsCell.m in Sources */,
 				686113D71A0BB3D0000ED48C /* CountryViewController.m in Sources */,
-				18D8B7681AC556F9002E9B11 /* PulsingHaloLayer.m in Sources */,
 				18D47AB81A3FCD4600CF97D1 /* TodayViewController.m in Sources */,
 				18C85DD51AC3F5AF00266ABA /* WatchSettingViewController.m in Sources */,
 				683179871A134B2F0034FF57 /* Util.m in Sources */,
