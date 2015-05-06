@@ -453,21 +453,6 @@
      return [shared valueForKey:@"contentArray"];
 }
 
-+(void)saveCurrentCurrency:(NSString*)currentCurrency{
-   
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.company.liuWei"];
-    [shared setObject:currentCurrency forKey:@"CurrentCurrency"];
-    [shared synchronize];
-
-
-}
-+(NSString*)takeCurrentCurrency{
-
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.company.liuWei"];
-    return [shared valueForKey:@"CurrentCurrency"];
-
-}
-
 
 + (void)saveUserInput:(NSString*)input{
   

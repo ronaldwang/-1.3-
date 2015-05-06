@@ -144,6 +144,7 @@
     //  通过Context 传递 数据
     KeyBoardInterfaceControllerContext   *keyBoardContext = [KeyBoardInterfaceControllerContext  new];
     keyBoardContext.delegate = self;
+    keyBoardContext.currentCurrency = [self.currencyArray  objectAtIndex:rowIndex];
     [self pushControllerWithName:@"keyBoardIdentifier" context:keyBoardContext];
 
 }

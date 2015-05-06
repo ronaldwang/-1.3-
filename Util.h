@@ -128,9 +128,6 @@
 +(BOOL)takeTimeDifference:(NSString*)dateString;
 
 
-+(void)saveCurrentCurrency:(NSString*)currentCurrency;
-+(NSString*)takeCurrentCurrency;
-
 + (void)saveUserInput:(NSString*)input;
 + (NSString*)takeUserInput;
 + (BOOL)isUserIput;

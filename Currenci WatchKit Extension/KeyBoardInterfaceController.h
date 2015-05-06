@@ -15,6 +15,7 @@
 
 @interface KeyBoardInterfaceControllerContext : NSObject    //  Context  通过Context传递数据
 @property (weak, nonatomic) id <KeyBoardInterfaceDelegate> delegate;
+@property (strong,nonatomic) NSString  *currentCurrency;
 @end
 
 

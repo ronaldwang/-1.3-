@@ -38,6 +38,10 @@
     
     KeyBoardInterfaceControllerContext  *keyBoardContext = (KeyBoardInterfaceControllerContext*)context;
     self.delegate = keyBoardContext.delegate;
+    
+    [self.currencyFlag  setImageNamed:[NSString  stringWithFormat:@"%@.png",keyBoardContext.currentCurrency]];
+    
+     [self  setTitle:keyBoardContext.currentCurrency];
 
     [self  calculator_init];
     
@@ -148,15 +152,13 @@
 }
 
 
-
 - (IBAction)clickButton_OK {
 
-    if ([display  intValue] != 0) {
         NSString  *localeString = [Util  numberFormatterSetting:[NSString  stringWithFormat:@"%f",[Util numberFormatterForFloat:display]] withFractionDigits:2 withInput:YES];
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(keyBoardUserInput:)]) {
             [self.delegate  keyBoardUserInput:localeString];
         }
-    }
+    
      [self  popController];
 }
 
@@ -164,9 +166,6 @@
 - (void)willActivate {
     // This method is called when watch view controller is about to be visible to user
     [super willActivate];
-    
-    [self  setTitle:[Util  takeCurrentCurrency]];
-    [self.currencyFlag  setImageNamed:[NSString  stringWithFormat:@"%@.png",[Util takeCurrentCurrency]]];
     
 }
 
