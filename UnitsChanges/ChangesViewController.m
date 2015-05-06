@@ -76,6 +76,7 @@ static  int  requestCount = 0;
 @property (weak, nonatomic) IBOutlet UILabel *sayingLable;
 @property (weak, nonatomic) IBOutlet UILabel *nameLable;
 @property (nonatomic,retain) NSString  *localeSeparator;
+
 @property (weak, nonatomic) IBOutlet UIView *calcuatorView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calcutorViewVerticalConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cacutorViewHeightContraint;
