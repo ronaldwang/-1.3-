@@ -14,6 +14,9 @@
 #import "Util.h"
 #import "SimpleChangesViewController.h"
 
+#import "ChangesViewController_Pad.h"
+#import "SplitDetailViweController.h"
+
 #define  UMENG_APPKEY  @"54d96f3dfd98c5b7760008da"
 @interface AppDelegate ()<iRateDelegate,UIAlertViewDelegate,UIPageViewControllerDataSource,UIPageViewControllerDelegate,UIGestureRecognizerDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) UIAlertView *alertView;
@@ -28,33 +31,49 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self  takeLocaleLanguage];
-    
-    //   fetch background
-    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    //  摇一摇
-    [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
-    
     // 友盟
     [self umengTrack];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.nv = [[UINavigationController alloc ] initWithRootViewController:[storyboard instantiateInitialViewController]];
-    self.nv.navigationBarHidden= YES;
+    if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
+        
+        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+
+        splitViewController.maximumPrimaryColumnWidth = 400; // 调整SplitViewController分割的宽度
+        
+        UINavigationController *detailNavigationController = [splitViewController.viewControllers objectAtIndex:1];
+        SplitDetailViweController *detailViewController = [detailNavigationController.viewControllers firstObject];
+        splitViewController.delegate = detailViewController;
+        
+        UINavigationController *masterNavigationController = [splitViewController.viewControllers firstObject];
+        ChangesViewController_Pad *masterViewController = [masterNavigationController.viewControllers firstObject];
+        masterViewController.detailViewController = detailViewController;
+
+    }else{
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        [self  takeLocaleLanguage];
+        //   fetch background
+        [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+        //  摇一摇
+        [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.nv = [[UINavigationController alloc ] initWithRootViewController:[storyboard instantiateInitialViewController]];
+        self.nv.navigationBarHidden= YES;
+        
+        self.simpleVc = [[SimpleChangesViewController alloc ] initWithNibName:@"SimpleChangesViewController" bundle:nil];
+        
+        self.pageViewController = [[CustomPageViewController  alloc ] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+        
+        [self.pageViewController  setViewControllers:@[self.nv] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        
+        self.pageViewController.delegate = self;
+        self.pageViewController.dataSource = self;
+        
+        [self.window setRootViewController:self.pageViewController];
+        self.window.backgroundColor = [UIColor whiteColor];
+         [self.window makeKeyAndVisible];
+
+    }
     
-    self.simpleVc = [[SimpleChangesViewController alloc ] initWithNibName:@"SimpleChangesViewController" bundle:nil];
-    
-    self.pageViewController = [[CustomPageViewController  alloc ] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    
-    [self.pageViewController  setViewControllers:@[self.nv] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    
-    self.pageViewController.delegate = self;
-    self.pageViewController.dataSource = self;
-    
-    [self.window setRootViewController:self.pageViewController];
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -217,22 +236,36 @@
 
 -(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-    if (self.allowRotation) {
-        return UIInterfaceOrientationMaskPortrait |UIInterfaceOrientationMaskLandscape;
+    
+    if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
+        return UIInterfaceOrientationMaskLandscape;
+    }else{
+        if (self.allowRotation) {
+            return UIInterfaceOrientationMaskPortrait |UIInterfaceOrientationMaskLandscape;
+        }
+        return UIInterfaceOrientationMaskPortrait;
     }
-    return UIInterfaceOrientationMaskPortrait;
+    
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 
 {
-    return UIInterfaceOrientationMaskPortrait |UIInterfaceOrientationMaskLandscape;
+    if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
+        return UIInterfaceOrientationMaskLandscape;
+    }else{
+        return UIInterfaceOrientationMaskPortrait |UIInterfaceOrientationMaskLandscape;
+    }
 }
 
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    return UIInterfaceOrientationPortrait;
+    if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
+        return UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight;
+    }else{
+        return UIInterfaceOrientationPortrait;
+    }
 }
 
 

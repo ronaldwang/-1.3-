@@ -178,6 +178,10 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="长按拖动.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y9V-Sy-ATX">
                                             <rect key="frame" x="45" y="45" width="210" height="210"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="210" id="BlL-BG-y9h"/>
+                                                <constraint firstAttribute="height" constant="210" id="zkO-cW-m5U"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长按拖动" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYM-9Q-N4G">
                                             <rect key="frame" x="81" y="13" width="139" height="30"/>
@@ -228,7 +232,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="向左滑动删除货币" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svl-mf-HJU">
-                                            <rect key="frame" x="29" y="242" width="242" height="29"/>
+                                            <rect key="frame" x="29" y="452" width="242" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="29" id="KT1-Ez-I84"/>
                                                 <constraint firstAttribute="width" constant="242" id="O81-Wz-1Vp"/>
@@ -239,6 +243,10 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="左滑.png" translatesAutoresizingMaskIntoConstraints="NO" id="cq7-1f-Nxb">
                                             <rect key="frame" x="45" y="45" width="210" height="210"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="210" id="1No-Tt-oH2"/>
+                                                <constraint firstAttribute="width" constant="210" id="vxl-8N-lqc"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -249,7 +257,7 @@
                                         <constraint firstItem="arF-xm-AYl" firstAttribute="top" secondItem="Bpa-Bb-Clf" secondAttribute="top" constant="13" id="NTO-Qi-fd4"/>
                                         <constraint firstItem="cq7-1f-Nxb" firstAttribute="top" secondItem="arF-xm-AYl" secondAttribute="bottom" constant="2" id="SyE-CK-0dq"/>
                                         <constraint firstItem="cq7-1f-Nxb" firstAttribute="centerX" secondItem="arF-xm-AYl" secondAttribute="centerX" constant="-0.5" id="Y5M-7d-qR1"/>
-                                        <constraint firstItem="svl-mf-HJU" firstAttribute="top" secondItem="cq7-1f-Nxb" secondAttribute="bottom" constant="-13" id="YzJ-VH-lIc"/>
+                                        <constraint firstItem="svl-mf-HJU" firstAttribute="top" secondItem="Bpa-Bb-Clf" secondAttribute="top" constant="452" id="mzk-XM-mQb"/>
                                         <constraint firstItem="svl-mf-HJU" firstAttribute="centerX" secondItem="cq7-1f-Nxb" secondAttribute="centerX" id="vfg-gj-c7h"/>
                                     </constraints>
                                 </view>
@@ -278,6 +286,10 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="右滑.png" translatesAutoresizingMaskIntoConstraints="NO" id="1S7-k7-VvY">
                                             <rect key="frame" x="45" y="45" width="210" height="210"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="210" id="Gzo-4r-iKw"/>
+                                                <constraint firstAttribute="width" constant="210" id="Ua4-iL-kCX"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -334,11 +346,11 @@
         </view>
     </objects>
     <resources>
-        <image name="主题.png" width="210" height="277"/>
-        <image name="右滑.png" width="210" height="210"/>
-        <image name="图表.png" width="210" height="210"/>
-        <image name="定值目标汇率.png" width="210" height="210"/>
-        <image name="左滑.png" width="210" height="210"/>
-        <image name="长按拖动.png" width="210" height="210"/>
+        <image name="主题.png" width="420" height="555"/>
+        <image name="右滑.png" width="420" height="420"/>
+        <image name="图表.png" width="420" height="420"/>
+        <image name="定值目标汇率.png" width="420" height="420"/>
+        <image name="左滑.png" width="420" height="420"/>
+        <image name="长按拖动.png" width="420" height="420"/>
     </resources>
 </document>

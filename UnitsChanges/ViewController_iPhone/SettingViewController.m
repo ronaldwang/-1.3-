@@ -101,8 +101,6 @@
 
 @property (nonatomic,retain)  NSString  *timeString;
 
-
-
 @end
 
 @implementation SettingViewController

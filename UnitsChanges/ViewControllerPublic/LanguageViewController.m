@@ -84,6 +84,8 @@
 
     [self.navigationItem setLeftBarButtonItem:leftItem animated:YES];
     
+     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary  dictionaryWithObjectsAndKeys:[Util  shareInstance].themeColor,NSForegroundColorAttributeName,[UIFont  fontWithName:@"HelveticaNeue-Light" size:20],NSFontAttributeName,nil]];
+    
     self.navigationController.navigationBar.tintColor = [Util  shareInstance].themeColor;
 }
 

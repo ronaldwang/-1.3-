@@ -45,10 +45,13 @@
 @implementation TtpsViewController
 
 - (void)backAction:(UIButton*)sender{
-    [self  dismissViewControllerAnimated:YES completion:^{
-    }];
     
-  
+    if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
+        [self.navigationController  popViewControllerAnimated:YES];
+    }else{
+        [self  dismissViewControllerAnimated:YES completion:^{
+        }];
+    }
 }
 
 - (void)viewDidLoad {
