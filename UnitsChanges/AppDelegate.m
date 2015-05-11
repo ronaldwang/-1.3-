@@ -12,10 +12,13 @@
 #import "MobClick.h"
 #import "Localisator.h"
 #import "Util.h"
+
+#import "CustomerViewController.h"
 #import "SimpleChangesViewController.h"
 
 #import "ChangesViewController_Pad.h"
 #import "SplitDetailViweController.h"
+#import "SettingViewController_Pad.h"
 
 #define  UMENG_APPKEY  @"54d96f3dfd98c5b7760008da"
 @interface AppDelegate ()<iRateDelegate,UIAlertViewDelegate,UIPageViewControllerDataSource,UIPageViewControllerDelegate,UIGestureRecognizerDelegate,UIScrollViewDelegate>
@@ -43,7 +46,8 @@
         UINavigationController *detailNavigationController = [splitViewController.viewControllers objectAtIndex:1];
         SplitDetailViweController *detailViewController = [detailNavigationController.viewControllers firstObject];
         splitViewController.delegate = detailViewController;
-        
+
+    
         UINavigationController *masterNavigationController = [splitViewController.viewControllers firstObject];
         ChangesViewController_Pad *masterViewController = [masterNavigationController.viewControllers firstObject];
         masterViewController.detailViewController = detailViewController;

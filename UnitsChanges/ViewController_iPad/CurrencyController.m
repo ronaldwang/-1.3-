@@ -61,8 +61,18 @@
     
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
+    
+    [[NSNotificationCenter  defaultCenter]  removeObserver:self name:@"LanguageChanged" object:nil];
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedLanguageChanged:) name:@"LanguageChanged" object:nil];
 
 }
+
+
+- (void)selectedLanguageChanged:(NSNotification*)sender{
+    self.searchController.searchBar.placeholder = LOCALIZATION(@"search");
+    [self.tableView   reloadData];
+}
+
 
 #pragma mark
 #pragma mark     设置默认的收藏
@@ -103,7 +113,6 @@
 }
 
 
-
 #pragma mark
 #pragma mark - Table view data source
 
@@ -127,7 +136,6 @@
             return self.allCurrency.count;
         }
     }
-
 }
 
 
@@ -235,10 +243,6 @@
 
 
 }
-
-
-
-
 
 
 /*

@@ -28,6 +28,7 @@
     BOOL    isLeftSelected;
     BOOL    isRightSelected;
     
+    __weak IBOutlet UIButton *settingButton;
     int   leftCount;
     int   rightCount;
     
@@ -244,9 +245,9 @@
     [self setPropretyForGraphView];
     [self  sendRequestWithTime:beginDate andEndTime:endDate andCurrcncy:leftCurrencyBut.titleLabel.text   andBaseCurrency:rightCurrencyBut.titleLabel.text];
     self.edgesForExtendedLayout =  UIRectEdgeNone;
-    self.navigationController.navigationBar.tintColor = [Util shareInstance].themeColor;
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary  dictionaryWithObjectsAndKeys:[Util  shareInstance].themeColor,NSForegroundColorAttributeName,[UIFont  fontWithName:@"HelveticaNeue-Light" size:20],NSFontAttributeName,nil]];
     
+    [settingButton  setBackgroundImage:[[UIImage imageNamed:@"设置.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [settingButton  setTintColor:[Util shareInstance].themeColor];
 }
 
 - (void)setPropretyForGraphView{
@@ -276,14 +277,17 @@
     self.myGraphView.colorReferenceLines =  [UIColor  clearColor] ;
     self.myGraphView.colorTouchInputLine = [Util  shareInstance].themeColor;
     
+    self.myGraphView.labelFont = [  UIFont   fontWithName:@"HelveticaNeue" size:16.0];
+    
+    self.myGraphView.colorBackgroundXaxis = [UIColor  whiteColor];
+    self.myGraphView.colorXaxisLabel = [Util  colorWithHexString:@"#a0a0a0"];
+    
+    self.myGraphView.colorTouchInputLine = [Util  shareInstance].themeColor;
+    
     self.myGraphView.popUpAttribueColor = [Util  shareInstance].themeColor;
     self.myGraphView.colorTop = [UIColor  clearColor];
     self.myGraphView.colorBottom = [Util  shareInstance].themeColor;
-    self.myGraphView.colorLine = [Util  shareInstance].themeColor;
-    self.myGraphView.colorBackgroundXaxis = [UIColor  whiteColor];
-    self.myGraphView.colorXaxisLabel = [Util  colorWithHexString:@"#a0a0a0"];
-    self.myGraphView.labelFont = [UIFont  systemFontOfSize:16];
-    self.myGraphView.alphaBottom = 0.25;
+    self.myGraphView.alphaBottom = 0.2;
 }
 
 
@@ -295,7 +299,7 @@
     
     for (int i = 0; i < self.simpleArray.count; i++) {
         NSString  *currncy = [self.simpleArray  objectAtIndex:i];
-        BaseValueView  *view = [[BaseValueView  alloc ] initWithFrame:CGRectMake(5 + 140*i, 5, 130, 180)];
+        BaseValueView  *view = [[BaseValueView  alloc ] initWithFrame:CGRectMake(5 + 150*i, 5, 140, 180)];
         view.currencyFlag.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",currncy]];
         view.currencyName.text = currncy;
         view.baseValue.text = @"100";
@@ -306,7 +310,7 @@
         [self.baseScrollView  addSubview:view];
     }
     
-    self.baseScrollView.contentSize = CGSizeMake(self.simpleArray.count*140, self.baseScrollView.frame.size.height);
+    self.baseScrollView.contentSize = CGSizeMake(self.simpleArray.count*150, self.baseScrollView.frame.size.height);
 
 }
 
@@ -621,6 +625,7 @@
     }
     
     cell.currencyName.text = [self.currencyArray  objectAtIndex:indexPath.row];
+    cell.currencyName.textColor = [Util  colorWithHexString:@"#434343"];
     
     return cell;
 }

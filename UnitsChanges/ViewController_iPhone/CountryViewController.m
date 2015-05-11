@@ -113,6 +113,7 @@
     }
     [_prevPullHeaderView updateSubtext];
     [self.settingButton  setTintColor:[Util shareInstance].themeColor];
+    
 }
 
 - (void)customerTutorial{

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1800AD291B0092720007BD7F /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800AD241B0092720007BD7F /* MGSplitCornersView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1800AD2A1B0092720007BD7F /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800AD261B0092720007BD7F /* MGSplitDividerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1800AD2B1B0092720007BD7F /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800AD281B0092720007BD7F /* MGSplitViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1800AD2E1B0095B90007BD7F /* CustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800AD2D1B0095B90007BD7F /* CustomerViewController.m */; };
 		180A2AAD1A9DB09400E6FF0F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A2AAC1A9DB09400E6FF0F /* AudioToolbox.framework */; };
 		181A99E71AFC6A23003A17E8 /* AppPurcahseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A99DF1AFC6A23003A17E8 /* AppPurcahseViewController.m */; };
 		181A99E81AFC6A23003A17E8 /* AppPurcahseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181A99E01AFC6A23003A17E8 /* AppPurcahseViewController.xib */; };
@@ -76,6 +80,10 @@
 		181CFEFF1A8071F100E8C39E /* #f641c1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 181CFEF31A8071F100E8C39E /* #f641c1.gif */; };
 		181CFF001A8071F100E8C39E /* #f641c1fangda-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 181CFEF41A8071F100E8C39E /* #f641c1fangda-2.gif */; };
 		181CFF011A8071F100E8C39E /* #f641c1fangda.gif in Resources */ = {isa = PBXBuildFile; fileRef = 181CFEF51A8071F100E8C39E /* #f641c1fangda.gif */; };
+		181E69411B00AB8A00A6C368 /* _增加国家.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E69401B00AB8A00A6C368 /* _增加国家.png */; };
+		181E69441B00AB9600A6C368 /* _增加国家@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E69421B00AB9600A6C368 /* _增加国家@2x.png */; };
+		181E69451B00AB9600A6C368 /* _增加国家@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181E69431B00AB9600A6C368 /* _增加国家@3x.png */; };
+		181E69471B00AE5E00A6C368 /* SplitDetailViweController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181E69461B00AE5E00A6C368 /* SplitDetailViweController.m */; };
 		182632D41ACCE24C004E1AC4 /* 竖分割线@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182632D31ACCE24C004E1AC4 /* 竖分割线@2x.png */; };
 		183151221AE0F84100564778 /* 定值目标汇率@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183151211AE0F84100564778 /* 定值目标汇率@2x.png */; };
 		183151241AE0F84800564778 /* 定值目标汇率@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183151231AE0F84800564778 /* 定值目标汇率@3x.png */; };
@@ -526,7 +534,6 @@
 		18E2E0321AFC646000CB16F1 /* CurrencyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E2E02A1AFC646000CB16F1 /* CurrencyController.m */; };
 		18E2E0331AFC646000CB16F1 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E2E02C1AFC646000CB16F1 /* SearchResultViewController.m */; };
 		18E2E0341AFC646000CB16F1 /* SettingViewController_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E2E02E1AFC646000CB16F1 /* SettingViewController_Pad.m */; };
-		18E2E0351AFC646000CB16F1 /* SplitDetailViweController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E2E0301AFC646000CB16F1 /* SplitDetailViweController.m */; };
 		18E2E0491AFC65BA00CB16F1 /* BEMLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E2E0381AFC65BA00CB16F1 /* BEMLineViewController.xib */; };
 		18E2E04A1AFC65BA00CB16F1 /* ChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E2E03A1AFC65BA00CB16F1 /* ChangesViewController.m */; };
 		18E2E04B1AFC65BA00CB16F1 /* CountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E2E03C1AFC65BA00CB16F1 /* CountryViewController.m */; };
@@ -971,6 +978,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1800AD231B0092720007BD7F /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitCornersView.h; sourceTree = "<group>"; };
+		1800AD241B0092720007BD7F /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitCornersView.m; sourceTree = "<group>"; };
+		1800AD251B0092720007BD7F /* MGSplitDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitDividerView.h; sourceTree = "<group>"; };
+		1800AD261B0092720007BD7F /* MGSplitDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitDividerView.m; sourceTree = "<group>"; };
+		1800AD271B0092720007BD7F /* MGSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitViewController.h; sourceTree = "<group>"; };
+		1800AD281B0092720007BD7F /* MGSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitViewController.m; sourceTree = "<group>"; };
+		1800AD2C1B0095B90007BD7F /* CustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerViewController.h; sourceTree = "<group>"; };
+		1800AD2D1B0095B90007BD7F /* CustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewController.m; sourceTree = "<group>"; };
 		180A2AAC1A9DB09400E6FF0F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		181A99DE1AFC6A23003A17E8 /* AppPurcahseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPurcahseViewController.h; sourceTree = "<group>"; };
 		181A99DF1AFC6A23003A17E8 /* AppPurcahseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPurcahseViewController.m; sourceTree = "<group>"; };
@@ -1065,6 +1080,10 @@
 		181CFEF31A8071F100E8C39E /* #f641c1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "#f641c1.gif"; sourceTree = "<group>"; };
 		181CFEF41A8071F100E8C39E /* #f641c1fangda-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "#f641c1fangda-2.gif"; sourceTree = "<group>"; };
 		181CFEF51A8071F100E8C39E /* #f641c1fangda.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "#f641c1fangda.gif"; sourceTree = "<group>"; };
+		181E69401B00AB8A00A6C368 /* _增加国家.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_增加国家.png"; sourceTree = "<group>"; };
+		181E69421B00AB9600A6C368 /* _增加国家@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_增加国家@2x.png"; sourceTree = "<group>"; };
+		181E69431B00AB9600A6C368 /* _增加国家@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_增加国家@3x.png"; sourceTree = "<group>"; };
+		181E69461B00AE5E00A6C368 /* SplitDetailViweController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitDetailViweController.m; sourceTree = "<group>"; };
 		182632D31ACCE24C004E1AC4 /* 竖分割线@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "竖分割线@2x.png"; sourceTree = "<group>"; };
 		183151211AE0F84100564778 /* 定值目标汇率@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定值目标汇率@2x.png"; sourceTree = "<group>"; };
 		183151231AE0F84800564778 /* 定值目标汇率@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定值目标汇率@3x.png"; sourceTree = "<group>"; };
@@ -1174,7 +1193,6 @@
 		18E2E02D1AFC646000CB16F1 /* SettingViewController_Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController_Pad.h; sourceTree = "<group>"; };
 		18E2E02E1AFC646000CB16F1 /* SettingViewController_Pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController_Pad.m; sourceTree = "<group>"; };
 		18E2E02F1AFC646000CB16F1 /* SplitDetailViweController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitDetailViweController.h; sourceTree = "<group>"; };
-		18E2E0301AFC646000CB16F1 /* SplitDetailViweController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitDetailViweController.m; sourceTree = "<group>"; };
 		18E2E0371AFC65BA00CB16F1 /* BEMLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMLineViewController.h; sourceTree = "<group>"; };
 		18E2E0381AFC65BA00CB16F1 /* BEMLineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BEMLineViewController.xib; sourceTree = "<group>"; };
 		18E2E0391AFC65BA00CB16F1 /* ChangesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangesViewController.h; sourceTree = "<group>"; };
@@ -1626,6 +1644,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1800AD221B0092720007BD7F /* MGSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1800AD231B0092720007BD7F /* MGSplitCornersView.h */,
+				1800AD241B0092720007BD7F /* MGSplitCornersView.m */,
+				1800AD251B0092720007BD7F /* MGSplitDividerView.h */,
+				1800AD261B0092720007BD7F /* MGSplitDividerView.m */,
+				1800AD271B0092720007BD7F /* MGSplitViewController.h */,
+				1800AD281B0092720007BD7F /* MGSplitViewController.m */,
+			);
+			path = MGSplitViewController;
+			sourceTree = "<group>";
+		};
 		181A99DD1AFC6A23003A17E8 /* ViewControllerPublic */ = {
 			isa = PBXGroup;
 			children = (
@@ -1680,6 +1711,7 @@
 		181A9A1E1AFC9B50003A17E8 /* LibrarySource */ = {
 			isa = PBXGroup;
 			children = (
+				1800AD221B0092720007BD7F /* MGSplitViewController */,
 				181A9A1F1AFC9B50003A17E8 /* ASBanker */,
 				181A9A221AFC9B50003A17E8 /* BEMLine */,
 				181A9A2B1AFC9B50003A17E8 /* DES */,
@@ -1695,6 +1727,8 @@
 				181A9A461AFC9B50003A17E8 /* Util.h */,
 				181A9A471AFC9B50003A17E8 /* Util.m */,
 				181A9A481AFC9B50003A17E8 /* 上提下拉 */,
+				1800AD2C1B0095B90007BD7F /* CustomerViewController.h */,
+				1800AD2D1B0095B90007BD7F /* CustomerViewController.m */,
 			);
 			path = LibrarySource;
 			sourceTree = "<group>";
@@ -1940,7 +1974,7 @@
 				18E2E02D1AFC646000CB16F1 /* SettingViewController_Pad.h */,
 				18E2E02E1AFC646000CB16F1 /* SettingViewController_Pad.m */,
 				18E2E02F1AFC646000CB16F1 /* SplitDetailViweController.h */,
-				18E2E0301AFC646000CB16F1 /* SplitDetailViweController.m */,
+				181E69461B00AE5E00A6C368 /* SplitDetailViweController.m */,
 			);
 			path = ViewController_iPad;
 			sourceTree = "<group>";
@@ -2363,6 +2397,9 @@
 		685B57BB1A22D43E0095DE99 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				181E69421B00AB9600A6C368 /* _增加国家@2x.png */,
+				181E69431B00AB9600A6C368 /* _增加国家@3x.png */,
+				181E69401B00AB8A00A6C368 /* _增加国家.png */,
 				181A9A651AFCA8F5003A17E8 /* 使用技巧 */,
 				18449DA01AF8B7A000FEBE16 /* 38-watch@2x.png */,
 				18449DA11AF8B7A000FEBE16 /* 42-watch@2x.png */,
@@ -3232,6 +3269,7 @@
 				68A4CBA319F9F41000BE1443 /* LaunchScreen.xib in Resources */,
 				18E40CFA1A81F103007D21AC /* KHR@3x.png in Resources */,
 				18E40D3B1A81F103007D21AC /* TMT@3x.png in Resources */,
+				181E69451B00AB9600A6C368 /* _增加国家@3x.png in Resources */,
 				18E40C541A81F103007D21AC /* KZT@2x.png in Resources */,
 				18E40C441A81F103007D21AC /* INR@2x.png in Resources */,
 				18E40C181A81F103007D21AC /* BWP@2x.png in Resources */,
@@ -3292,6 +3330,7 @@
 				18E40D5E1A81F1B4007D21AC /* BMD@3x.png in Resources */,
 				181CFEF61A8071F100E8C39E /* #15bd39-2.gif in Resources */,
 				18E40C701A81F103007D21AC /* NPR@2x.png in Resources */,
+				181E69441B00AB9600A6C368 /* _增加国家@2x.png in Resources */,
 				18D71A891A5A88880087F904 /* #f42061fangda.gif in Resources */,
 				18E40CE81A81F103007D21AC /* HNL@3x.png in Resources */,
 				18E40C4F1A81F103007D21AC /* KMF@2x.png in Resources */,
@@ -3464,6 +3503,7 @@
 				18E40C331A81F103007D21AC /* GEL@2x.png in Resources */,
 				18E40C0C1A81F103007D21AC /* BAM@2x.png in Resources */,
 				18E40C061A81F103007D21AC /* ANG@2x.png in Resources */,
+				181E69411B00AB8A00A6C368 /* _增加国家.png in Resources */,
 				181CFF001A8071F100E8C39E /* #f641c1fangda-2.gif in Resources */,
 				18E40D161A81F103007D21AC /* MYR@3x.png in Resources */,
 				18E40D551A81F103007D21AC /* YER@3x.png in Resources */,
@@ -3580,7 +3620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18E2E0351AFC646000CB16F1 /* SplitDetailViweController.m in Sources */,
+				1800AD2B1B0092720007BD7F /* MGSplitViewController.m in Sources */,
 				181A9A561AFC9B50003A17E8 /* MGSwipeButton.m in Sources */,
 				181A9A591AFC9B50003A17E8 /* DKCircleImageView.m in Sources */,
 				181A9A5C1AFC9B50003A17E8 /* PullHeaderView.m in Sources */,
@@ -3593,6 +3633,7 @@
 				181A99E71AFC6A23003A17E8 /* AppPurcahseViewController.m in Sources */,
 				18E2E0501AFC65BA00CB16F1 /* SimpleChangesViewController.m in Sources */,
 				18E2E0561AFC67A400CB16F1 /* BaseValueView.m in Sources */,
+				1800AD2E1B0095B90007BD7F /* CustomerViewController.m in Sources */,
 				18E2E04B1AFC65BA00CB16F1 /* CountryViewController.m in Sources */,
 				181A9A0F1AFC6A30003A17E8 /* DecimalsCell.m in Sources */,
 				181A9A571AFC9B50003A17E8 /* MGSwipeTableCell.m in Sources */,
@@ -3612,6 +3653,7 @@
 				181A9A5B1AFC9B50003A17E8 /* Util.m in Sources */,
 				18E2E0311AFC646000CB16F1 /* ChangesViewController_Pad.m in Sources */,
 				181A9A4E1AFC9B50003A17E8 /* BEMPermanentPopupView.m in Sources */,
+				181E69471B00AE5E00A6C368 /* SplitDetailViweController.m in Sources */,
 				68A4CB9819F9F41000BE1443 /* AppDelegate.m in Sources */,
 				181A9A4D1AFC9B50003A17E8 /* BEMLine.m in Sources */,
 				181A9A4B1AFC9B50003A17E8 /* ASBanker.m in Sources */,
@@ -3622,6 +3664,8 @@
 				18E2E04A1AFC65BA00CB16F1 /* ChangesViewController.m in Sources */,
 				181A9A151AFC6A30003A17E8 /* WatchSettingCell.m in Sources */,
 				181A9A091AFC6A30003A17E8 /* BEMlineCell.m in Sources */,
+				1800AD2A1B0092720007BD7F /* MGSplitDividerView.m in Sources */,
+				1800AD291B0092720007BD7F /* MGSplitCornersView.m in Sources */,
 				18E2E04E1AFC65BA00CB16F1 /* SettingViewController.m in Sources */,
 				181A9A111AFC6A30003A17E8 /* LanguageCell.m in Sources */,
 				181A9A581AFC9B50003A17E8 /* MHFileTool.m in Sources */,

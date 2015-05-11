@@ -170,7 +170,10 @@
         [[Localisator  sharedInstance]  setLanguage:language];
         [[Localisator sharedInstance]  setSaveInUserDefaults:YES];
         self.title = LOCALIZATION(@"LanguageVCTitle");
-         [self.navigationController  popViewControllerAnimated:YES];
+        if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
+            [[NSNotificationCenter  defaultCenter]  postNotificationName:@"LanguageChanged" object:nil];
+        }
+        [self.navigationController  popViewControllerAnimated:YES];
     }else{
         NSString  *productIdPlus = @"plus";
         NSString  *productIdChart = @"chart";

@@ -45,6 +45,9 @@ static  int  requestCount = 0;
     CGPoint    offSetPoint;
     
     int  screenPanCount;
+    
+    __weak IBOutlet UIButton *addButton;
+    
 
 }
 @property (nonatomic,retain)  NSMutableArray  *unitsArray;  //  当前已有的国家
@@ -67,9 +70,6 @@ static  int  requestCount = 0;
 @property (weak, nonatomic) IBOutlet UIView *calcuatorView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calcutorViewVerticalConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cacutorViewHeightContraint;
-
-
-
 
 @end
 
@@ -111,9 +111,7 @@ static  int  requestCount = 0;
         }
     };
     [self.changeTable  pop_addAnimation:contentOffsetAnimation forKey:@"contentOffsetAnimation"];
-    
 }
-
 
 
 - (void)selectedCountry:(id)sender{
@@ -133,11 +131,6 @@ static  int  requestCount = 0;
         
         [[NSNotificationCenter  defaultCenter] postNotificationName:@"CurrencyChanged" object:nil userInfo:nil];
     }
-}
-
-
-- (void)selectedCurrecyChanged:(NSNotification*)notificstion{
-    [self  selectedCountry:notificstion.userInfo];
 }
 
 - (void)viewDidLoad {
@@ -188,8 +181,25 @@ static  int  requestCount = 0;
     [self takeSayingLableContet];
     
     [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedCurrecyChanged:) name:@"SelectedCurrecyChanged" object:nil];
+    
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedLanguageChanged:) name:@"LanguageChanged" object:nil];
+
 }
 
+
+- (void)selectedCurrecyChanged:(NSNotification*)notificstion{
+    [self  selectedCountry:notificstion.userInfo];
+}
+
+- (void)selectedLanguageChanged:(NSNotification*)sender{
+    [self.changeTable  reloadData];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    [addButton  setBackgroundImage:[[UIImage imageNamed:@"_增加国家.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [addButton  setTintColor:[Util  shareInstance].themeColor];
+}
 
 #pragma  mark
 #pragma mark    从plist获取 名言
@@ -314,9 +324,6 @@ static  int  requestCount = 0;
     
     [Util  saveChangeDic:self.changesDic];
 }
-
-
-
 
 // 获取所有的国家信息
 - (NSMutableArray*)takeAllCountryInfo{
