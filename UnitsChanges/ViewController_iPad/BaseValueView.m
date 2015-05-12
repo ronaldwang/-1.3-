@@ -47,6 +47,7 @@
         self.targetValue.textColor = [Util  colorWithHexString:@"#707070"];
         self.targetValue.font = [UIFont  fontWithName:@"HelveticaNeue" size:23.0];
         self.targetValue.textAlignment = NSTextAlignmentRight;
+        self.targetValue.adjustsFontSizeToFitWidth = YES;
         
         [self addSubview:self.targetValue];
 

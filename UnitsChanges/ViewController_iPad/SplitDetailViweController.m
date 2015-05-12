@@ -225,17 +225,17 @@
     indexButton = 1;
     leftCount = 0;
     rightCount = 0;
-
+    
+    UIButton*  button = (UIButton*)[self.cycleView  viewWithTag:20150302];
+    [button  setTitleColor:[Util  shareInstance].themeColor forState:UIControlStateNormal];
+    
     [self  setPropretyForGraphView];
     [self drawCurrencyTableInterFace];
     [self  addSwipeGesture];
     
     self.simpleArray = [NSMutableArray  arrayWithArray:[Util  takeSelectedCountry]];
     self.currencyInfor = [self  takeCurrencyInfor];
-    [self  calculateValueUnderBaseCurrency:@"CNY" AndValue:@"100"];
 
-    [self  addbaseCurrencyList];
-    
      [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedCurrecyChanged:) name:@"CurrencyChanged" object:nil];
     
 }
@@ -248,6 +248,16 @@
     
     [settingButton  setBackgroundImage:[[UIImage imageNamed:@"设置.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [settingButton  setTintColor:[Util shareInstance].themeColor];
+    
+    self.navigationController.navigationBar.tintColor = [Util shareInstance].themeColor;
+    self.navigationItem.backBarButtonItem.title = @"";
+    self.navigationItem.backBarButtonItem.tintColor = [Util shareInstance].themeColor;
+    
+    
+    NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:[Util  takeSelectedIndex].row];
+    [self  calculateValueUnderBaseCurrency:currenctCurrency AndValue:[Util  readDefaultValue]];
+    [self  addbaseCurrencyList:currenctCurrency];
+
 }
 
 - (void)setPropretyForGraphView{
@@ -284,14 +294,18 @@
     
     self.myGraphView.colorTouchInputLine = [Util  shareInstance].themeColor;
     
+    self.myGraphView.colorLine = [Util  shareInstance].themeColor;
+    self.myGraphView.colorPoint = [Util  shareInstance].themeColor;
+    
     self.myGraphView.popUpAttribueColor = [Util  shareInstance].themeColor;
+    
     self.myGraphView.colorTop = [UIColor  clearColor];
     self.myGraphView.colorBottom = [Util  shareInstance].themeColor;
     self.myGraphView.alphaBottom = 0.2;
 }
 
 
-- (void)addbaseCurrencyList{
+- (void)addbaseCurrencyList:(NSString*)baseCurrency{
 
     for (UIView  *a  in self.baseScrollView.subviews) {
         [a removeFromSuperview];
@@ -300,12 +314,12 @@
     for (int i = 0; i < self.simpleArray.count; i++) {
         NSString  *currncy = [self.simpleArray  objectAtIndex:i];
         BaseValueView  *view = [[BaseValueView  alloc ] initWithFrame:CGRectMake(5 + 150*i, 5, 140, 180)];
-        view.currencyFlag.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",currncy]];
+        view.currencyFlag.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_24.png",currncy]];
         view.currencyName.text = currncy;
-        view.baseValue.text = @"100";
+        view.baseValue.text = [Util  readDefaultValue];
         
-        view.targetCurrencyFlag.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",@"CNY"]];
-        view.targetCurrencyName.text = @"CNY";
+        view.targetCurrencyFlag.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_24.png",baseCurrency]];
+        view.targetCurrencyName.text = baseCurrency;
          view.targetValue.text = [self.resultDic  objectForKey:currncy];
         [self.baseScrollView  addSubview:view];
     }
@@ -626,6 +640,7 @@
     
     cell.currencyName.text = [self.currencyArray  objectAtIndex:indexPath.row];
     cell.currencyName.textColor = [Util  colorWithHexString:@"#434343"];
+    cell.currencyName.adjustsFontSizeToFitWidth = YES;
     
     return cell;
 }
@@ -674,7 +689,7 @@
     NSMutableDictionary  *valueDic = [NSMutableDictionary  dictionary];
     NSDictionary  *rateDic = [Util   takeAllCountryInfor];
     NSString *baseRate = [rateDic  objectForKey:targetCurrency];
-    
+
     for (int i = 0; i < self.simpleArray.count; i++) {
         NSString *unitString = [self.simpleArray   objectAtIndex:i];
         NSString  *   currentRate = [rateDic  objectForKey:unitString];
@@ -709,12 +724,12 @@
     
     self.simpleArray = [NSMutableArray  arrayWithArray:[Util  takeSelectedCountry]];
     self.currencyInfor = [self  takeCurrencyInfor];
-    [self  calculateValueUnderBaseCurrency:@"CNY" AndValue:@"100"];
-    [self  addbaseCurrencyList];
+    
+    NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:[Util  takeSelectedIndex].row];
+    [self  calculateValueUnderBaseCurrency:currenctCurrency AndValue:[Util  readDefaultValue]];
+    [self  addbaseCurrencyList:currenctCurrency];
 
 }
-
-
 
 #pragma mark - Navigation
 

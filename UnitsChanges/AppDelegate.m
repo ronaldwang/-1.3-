@@ -44,6 +44,7 @@
         splitViewController.maximumPrimaryColumnWidth = 400; // 调整SplitViewController分割的宽度
         
         UINavigationController *detailNavigationController = [splitViewController.viewControllers objectAtIndex:1];
+        
         SplitDetailViweController *detailViewController = [detailNavigationController.viewControllers firstObject];
         splitViewController.delegate = detailViewController;
 

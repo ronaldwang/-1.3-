@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SplitDetailViweController : UIViewController<UIPopoverControllerDelegate, UISplitViewControllerDelegate>
-
+- (void)calculateValueUnderBaseCurrency:(NSString*)targetCurrency AndValue:(NSString*)baseValue;
+- (void)addbaseCurrencyList:(NSString*)baseCurrency;
 @end

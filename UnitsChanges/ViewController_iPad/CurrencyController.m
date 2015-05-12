@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self  drawNavigationBarv];
     
     if ([Util  takeCollectCountry].count != 0) {
         self.collectArray = [NSMutableArray  arrayWithArray:[Util takeCollectCountry]];
@@ -63,7 +64,12 @@
     self.definesPresentationContext = YES;
     
     [[NSNotificationCenter  defaultCenter]  removeObserver:self name:@"LanguageChanged" object:nil];
+    [[NSNotificationCenter  defaultCenter]  removeObserver:self name:@"SelectedColorChanged" object:nil];
+
+    
     [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedLanguageChanged:) name:@"LanguageChanged" object:nil];
+    
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedColorChanged:) name:@"SelectedColorChanged" object:nil];
 
 }
 
@@ -71,6 +77,35 @@
 - (void)selectedLanguageChanged:(NSNotification*)sender{
     self.searchController.searchBar.placeholder = LOCALIZATION(@"search");
     [self.tableView   reloadData];
+}
+
+- (void)selectedColorChanged:(NSNotification*)sender{
+    self.navigationController.navigationBar.tintColor = [Util  shareInstance].themeColor;
+     self.searchController.searchBar.tintColor = [Util shareInstance].themeColor;
+}
+
+#pragma  amrk   设置 导航 栏
+//  设置 导航 栏
+- (void)drawNavigationBarv{
+    
+    UIButton  *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 12, 20);
+    [button  setBackgroundImage:[[UIImage imageNamed:@"forward.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    //  UIImageRenderingMode   设置tintColor 时,图片的颜色可以根据此属性随设置的tintColor改变
+    
+    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem   *leftItem = [[UIBarButtonItem  alloc ]  initWithCustomView:button];
+    [self.navigationItem  setLeftBarButtonItem:leftItem animated:YES];
+    
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+}
+
+//   返回
+- (void)backAction:(UIButton*)sender{
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

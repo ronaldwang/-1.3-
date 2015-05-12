@@ -188,6 +188,9 @@
             [Util  saveDataType:(int)indexPath.row :YES];
             [Util shareInstance].dataType =(int) indexPath.row;
             [Util  saveDataTypeByNSUserDefaults:[NSString  stringWithFormat:@"%d",(int)indexPath.row] :YES];
+            if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
+                [[NSNotificationCenter  defaultCenter]  postNotificationName:@"DataTypeChanged" object:nil];
+            }
             [self.navigationController  popViewControllerAnimated:YES];
         }
     }

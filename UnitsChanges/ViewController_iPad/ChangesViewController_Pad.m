@@ -15,6 +15,8 @@
 #import <pop/POP.h>
 #import <AudioToolbox/AudioToolbox.h>
 
+#import "UIScrollView+UzysAnimatedGifPullToRefresh.h"
+
 static  int  requestCount = 0;
 
 @interface ChangesViewController_Pad ()<UITableViewDataSource,UITableViewDelegate,MGSwipeTableCellDelegate,CountryViewControllerDelegate>
@@ -61,6 +63,8 @@ static  int  requestCount = 0;
 @property (nonatomic,retain) NSIndexPath  *indexPath;
 
 @property (nonatomic,retain) NSString  *localeSeparator;
+
+@property (nonatomic,retain) UIView  *errorView;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *sayingLable;
@@ -180,10 +184,23 @@ static  int  requestCount = 0;
     
     [self takeSayingLableContet];
     
+    
+    [self    setPullRefresh];
+    [self  drawErrorViewInterFace];
+    
+    [self  addObserverForViewController];
+}
+
+- (void)addObserverForViewController{
+   
     [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedCurrecyChanged:) name:@"SelectedCurrecyChanged" object:nil];
     
     [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedLanguageChanged:) name:@"LanguageChanged" object:nil];
-
+    
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedColorChanged:) name:@"SelectedColorChanged" object:nil];
+    
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(dataTypeChanged:) name:@"DataTypeChanged" object:nil];
+    
 }
 
 
@@ -195,10 +212,34 @@ static  int  requestCount = 0;
     [self.changeTable  reloadData];
 }
 
+- (void)selectedColorChanged:(NSNotification*)sender{
+      [addButton  setTintColor:[Util  shareInstance].themeColor];
+}
+
+- (void)dataTypeChanged:(NSNotification*)sender{
+
+    int   count = (int)self.unitsArray.count;
+    for (int i = 0; i < count;i++) {
+        NSString  *unitString = [self.unitsArray  objectAtIndex:i];
+        NSString  *result = nil;
+        if (i != self.indexPath.row) {
+            int   dataType  = [Util shareInstance].dataType;
+            result = [self.changesDic  objectForKey:unitString];
+            [self.changesDic setObject:[Util   numberFormatterSetting:result withFractionDigits:dataType withInput:NO] forKey:unitString];
+        }
+    }
+    
+    [Util  saveChangeDic:self.changesDic];
+    [self.changeTable  reloadData];
+
+}
+
 
 - (void)viewWillAppear:(BOOL)animated{
-    [addButton  setBackgroundImage:[[UIImage imageNamed:@"_增加国家.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [addButton  setImage:[[UIImage imageNamed:@"_增加国家.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [addButton  setTintColor:[Util  shareInstance].themeColor];
+    
+    [self.changeTable  saveColorString:[Util  takeColorString]];
 }
 
 #pragma  mark
@@ -356,7 +397,7 @@ static  int  requestCount = 0;
             if (error== nil) {
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [Util  saveRequestDate:[Util  changeDateToStringWith:[NSDate  date]]];
-//                    [self.changeTable  saveRequestDate:[Util  changeDateToStringWith:[NSDate  date]]];
+                    [self.changeTable  saveRequestDate:[Util  changeDateToStringWith:[NSDate  date]]];
                     self.rateDic = [Util  deaWithRequestData:[dataDic  objectForKey:@"list"]];
                     [Util saveTextByNSUserDefaults:self.rateDic];
                     [Util  saveAllCountryInfor:self.rateDic];
@@ -369,7 +410,7 @@ static  int  requestCount = 0;
                         [self   ratesAndCountryRequest];
                     }else{
                         [self.changeTable  reloadData];
-//                        [self performSelector:@selector(delayRemoveAnimation:) withObject:nil afterDelay:2.0];
+                        [self performSelector:@selector(delayRemoveAnimation:) withObject:nil afterDelay:2.0];
                         requestCount = 0;
                     }
                 });
@@ -380,7 +421,7 @@ static  int  requestCount = 0;
                     [self   ratesAndCountryRequest];
                 }else{
                     [self.changeTable  reloadData];
-//                    [self performSelector:@selector(delayRemoveAnimation:) withObject:nil afterDelay:2.0];
+                    [self performSelector:@selector(delayRemoveAnimation:) withObject:nil afterDelay:2.0];
                     requestCount = 0;
                 }
             });
@@ -389,12 +430,55 @@ static  int  requestCount = 0;
 }
 
 
-- (void)delayStopAnimation:(id)sender{
+- (void)showErrorView{
+    self.errorView.hidden = NO;
+    self.changeTable.scrollEnabled = NO;
+    POPBasicAnimation  *basicAnimation = [POPBasicAnimation animation];
+    basicAnimation.property = [POPMutableAnimatableProperty  propertyWithName:kPOPViewFrame];
+    basicAnimation.fromValue = [NSValue  valueWithCGRect:CGRectMake(0, -50, IPHONE_WIDTH, 50)];
+    basicAnimation.toValue = [NSValue  valueWithCGRect:CGRectMake(0, 0, IPHONE_WIDTH, 50)];
+    basicAnimation.duration = 0.5;
+    basicAnimation.completionBlock =^ (POPAnimation *anim, BOOL finished) {
+        if (finished) {
+            [self performSelector:@selector(removeErrorView) withObject:nil afterDelay:0.5];
+        }
+    };
+    [self.errorView   pop_addAnimation:basicAnimation forKey:@"showErrorView"];
+}
 
+- (void)removeErrorView{
+    self.changeTable.scrollEnabled = YES;
+    POPBasicAnimation  *basicAnimation = [POPBasicAnimation animation];
+    basicAnimation.property = [POPMutableAnimatableProperty  propertyWithName:kPOPViewFrame];
+    basicAnimation.toValue = [NSValue  valueWithCGRect:CGRectMake(0, -50, IPHONE_WIDTH, 50)];
+    basicAnimation.duration = 0.5;
+    basicAnimation.completionBlock =^ (POPAnimation *anim, BOOL finished) {
+        if (finished) {
+            self.errorView.hidden = YES;
+        }
+    };
+    [self.errorView   pop_addAnimation:basicAnimation forKey:@"removeErrorView"];
+}
+
+
+#pragma  mark
+#pragma mark     结束GIF 动画
+- (void)delayRemoveAnimation:(id)sender{
+    [self.changeTable   stopRefreshAnimation];
+    [self  showErrorView];
+}
+
+- (void)delayStopAnimation:(id)sender{
+   [self.changeTable   stopRefreshAnimation];
     if (self.unitsArray.count!= 0) {
         NSString *result =[self.changesDic  objectForKey:[self.unitsArray  objectAtIndex:self.indexPath.row]];
         [self  calculateAllSelectedCurrcncyByInput:[NSString  stringWithFormat:@"%f",[Util  numberFormatterForFloat:result]]];
         [self.changeTable  reloadData];
+        
+        NSString   *currency = [self.unitsArray  objectAtIndex:self.indexPath.row];
+        [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
+        [self.detailViewController  addbaseCurrencyList:currency];
+        
     }
 }
 
@@ -527,6 +611,16 @@ static  int  requestCount = 0;
     return indexPath;
     
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    NSString   *currency = [self.unitsArray  objectAtIndex:indexPath.row];
+    [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
+    [self.detailViewController  addbaseCurrencyList:currency];
+
+}
+
+
 
 
 - (void)selectedCurrecyCell:(NSIndexPath*)indexPath{
@@ -831,7 +925,9 @@ static  int  requestCount = 0;
 
 /** @brief Returns a customized snapshot of a given view. */
 - (UIView *)customSnapshoFromView:(UIView *)inputView {
+    
     UIView *snapshot = [inputView snapshotViewAfterScreenUpdates:YES];
+   
     snapshot.layer.masksToBounds = NO;
     snapshot.layer.cornerRadius = 0.0;
     snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
@@ -1629,6 +1725,44 @@ static  int  requestCount = 0;
     }
 }
 
+
+#pragma mark     设置添加 gif 动画
+- (void)setPullRefresh{
+    
+    [self.changeTable   removePullToRefreshActionHandler];
+    
+    __weak typeof(self) weakSelf =self;
+    
+    NSString  *progressImage = [[NSString  stringWithFormat:@"%@fangda",[Util takeColorString]]  stringByAppendingString:@"-2.gif"] ;
+    
+    NSString  *loadingImage = [[NSString  stringWithFormat:@"%@",[Util takeColorString]]  stringByAppendingString:@"-2.gif"];
+    
+    [self.changeTable addPullToRefreshActionHandler:^{
+        [weakSelf ratesAndCountryRequest];
+    } ProgressImagesGifName:progressImage
+                                    LoadingImagesGifName:loadingImage
+                                 ProgressScrollThreshold:70 LoadingImageFrameRate:24];
+
+    //loadingImage 的图片大小  由 前者 ProgressImage 决定(图片原始大小的一半)
+    //LoadingImageFrameRate  gif动画的播放速度
+}
+
+
+#pragma mark
+#pragma mark    创建、显示、隐藏错误提示
+- (void) drawErrorViewInterFace{
+    
+    self.errorView = [[UIView  alloc ] initWithFrame:CGRectMake(0, -50, IPHONE_WIDTH , 50)];
+    self.errorView.backgroundColor  = [UIColor  redColor];
+    UILabel   *errorLable = [[UILabel  alloc ] initWithFrame:CGRectMake(30, 20, 200, 20)];
+    errorLable.text = @"Error :  Time out";
+    errorLable.textColor = [UIColor  whiteColor];
+    errorLable.font = [UIFont  systemFontOfSize:20.0f];
+    [self.errorView addSubview:errorLable];
+    [self.view  addSubview:self.errorView];
+    self.errorView.hidden = YES;
+    
+}
 
 
 

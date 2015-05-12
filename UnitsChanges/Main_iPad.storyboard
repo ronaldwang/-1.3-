@@ -88,6 +88,7 @@
                                             </button>
                                             <button opaque="NO" tag="20150302" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ux0-Ax-ndA">
                                                 <rect key="frame" x="84" y="8" width="46" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <state key="normal" title="1M">
                                                     <color key="titleColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -98,7 +99,7 @@
                                             </button>
                                             <button opaque="NO" tag="20150303" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4a-Tr-gxz">
                                                 <rect key="frame" x="138" y="8" width="46" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="3M">
                                                     <color key="titleColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -261,7 +262,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lOj-d3-Xm4" kind="show" identifier="" id="mad-qz-bce"/>
+                                    <segue destination="cJU-MZ-9mP" kind="show" id="XKt-e9-DUQ"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -281,22 +282,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvU-Xe-Myd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1412" y="730"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Jsw-HM-fxM">
-            <objects>
-                <navigationController id="lOj-d3-Xm4" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aXf-dS-6cM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="cJU-MZ-9mP" kind="relationship" relationship="rootViewController" id="SX8-Ee-2lG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c6v-GV-WdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-518" y="490"/>
         </scene>
         <!--Setting View Controller Pad-->
         <scene sceneID="KBr-Nl-zHe">
@@ -739,7 +724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqa-u4-00i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="108" y="496"/>
+            <point key="canvasLocation" x="-485" y="618"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wem-7s-n9W">
@@ -1289,7 +1274,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Hbv-eu-Rel" kind="show" id="oOp-KR-Gdz"/>
+                                    <segue destination="Hbv-eu-Rel" kind="show" identifier="addCurrency" id="oOp-KR-Gdz"/>
                                 </connections>
                             </button>
                         </barButtonItem>

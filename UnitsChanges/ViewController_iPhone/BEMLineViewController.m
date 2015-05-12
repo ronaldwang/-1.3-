@@ -605,6 +605,7 @@
     }
     
     cell.currencyName.text = [self.currencyArray  objectAtIndex:indexPath.row];
+    cell.currencyName.adjustsFontSizeToFitWidth = YES;
     
     return cell;
 }

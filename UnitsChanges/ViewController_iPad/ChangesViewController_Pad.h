@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SplitDetailViweController;
+#import "SplitDetailViweController.h"
 
 @interface ChangesViewController_Pad: UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *changeTable;

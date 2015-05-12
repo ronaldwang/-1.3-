@@ -131,11 +131,17 @@
 //  设置 导航 栏
 - (void)drawNavigationBarv{
     
-    for (UIView *parentView in self.navigationController.navigationBar.subviews){
-        for (UIView *childView in parentView.subviews){
-            if ([childView isKindOfClass:[UIImageView class]])
-                [childView removeFromSuperview];
-        }
+   if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPhone) {
+       for (UIView *parentView in self.navigationController.navigationBar.subviews){
+           for (UIView *childView in parentView.subviews){
+               if ([childView isKindOfClass:[UIImageView class]])
+                   [childView removeFromSuperview];
+           }
+       }
+       
+       [self.navigationController  navigationBar].layer.shadowOffset = CGSizeMake(2.0f , 2.0f);
+       [self.navigationController  navigationBar].layer.shadowOpacity = 0.15f;
+       [self.navigationController navigationBar].layer.shadowRadius = 4.0f;
     }
     
     UIButton  *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -152,10 +158,6 @@
     self.navigationController.navigationBar.tintColor = [Util shareInstance].themeColor;
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    
-    [self.navigationController  navigationBar].layer.shadowOffset = CGSizeMake(2.0f , 2.0f);
-    [self.navigationController  navigationBar].layer.shadowOpacity = 0.15f;
-    [self.navigationController navigationBar].layer.shadowRadius = 4.0f;
     
 }
 

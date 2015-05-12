@@ -19,13 +19,14 @@
 #import "LanguageViewController.h"
 #import "TtpsViewController.h"
 
+#import "UIScrollView+UzysAnimatedGifPullToRefresh.h"
+
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 @interface SettingViewController_Pad ()<MFMailComposeViewControllerDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 {
     BOOL    isTaped;
-    UIButton  *doneButton;
     UIToolbar *toolBar;
 }
 
@@ -460,22 +461,22 @@
 #pragma  amrk   设置 导航 栏
 //  设置 导航 栏
 - (void)drawNavigationBarv{
-    
-    for (UIView *parentView in self.navigationController.navigationBar.subviews){
-        for (UIView *childView in parentView.subviews){
-            if ([childView isKindOfClass:[UIImageView class]])
-                [childView removeFromSuperview];
-        }
-    }
-    
-//    UIButton  *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = CGRectMake(0, 0, 16, 16);
-//    [button  setBackgroundImage:[[UIImage imageNamed:@"关闭.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-//    //  UIImageRenderingMode   设置tintColor 时,图片的颜色可以根据此属性随设置的tintColor改变
 //    
-//    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem   *leftItem = [[UIBarButtonItem  alloc ]  initWithCustomView:button];
-//    [self.navigationItem  setLeftBarButtonItem:leftItem animated:YES];
+//    for (UIView *parentView in self.navigationController.navigationBar.subviews){
+//        for (UIView *childView in parentView.subviews){
+//            if ([childView isKindOfClass:[UIImageView class]])
+//                [childView removeFromSuperview];
+//        }
+//    }
+    
+    UIButton  *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 12, 20);
+    [button  setBackgroundImage:[[UIImage imageNamed:@"forward.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    //  UIImageRenderingMode   设置tintColor 时,图片的颜色可以根据此属性随设置的tintColor改变
+    
+    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem   *leftItem = [[UIBarButtonItem  alloc ]  initWithCustomView:button];
+    [self.navigationItem  setLeftBarButtonItem:leftItem animated:YES];
     
 //    UIView  *view = [[UIView  alloc  ] initWithFrame:CGRectMake(0, 0, 100, 44)];
 //    view.backgroundColor = [UIColor  clearColor];
@@ -484,15 +485,12 @@
 //    [view  addSubview:settingImage];
 //    self.navigationItem.titleView = view;
     
+
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    self.navigationController.navigationBar.tintColor = [Util shareInstance].themeColor;
-    self.navigationController.navigationBarHidden = NO;
-    
-//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    
-    [self.navigationController  navigationBar].layer.shadowOffset = CGSizeMake(2.0f , 2.0f);
-    [self.navigationController  navigationBar].layer.shadowOpacity = 0.15f;
-    [self.navigationController navigationBar].layer.shadowRadius = 4.0f;
+//    [self.navigationController  navigationBar].layer.shadowOffset = CGSizeMake(2.0f , 2.0f);
+//    [self.navigationController  navigationBar].layer.shadowOpacity = 0.15f;
+//    [self.navigationController navigationBar].layer.shadowRadius = 4.0f;
     
 }
 
@@ -502,7 +500,7 @@
         [self textFieldDone];
     }
     
-   [self.navigationController  popViewControllerAnimated:YES];
+   [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma amrk    设置按钮  弧度
@@ -614,6 +612,7 @@
     [Util  shareInstance].themeColor = sender.backgroundColor;
     [Util saveColorString:[self.colorArray  objectAtIndex:sender.tag - 9999]];
     [Util  saveColorByNSUserDefaults:[self.colorArray  objectAtIndex:sender.tag - 9999]];
+    [self.mainScrollview  saveColorString:[self.colorArray  objectAtIndex:sender.tag - 9999]];
     self.themeColorView.backgroundColor = sender.backgroundColor;
     [self.themeColorView.layer  setBorderColor:sender.backgroundColor.CGColor];
     [self  addPopAnmationForNav];
@@ -623,6 +622,8 @@
     self.defaultValueInputText.tintColor = [Util shareInstance].themeColor;
     
     toolBar.tintColor = [Util shareInstance].themeColor;
+    
+    [[NSNotificationCenter  defaultCenter]  postNotificationName:@"SelectedColorChanged" object:nil];
     
 }
 
@@ -762,56 +763,9 @@
 }
 
 
--(void)textFieldDidBeginEditing:(UITextField *)textField {
-    //    [[NSNotificationCenter defaultCenter] addObserver:self
-    //                                             selector:@selector(keyboardWillShow:)
-    //                                                 name:UIKeyboardWillShowNotification
-    //                                               object:nil];
-}
-
-- (void)keyboardWillShow:(NSNotification *)note {
-    // create custom button
-    doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    doneButton.frame = CGRectMake(0, -100, 106, 53);
-    doneButton.adjustsImageWhenHighlighted = NO;
-    [doneButton setTitle:LOCALIZATION(@"Done_Button") forState:UIControlStateNormal];
-    [doneButton  setTitleColor:[UIColor  blackColor] forState:UIControlStateNormal];
-    [doneButton addTarget:self action:@selector(doneButton:) forControlEvents:UIControlEventTouchUpInside];
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIView *keyboardView = [[[[[UIApplication sharedApplication] windows] lastObject] subviews] firstObject];
-            [doneButton setFrame:CGRectMake(0, keyboardView.frame.size.height - 53, 106, 53)];
-            [keyboardView addSubview:doneButton];
-            [keyboardView bringSubviewToFront:doneButton];
-            [UIView animateWithDuration:[[note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]-.02
-                                  delay:.0
-                                options:[[note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]
-                             animations:^{
-                                 self.view.frame = CGRectOffset(self.view.frame, 0, 0);
-                             } completion:nil];
-        });
-    }else {
-        // locate keyboard view
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:1];
-            UIView* keyboard;
-            for(int i=0; i<[tempWindow.subviews count]; i++) {
-                keyboard = [tempWindow.subviews objectAtIndex:i];
-                // keyboard view found; add the custom button to it
-                if([[keyboard description] hasPrefix:@"UIKeyboard"] == YES)
-                    [keyboard addSubview:doneButton];
-            }
-        });
-    }
-}
-
 -(UIToolbar*) createToolbar {
     
-    CGFloat   height = 34;
-    if (iPhone6plus) {
-        height = 42;
-    }
+    CGFloat   height = 45;
     
     toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height)];
     
@@ -839,20 +793,6 @@
     }
     [self.defaultValueInputText   resignFirstResponder];
 }
-
-
-- (void)doneButton:(UIButton*)sedner{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [sedner  removeFromSuperview];
-    if (self.defaultValueInputText.text.length != 0) {
-        [Util saveDefaultVauleByNsuer:[Util  numberFormatterSetting:self.defaultValueInputText.text withFractionDigits:2 withInput:YES]];
-        [[NSNotificationCenter  defaultCenter]  postNotificationName:@"ResetTheDefaultValue" object:nil];
-    }else{
-        self.defaultValueInputText.text = [Util readDefaultValue];
-    }
-    [self.defaultValueInputText   resignFirstResponder];
-}
-
 
 - (void)takeScheduledTimeRequest{
     
