@@ -13,7 +13,6 @@
 #import "Localisator.h"
 #import "Util.h"
 
-#import "CustomerViewController.h"
 #import "SimpleChangesViewController.h"
 
 #import "ChangesViewController_Pad.h"
@@ -48,7 +47,6 @@
         SplitDetailViweController *detailViewController = [detailNavigationController.viewControllers firstObject];
         splitViewController.delegate = detailViewController;
 
-    
         UINavigationController *masterNavigationController = [splitViewController.viewControllers firstObject];
         ChangesViewController_Pad *masterViewController = [masterNavigationController.viewControllers firstObject];
         masterViewController.detailViewController = detailViewController;

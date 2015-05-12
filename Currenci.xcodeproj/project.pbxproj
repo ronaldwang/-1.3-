@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1800AD291B0092720007BD7F /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800AD241B0092720007BD7F /* MGSplitCornersView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1800AD2A1B0092720007BD7F /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800AD261B0092720007BD7F /* MGSplitDividerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1800AD2B1B0092720007BD7F /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800AD281B0092720007BD7F /* MGSplitViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1800AD2E1B0095B90007BD7F /* CustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800AD2D1B0095B90007BD7F /* CustomerViewController.m */; };
 		180A2AAD1A9DB09400E6FF0F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180A2AAC1A9DB09400E6FF0F /* AudioToolbox.framework */; };
 		181A99E71AFC6A23003A17E8 /* AppPurcahseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A99DF1AFC6A23003A17E8 /* AppPurcahseViewController.m */; };
 		181A99E81AFC6A23003A17E8 /* AppPurcahseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181A99E01AFC6A23003A17E8 /* AppPurcahseViewController.xib */; };
@@ -1322,14 +1318,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1800AD231B0092720007BD7F /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitCornersView.h; sourceTree = "<group>"; };
-		1800AD241B0092720007BD7F /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitCornersView.m; sourceTree = "<group>"; };
-		1800AD251B0092720007BD7F /* MGSplitDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitDividerView.h; sourceTree = "<group>"; };
-		1800AD261B0092720007BD7F /* MGSplitDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitDividerView.m; sourceTree = "<group>"; };
-		1800AD271B0092720007BD7F /* MGSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitViewController.h; sourceTree = "<group>"; };
-		1800AD281B0092720007BD7F /* MGSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitViewController.m; sourceTree = "<group>"; };
-		1800AD2C1B0095B90007BD7F /* CustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerViewController.h; sourceTree = "<group>"; };
-		1800AD2D1B0095B90007BD7F /* CustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewController.m; sourceTree = "<group>"; };
 		180A2AAC1A9DB09400E6FF0F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		181A99DE1AFC6A23003A17E8 /* AppPurcahseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPurcahseViewController.h; sourceTree = "<group>"; };
 		181A99DF1AFC6A23003A17E8 /* AppPurcahseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppPurcahseViewController.m; sourceTree = "<group>"; };
@@ -2332,19 +2320,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1800AD221B0092720007BD7F /* MGSplitViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1800AD231B0092720007BD7F /* MGSplitCornersView.h */,
-				1800AD241B0092720007BD7F /* MGSplitCornersView.m */,
-				1800AD251B0092720007BD7F /* MGSplitDividerView.h */,
-				1800AD261B0092720007BD7F /* MGSplitDividerView.m */,
-				1800AD271B0092720007BD7F /* MGSplitViewController.h */,
-				1800AD281B0092720007BD7F /* MGSplitViewController.m */,
-			);
-			path = MGSplitViewController;
-			sourceTree = "<group>";
-		};
 		181A99DD1AFC6A23003A17E8 /* ViewControllerPublic */ = {
 			isa = PBXGroup;
 			children = (
@@ -2399,7 +2374,6 @@
 		181A9A1E1AFC9B50003A17E8 /* LibrarySource */ = {
 			isa = PBXGroup;
 			children = (
-				1800AD221B0092720007BD7F /* MGSplitViewController */,
 				181A9A1F1AFC9B50003A17E8 /* ASBanker */,
 				181A9A221AFC9B50003A17E8 /* BEMLine */,
 				181A9A2B1AFC9B50003A17E8 /* DES */,
@@ -2415,8 +2389,6 @@
 				181A9A461AFC9B50003A17E8 /* Util.h */,
 				181A9A471AFC9B50003A17E8 /* Util.m */,
 				181A9A481AFC9B50003A17E8 /* 上提下拉 */,
-				1800AD2C1B0095B90007BD7F /* CustomerViewController.h */,
-				1800AD2D1B0095B90007BD7F /* CustomerViewController.m */,
 			);
 			path = LibrarySource;
 			sourceTree = "<group>";
@@ -5012,7 +4984,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1800AD2B1B0092720007BD7F /* MGSplitViewController.m in Sources */,
 				181A9A561AFC9B50003A17E8 /* MGSwipeButton.m in Sources */,
 				181A9A591AFC9B50003A17E8 /* DKCircleImageView.m in Sources */,
 				181A9A5C1AFC9B50003A17E8 /* PullHeaderView.m in Sources */,
@@ -5025,7 +4996,6 @@
 				181A99E71AFC6A23003A17E8 /* AppPurcahseViewController.m in Sources */,
 				18E2E0501AFC65BA00CB16F1 /* SimpleChangesViewController.m in Sources */,
 				18E2E0561AFC67A400CB16F1 /* BaseValueView.m in Sources */,
-				1800AD2E1B0095B90007BD7F /* CustomerViewController.m in Sources */,
 				18E2E04B1AFC65BA00CB16F1 /* CountryViewController.m in Sources */,
 				181A9A0F1AFC6A30003A17E8 /* DecimalsCell.m in Sources */,
 				181A9A571AFC9B50003A17E8 /* MGSwipeTableCell.m in Sources */,
@@ -5056,8 +5026,6 @@
 				18E2E04A1AFC65BA00CB16F1 /* ChangesViewController.m in Sources */,
 				181A9A151AFC6A30003A17E8 /* WatchSettingCell.m in Sources */,
 				181A9A091AFC6A30003A17E8 /* BEMlineCell.m in Sources */,
-				1800AD2A1B0092720007BD7F /* MGSplitDividerView.m in Sources */,
-				1800AD291B0092720007BD7F /* MGSplitCornersView.m in Sources */,
 				18E2E04E1AFC65BA00CB16F1 /* SettingViewController.m in Sources */,
 				181A9A111AFC6A30003A17E8 /* LanguageCell.m in Sources */,
 				181A9A581AFC9B50003A17E8 /* MHFileTool.m in Sources */,
