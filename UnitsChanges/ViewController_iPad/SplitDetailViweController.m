@@ -68,18 +68,19 @@
 
 - (IBAction)showSetting:(id)sender {
     
-    UIButton  *barButton = (UIButton*)sender;
-    
     UINavigationController  *nv = [self.storyboard   instantiateViewControllerWithIdentifier:@"setttingVC"];;
     
-    UIPopoverController   *popoverController = [[UIPopoverController  alloc ] initWithContentViewController:nv];
-    popoverController.delegate = self;
-    popoverController.popoverContentSize = CGSizeMake(350, IPHONE_HEIGHT);
+    nv.modalPresentationStyle = UIModalPresentationPopover;
     
-    [popoverController  presentPopoverFromRect:CGRectMake(barButton.frame.origin.x + 55, barButton.frame.origin.y - 5, barButton.frame.size.width, barButton.frame.size.height) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
-
+    UIPopoverPresentationController   *popover = nv.popoverPresentationController;
+    nv.preferredContentSize = CGSizeMake(350, IPHONE_HEIGHT);
+    popover.sourceView = self.view;
+    popover.sourceRect = CGRectMake(100,100,0,0);
+    
+    [self  presentViewController:nv animated:YES completion:^{
+    }];
+    
 }
-
 
 
 - (IBAction)changTheCycleAction:(id)sender {
@@ -283,7 +284,7 @@
     self.navigationItem.backBarButtonItem.tintColor = [Util shareInstance].themeColor;
     
     
-    NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:[Util  takeSelectedIndex].row];
+    NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:0];
     [self  calculateValueUnderBaseCurrency:currenctCurrency AndValue:[Util  readDefaultValue]];
     [self  addbaseCurrencyList:currenctCurrency];
 
@@ -339,6 +340,8 @@
     for (UIView  *a  in self.baseScrollView.subviews) {
         [a removeFromSuperview];
     }
+    
+    self.simpleArray = [Util  takeSelectedCountry];
     
     for (int i = 0; i < self.simpleArray.count; i++) {
         NSString  *currncy = [self.simpleArray  objectAtIndex:i];
@@ -718,6 +721,8 @@
     NSMutableDictionary  *valueDic = [NSMutableDictionary  dictionary];
     NSDictionary  *rateDic = [Util   takeAllCountryInfor];
     NSString *baseRate = [rateDic  objectForKey:targetCurrency];
+    
+     self.simpleArray = [Util  takeSelectedCountry];
 
     for (int i = 0; i < self.simpleArray.count; i++) {
         NSString *unitString = [self.simpleArray   objectAtIndex:i];
@@ -753,7 +758,7 @@
     [self  drawNav];
     [self.currencyTable  reloadData];
     
-    self.simpleArray = [NSMutableArray  arrayWithArray:[Util  takeSelectedCountry]];
+    self.simpleArray = [Util  takeSelectedCountry];
     self.currencyInfor = [self  takeCurrencyInfor];
     
     NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:[Util  takeSelectedIndex].row];

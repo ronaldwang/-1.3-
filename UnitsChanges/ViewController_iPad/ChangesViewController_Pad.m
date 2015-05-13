@@ -214,6 +214,7 @@ static  int  requestCount = 0;
 
 - (void)selectedColorChanged:(NSNotification*)sender{
       [addButton  setTintColor:[Util  shareInstance].themeColor];
+     [self    setPullRefresh];
 }
 
 - (void)dataTypeChanged:(NSNotification*)sender{
@@ -475,7 +476,7 @@ static  int  requestCount = 0;
         [self  calculateAllSelectedCurrcncyByInput:[NSString  stringWithFormat:@"%f",[Util  numberFormatterForFloat:result]]];
         [self.changeTable  reloadData];
         
-        NSString   *currency = [self.unitsArray  objectAtIndex:self.indexPath.row];
+        NSString   *currency = [self.unitsArray  objectAtIndex:0];
         [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
         [self.detailViewController  addbaseCurrencyList:currency];
         
@@ -917,6 +918,12 @@ static  int  requestCount = 0;
                 [snapshot removeFromSuperview];
                 snapshot = nil;
                 [self.changeTable  reloadData];
+                
+                //  更新 基准汇率
+                NSString   *currency = [self.unitsArray  objectAtIndex:0];
+                [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
+                [self.detailViewController  addbaseCurrencyList:currency];
+                
             }];
             break;
         }

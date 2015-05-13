@@ -358,9 +358,6 @@ static  int  requestCount = 0;
         NSString *result =[self.changesDic  objectForKey:[self.unitsArray  objectAtIndex:self.indexPath.row]];
         [self  calculateAllSelectedCurrcncyByInput:[NSString  stringWithFormat:@"%f",[Util  numberFormatterForFloat:result]]];
         [self.changesTableView  reloadData];
-        
-        
-        
 
     }
 }

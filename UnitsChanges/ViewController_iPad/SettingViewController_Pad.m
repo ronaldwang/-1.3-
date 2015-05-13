@@ -49,8 +49,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *langiageLable;
 
-@property (weak, nonatomic) IBOutlet UIButton *tipButton;
-
 @property (weak, nonatomic) IBOutlet UISwitch *soundKeepSwitch;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *themeViewWidthConstraint;
@@ -134,7 +132,6 @@
         [Util  saveColorByNSUserDefaults:theme];
         
         self.navigationController.navigationBar.tintColor = [Util shareInstance].themeColor;
-        self.tipButton.tintColor = [Util shareInstance].themeColor;
         self.soundKeepSwitch.onTintColor = [Util shareInstance].themeColor;
         self.themeColorView.backgroundColor = [Util shareInstance].themeColor;
         self.defaultValueInputText.tintColor = [Util shareInstance].themeColor;
@@ -150,7 +147,6 @@
     [self  setStrartValue];
     self.navigationController.navigationBar.tintColor = [Util shareInstance].themeColor;
      [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary  dictionaryWithObjectsAndKeys:[Util  shareInstance].themeColor,NSForegroundColorAttributeName,[UIFont  fontWithName:@"HelveticaNeue-Light" size:20],NSFontAttributeName,nil]];
-    self.tipButton.tintColor = [Util shareInstance].themeColor;
     [self  addPopAnmationForNav];
     [self  addPopViewAniamtion];
     [self  setLocalLanguage];
@@ -167,7 +163,7 @@
     
     self.textFieldText = [NSMutableString  stringWithFormat:@"%d",(int)[Util  numberFormatterForFloat:self.defaultValueInputText.text]];
     
-    self.defaultValueInputText.keyboardType = UIKeyboardTypeNumberPad;
+    self.defaultValueInputText.keyboardType = UIKeyboardTypeDecimalPad;
     self.defaultValueInputText.tintColor = [Util  shareInstance].themeColor;
     self.defaultValueInputText.inputAccessoryView = [self  createToolbar];
     self.soundKeepSwitch.onTintColor = [Util  shareInstance].themeColor;
@@ -224,7 +220,7 @@
                                                                         constant:0];
     [self.view addConstraint:rightConstraint];
     
-    self.themeViewWidthConstraint.constant = 350;
+//    self.themeViewWidthConstraint.constant = 350;
     
     self.contentViewHeightConstraint.constant = 800;
     self.mainScrollview.contentSize = CGSizeMake(IPHONE_WIDTH, self.contentViewHeightConstraint.constant);
@@ -279,9 +275,7 @@
     
     UITapGestureRecognizer  *themeTap = [[UITapGestureRecognizer  alloc ] initWithTarget:self action:@selector(themeAction:)];
     [self.colorView  addGestureRecognizer:themeTap];
-    
-    [self.tipButton  setBackgroundImage:[[UIImage  imageNamed:@"椭圆.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    
+
 }
 
 
@@ -458,21 +452,21 @@
 //  设置 导航 栏
 - (void)drawNavigationBarv{
     
-//    UIButton  *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = CGRectMake(0, 0, 12, 20);
-//    [button  setBackgroundImage:[[UIImage imageNamed:@"forward.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    //  UIImageRenderingMode   设置tintColor 时,图片的颜色可以根据此属性随设置的tintColor改变
+    UIButton  *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 12, 20);
+    [button  setBackgroundImage:[[UIImage imageNamed:@"forward.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+   //   UIImageRenderingMode   设置tintColor 时,图片的颜色可以根据此属性随设置的tintColor改变
     
-//    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem   *leftItem = [[UIBarButtonItem  alloc ]  initWithCustomView:button];
-//    [self.navigationItem  setLeftBarButtonItem:leftItem animated:YES];
+    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem   *leftItem = [[UIBarButtonItem  alloc ]  initWithCustomView:button];
+    [self.navigationItem  setLeftBarButtonItem:leftItem animated:YES];
     
-    UIView  *view = [[UIView  alloc  ] initWithFrame:CGRectMake(0, 0, 100, 44)];
-    view.backgroundColor = [UIColor  clearColor];
-    UIImageView  *settingImage = [[UIImageView alloc ] initWithFrame:CGRectMake(38, 10, 24, 24)];
-    settingImage.image = [[UIImage imageNamed:@"设置.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [view  addSubview:settingImage];
-    self.navigationItem.titleView = view;
+//    UIView  *view = [[UIView  alloc  ] initWithFrame:CGRectMake(0, 0, 100, 44)];
+//    view.backgroundColor = [UIColor  clearColor];
+//    UIImageView  *settingImage = [[UIImageView alloc ] initWithFrame:CGRectMake(38, 10, 24, 24)];
+//    settingImage.image = [[UIImage imageNamed:@"设置.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+//    [view  addSubview:settingImage];
+//    self.navigationItem.titleView = view;
 
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
@@ -601,7 +595,6 @@
     [self.themeColorView.layer  setBorderColor:sender.backgroundColor.CGColor];
     [self  addPopAnmationForNav];
     [self  addPopViewAniamtion];
-    self.tipButton.tintColor = [Util shareInstance].themeColor;
     self.soundKeepSwitch.onTintColor = [Util shareInstance].themeColor;
     self.defaultValueInputText.tintColor = [Util shareInstance].themeColor;
     
@@ -610,7 +603,6 @@
     [[NSNotificationCenter  defaultCenter]  postNotificationName:@"SelectedColorChanged" object:nil];
     
 }
-
 
 #pragma mark  设置导航栏  tintColor  POP 动画
 //  设置导航栏  tintColor  POP 动画
@@ -712,16 +704,6 @@
     }];
 }
 
-- (IBAction)tutorialAction:(UIButton *)sender {
-    
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
-    }
-    
-    TtpsViewController  *tipVC = [[TtpsViewController  alloc ] initWithNibName:@"TtpsViewController" bundle:nil];
-    [self.navigationController  pushViewController:tipVC animated:YES];
-    
-}
 
 #pragma mark
 #pragma mark   UITextFieldDelegate
@@ -741,6 +723,15 @@
     
     return NO;
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [self  textFieldDone];
+
+    return NO;
+
+}
+
 
 -(UIToolbar*) createToolbar {
     
