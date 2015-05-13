@@ -66,6 +66,22 @@
 
 @implementation SplitDetailViweController
 
+- (IBAction)showSetting:(id)sender {
+    
+    UIButton  *barButton = (UIButton*)sender;
+    
+    UINavigationController  *nv = [self.storyboard   instantiateViewControllerWithIdentifier:@"setttingVC"];;
+    
+    UIPopoverController   *popoverController = [[UIPopoverController  alloc ] initWithContentViewController:nv];
+    popoverController.delegate = self;
+    popoverController.popoverContentSize = CGSizeMake(350, IPHONE_HEIGHT);
+    
+    [popoverController  presentPopoverFromRect:CGRectMake(barButton.frame.origin.x + 55, barButton.frame.origin.y - 5, barButton.frame.size.width, barButton.frame.size.height) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+
+}
+
+
+
 - (IBAction)changTheCycleAction:(id)sender {
     
     UIButton  *timeBut = (UIButton*)sender;
@@ -236,9 +252,22 @@
     self.simpleArray = [NSMutableArray  arrayWithArray:[Util  takeSelectedCountry]];
     self.currencyInfor = [self  takeCurrencyInfor];
 
-     [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedCurrecyChanged:) name:@"CurrencyChanged" object:nil];
+    [self  addobserverForSpliDetail];
     
 }
+
+
+- (void)addobserverForSpliDetail{
+    
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedCurrecyChanged:) name:@"CurrencyChanged" object:nil];
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedColorChanged:) name:@"SelectedColorChanged" object:nil];
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(dataTypeChanged:) name:@"DataTypeChanged" object:nil];
+    [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(dataTypeChanged:) name:@"DefaultValueChanged" object:nil];
+
+}
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [self  drawNav];
@@ -716,6 +745,8 @@
 }
 
 
+#pragma mark
+#pragma mark      NSNotification 
 - (void)selectedCurrecyChanged:(NSNotification*)sender{
     
     self.currencyArray = [NSMutableArray  arrayWithArray:[Util  takeSelectedCountry]];
@@ -730,6 +761,24 @@
     [self  addbaseCurrencyList:currenctCurrency];
 
 }
+
+
+- (void)selectedColorChanged:(NSNotification*)sender{
+    [self setPropretyForGraphView];
+    [self  sendRequestWithTime:beginDate andEndTime:endDate andCurrcncy:leftCurrencyBut.titleLabel.text   andBaseCurrency:rightCurrencyBut.titleLabel.text];
+    [settingButton  setTintColor:[Util  shareInstance].themeColor];
+    
+    UIButton  *button  = (UIButton*)[self.cycleView  viewWithTag:indexButton + 20150301];
+    [button setTitleColor:[Util shareInstance].themeColor forState:UIControlStateNormal];
+    
+}
+
+- (void)dataTypeChanged:(NSNotification*)sender{
+    NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:[Util  takeSelectedIndex].row];
+    [self  calculateValueUnderBaseCurrency:currenctCurrency AndValue:[Util  readDefaultValue]];
+    [self  addbaseCurrencyList:currenctCurrency];
+}
+
 
 #pragma mark - Navigation
 

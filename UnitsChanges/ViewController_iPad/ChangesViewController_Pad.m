@@ -926,8 +926,14 @@ static  int  requestCount = 0;
 /** @brief Returns a customized snapshot of a given view. */
 - (UIView *)customSnapshoFromView:(UIView *)inputView {
     
-    UIView *snapshot = [inputView snapshotViewAfterScreenUpdates:YES];
-   
+    UIImageView  *snapshot = [[UIImageView  alloc ] initWithFrame:inputView.frame];
+    
+    UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, inputView.opaque, 0.0);
+    [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    snapshot.image = image;
+    UIGraphicsEndImageContext();
+    
     snapshot.layer.masksToBounds = NO;
     snapshot.layer.cornerRadius = 0.0;
     snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
@@ -1724,7 +1730,6 @@ static  int  requestCount = 0;
         customViewController.delegate = self;
     }
 }
-
 
 #pragma mark     设置添加 gif 动画
 - (void)setPullRefresh{

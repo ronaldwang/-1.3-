@@ -224,11 +224,7 @@
                                                                         constant:0];
     [self.view addConstraint:rightConstraint];
     
-    
-    NSLog(@"222222222222______________%f",self.themeViewWidthConstraint.constant);
-    
-   
-//    self.themeViewWidthConstraint.constant = 350;
+    self.themeViewWidthConstraint.constant = 350;
     
     self.contentViewHeightConstraint.constant = 800;
     self.mainScrollview.contentSize = CGSizeMake(IPHONE_WIDTH, self.contentViewHeightConstraint.constant);
@@ -461,36 +457,24 @@
 #pragma  amrk   设置 导航 栏
 //  设置 导航 栏
 - (void)drawNavigationBarv{
-//    
-//    for (UIView *parentView in self.navigationController.navigationBar.subviews){
-//        for (UIView *childView in parentView.subviews){
-//            if ([childView isKindOfClass:[UIImageView class]])
-//                [childView removeFromSuperview];
-//        }
-//    }
     
-    UIButton  *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 12, 20);
-    [button  setBackgroundImage:[[UIImage imageNamed:@"forward.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+//    UIButton  *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(0, 0, 12, 20);
+//    [button  setBackgroundImage:[[UIImage imageNamed:@"forward.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     //  UIImageRenderingMode   设置tintColor 时,图片的颜色可以根据此属性随设置的tintColor改变
     
-    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem   *leftItem = [[UIBarButtonItem  alloc ]  initWithCustomView:button];
-    [self.navigationItem  setLeftBarButtonItem:leftItem animated:YES];
+//    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem   *leftItem = [[UIBarButtonItem  alloc ]  initWithCustomView:button];
+//    [self.navigationItem  setLeftBarButtonItem:leftItem animated:YES];
     
-//    UIView  *view = [[UIView  alloc  ] initWithFrame:CGRectMake(0, 0, 100, 44)];
-//    view.backgroundColor = [UIColor  clearColor];
-//    UIImageView  *settingImage = [[UIImageView alloc ] initWithFrame:CGRectMake(38, 10, 24, 24)];
-//    settingImage.image = [[UIImage imageNamed:@"设置.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-//    [view  addSubview:settingImage];
-//    self.navigationItem.titleView = view;
-    
+    UIView  *view = [[UIView  alloc  ] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    view.backgroundColor = [UIColor  clearColor];
+    UIImageView  *settingImage = [[UIImageView alloc ] initWithFrame:CGRectMake(38, 10, 24, 24)];
+    settingImage.image = [[UIImage imageNamed:@"设置.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [view  addSubview:settingImage];
+    self.navigationItem.titleView = view;
 
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    
-//    [self.navigationController  navigationBar].layer.shadowOffset = CGSizeMake(2.0f , 2.0f);
-//    [self.navigationController  navigationBar].layer.shadowOpacity = 0.15f;
-//    [self.navigationController navigationBar].layer.shadowRadius = 4.0f;
     
 }
 
@@ -735,11 +719,7 @@
     }
     
     TtpsViewController  *tipVC = [[TtpsViewController  alloc ] initWithNibName:@"TtpsViewController" bundle:nil];
-//    UINavigationController  *nv = [[UINavigationController  alloc ] initWithRootViewController:tipVC];
-//    [self  presentViewController:nv animated:YES completion:^{
-//    }];
-    
-     [self.navigationController  pushViewController:tipVC animated:YES];
+    [self.navigationController  pushViewController:tipVC animated:YES];
     
 }
 
@@ -761,7 +741,6 @@
     
     return NO;
 }
-
 
 -(UIToolbar*) createToolbar {
     
@@ -788,6 +767,9 @@
     
     if (self.defaultValueInputText.text.length != 0) {
         [Util  saveDefaultVauleByNsuer:self.defaultValueInputText.text];
+        
+        [[NSNotificationCenter  defaultCenter ] postNotificationName:@"DefaultValueChanged" object:nil];
+        
     }else{
         self.defaultValueInputText.text = [Util readDefaultValue];
     }
@@ -811,7 +793,6 @@
             }
         }
     });
-    
 }
 
 - (void)didReceiveMemoryWarning {
