@@ -218,21 +218,17 @@ static  int  requestCount = 0;
 }
 
 - (void)dataTypeChanged:(NSNotification*)sender{
-
     int   count = (int)self.unitsArray.count;
+    int   dataType  = [Util shareInstance].dataType;
+    NSString  *result = nil;
     for (int i = 0; i < count;i++) {
         NSString  *unitString = [self.unitsArray  objectAtIndex:i];
-        NSString  *result = nil;
-        if (i != self.indexPath.row) {
-            int   dataType  = [Util shareInstance].dataType;
-            result = [self.changesDic  objectForKey:unitString];
-            [self.changesDic setObject:[Util   numberFormatterSetting:result withFractionDigits:dataType withInput:NO] forKey:unitString];
-        }
+        result = [NSString  stringWithFormat:@"%f", [Util   numberFormatterForFloat:[self.changesDic  objectForKey:unitString]]];
+        [self.changesDic setObject:[Util   numberFormatterSetting:result withFractionDigits:dataType withInput:NO] forKey:unitString];
     }
     
     [Util  saveChangeDic:self.changesDic];
     [self.changeTable  reloadData];
-
 }
 
 
@@ -478,7 +474,7 @@ static  int  requestCount = 0;
         
         NSString   *currency = [self.unitsArray  objectAtIndex:0];
         [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
-        [self.detailViewController  addbaseCurrencyList:currency];
+        [self.detailViewController  addbaseCurrencyList:currency withValue:[Util  readDefaultValue]];
         
     }
 }
@@ -617,7 +613,7 @@ static  int  requestCount = 0;
 
     NSString   *currency = [self.unitsArray  objectAtIndex:indexPath.row];
     [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
-    [self.detailViewController  addbaseCurrencyList:currency];
+    [self.detailViewController  addbaseCurrencyList:currency withValue:[Util  readDefaultValue]];
 
 }
 
@@ -759,6 +755,16 @@ static  int  requestCount = 0;
             [self.changesDic setObject:[Util   numberFormatterSetting:result withFractionDigits:dataType withInput:NO] forKey:unitString];
         }else{
             [self.changesDic setObject:[Util   numberFormatterSetting:resultString withFractionDigits:4 withInput:YES] forKey:unitString];
+            
+            if (i == 0) {
+                //  更新 基准汇率
+                
+                NSString  *valueString = [Util   numberFormatterSetting:resultString withFractionDigits:4 withInput:YES];
+               
+                [self.detailViewController   calculateValueUnderBaseCurrency:unitString AndValue:valueString];
+                [self.detailViewController  addbaseCurrencyList:unitString withValue:valueString];
+            }
+            
         }
     }
     
@@ -922,7 +928,7 @@ static  int  requestCount = 0;
                 //  更新 基准汇率
                 NSString   *currency = [self.unitsArray  objectAtIndex:0];
                 [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
-                [self.detailViewController  addbaseCurrencyList:currency];
+                [self.detailViewController  addbaseCurrencyList:currency withValue:[Util  readDefaultValue]];
                 
             }];
             break;
@@ -1575,38 +1581,6 @@ static  int  requestCount = 0;
 
 
 #pragma mark - Build MYBlurIntroductionView
-- (void)firstLunch{
-    
-//    NSString *tutorialKey = [NSString stringWithFormat:@"%@_tutorial", NSStringFromClass ([self class])];
-//    
-//    BOOL wasShown = [[NSUserDefaults standardUserDefaults] boolForKey:tutorialKey];
-//    
-//    if (wasShown) {
-//        return;
-//    }
-//    
-//    [self startTapTutorialWithInfo:LOCALIZATION(@"TapMessage")
-//                           atPoint:CGPointMake(IPHONE_WIDTH/2, IPHONE_HEIGHT/2)
-//              withFingerprintPoint:CGPointMake(IPHONE_WIDTH - 50, 70)
-//              shouldHideBackground:NO
-//                        completion:^{
-//                        }];
-//    
-//    int64_t delayInSeconds = 3;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-//        [self startCreateNewItemTutorialWithInfo:LOCALIZATION(@"PullDownMessage")];
-//    });
-//    
-//    delayInSeconds = 7;
-//    popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-//        [self  startTutorialWithInfo:LOCALIZATION(@"PullUpMessage") atPoint:CGPointMake(IPHONE_WIDTH/2, IPHONE_HEIGHT/2) withFingerprintStartingPoint:CGPointMake(IPHONE_WIDTH/2 , IPHONE_HEIGHT -100) andEndPoint:CGPointMake(IPHONE_WIDTH/2, IPHONE_HEIGHT/2 + 80) shouldHideBackground:NO completion:^{
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:LOCALIZATION(@"AlertViewTitle") message:LOCALIZATION(@"AlertViewMessage") delegate:nil cancelButtonTitle:LOCALIZATION(@"AlertViewCancleButton") otherButtonTitles:nil];
-//            [alert show];
-//        }];
-//    });
-}
 
 - (NSString*)takeCurrencyInfoByName:(NSString*)currencyAbb{
     
@@ -1632,7 +1606,6 @@ static  int  requestCount = 0;
     }
     self.currencyDic = tempDic;
 }
-
 
 - (void)playSoundsForButton{
     SystemSoundID  sameViewSoundID;

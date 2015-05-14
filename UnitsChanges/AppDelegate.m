@@ -35,6 +35,7 @@
     
     // 友盟
     [self umengTrack];
+    [self  takeLocaleLanguage];
     
     if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
         
@@ -53,7 +54,6 @@
 
     }else{
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        [self  takeLocaleLanguage];
         //   fetch background
         [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
         //  摇一摇

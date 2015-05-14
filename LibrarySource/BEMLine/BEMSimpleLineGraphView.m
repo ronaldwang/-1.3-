@@ -319,13 +319,13 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
             self.popUpLabel.numberOfLines = 1;
             self.popUpLabel.font = self.labelFont;
             self.popUpLabel.backgroundColor = [UIColor clearColor];
-    
+        
             CGSize   size = [popUpString  boundingRectWithSize:CGSizeMake(MAXFLOAT, 20) options:NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:self.popUpLabel.font} context:nil].size;
         
             self.popUpLabel.frame = CGRectMake(0, 0, size.width + 20, 15);
+            self.popUpLabel.adjustsFontSizeToFitWidth = YES;
             self.popUpLabel.text = popUpString;
             
-    
             self.popUpLabel.alpha = 0;
             
             self.popUpView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.popUpLabel.frame.size.width + 7, self.popUpLabel.frame.size.height + 2)];
@@ -1069,10 +1069,13 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
                      range:NSMakeRange(suffixString.length, popUpStirng.length - suffixString.length)];
     
           self.popUpLabel.attributedText = attrtext;
+        
+        NSLog(@"%@",self.popUpLabel.attributedText);
     }
     else
         self.popUpLabel.text = [NSString stringWithFormat:@"%.4f", (float)[dataPoints[(NSInteger) closestDot.tag - DotFirstTag100] floatValue]];
     
+
     if (self.enableYAxisLabel == YES && self.popUpView.frame.origin.x <= self.YAxisLabelXOffset) {
         self.xCenterLabel = self.popUpView.frame.size.width/2;
         self.popUpView.center = CGPointMake(self.xCenterLabel + self.YAxisLabelXOffset + 1, self.yCenterLabel);

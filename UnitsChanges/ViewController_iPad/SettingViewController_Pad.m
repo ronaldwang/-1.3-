@@ -27,7 +27,6 @@
 @interface SettingViewController_Pad ()<MFMailComposeViewControllerDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 {
     BOOL    isTaped;
-    UIToolbar *toolBar;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *themeView;
@@ -89,6 +88,12 @@
 
 @property (nonatomic,retain) NSMutableString  *textFieldText;
 @property (nonatomic,retain)  NSString  *timeString;
+
+//  输入 键盘
+@property (weak, nonatomic) IBOutlet UIView *keyBoardView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyBoardViewVerConstraint;
+
 
 
 @end
@@ -163,9 +168,11 @@
     
     self.textFieldText = [NSMutableString  stringWithFormat:@"%d",(int)[Util  numberFormatterForFloat:self.defaultValueInputText.text]];
     
-    self.defaultValueInputText.keyboardType = UIKeyboardTypeDecimalPad;
     self.defaultValueInputText.tintColor = [Util  shareInstance].themeColor;
-    self.defaultValueInputText.inputAccessoryView = [self  createToolbar];
+    
+//    self.defaultValueInputText.inputAccessoryView = [self  createToolbar];
+    
+
     self.soundKeepSwitch.onTintColor = [Util  shareInstance].themeColor;
     
     int  decimals = [Util takeDataType];
@@ -219,10 +226,8 @@
                                                                       multiplier:1.0
                                                                         constant:0];
     [self.view addConstraint:rightConstraint];
-    
-//    self.themeViewWidthConstraint.constant = 350;
-    
-    self.contentViewHeightConstraint.constant = 800;
+
+    self.contentViewHeightConstraint.constant = 700;
     self.mainScrollview.contentSize = CGSizeMake(IPHONE_WIDTH, self.contentViewHeightConstraint.constant);
 }
 
@@ -406,7 +411,6 @@
     
 }
 
-
 //  设置主题颜色
 - (void)themeAction:(UITapGestureRecognizer*)sender{
     
@@ -422,11 +426,11 @@
     if (isTaped) {
         constraintAnimation.fromValue = [NSNumber  numberWithInt:0];
         constraintAnimation.toValue = [NSNumber  numberWithInt:240];
-        self.contentViewHeightConstraint.constant = 1050;
+        self.contentViewHeightConstraint.constant = 900;
     }else{
         constraintAnimation.fromValue = [NSNumber  numberWithInt:240];
         constraintAnimation.toValue = [NSNumber  numberWithInt:0];
-        self.contentViewHeightConstraint.constant = 800;
+        self.contentViewHeightConstraint.constant = 700;
     }
     
     [self.numberToColorVerConstraint   pop_addAnimation:constraintAnimation forKey:@"constraintColor"];
@@ -540,7 +544,6 @@
     [button3.layer setCornerRadius:20.0f];
     [button3.layer  setMasksToBounds:YES];
     
-    
     UIButton  *button4 = (UIButton*)[view  viewWithTag:2014];
     [button4.layer  setBorderWidth:0.0f];
     if (dataType == button4.tag) {
@@ -597,9 +600,7 @@
     [self  addPopViewAniamtion];
     self.soundKeepSwitch.onTintColor = [Util shareInstance].themeColor;
     self.defaultValueInputText.tintColor = [Util shareInstance].themeColor;
-    
-    toolBar.tintColor = [Util shareInstance].themeColor;
-    
+
     [[NSNotificationCenter  defaultCenter]  postNotificationName:@"SelectedColorChanged" object:nil];
     
 }
@@ -707,7 +708,19 @@
 
 #pragma mark
 #pragma mark   UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [self  showOrHidenKeyBoard:YES];
+    return NO;
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    //只输入数字
+     if ([string rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location != NSNotFound)
+        {
+            return NO;
+        }
     
     if (![string  isEqualToString:@""]) {
         if (self.textFieldText.length <=9) {
@@ -732,28 +745,6 @@
 
 }
 
-
--(UIToolbar*) createToolbar {
-    
-    CGFloat   height = 45;
-    
-    toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height)];
-    
-    toolBar.clipsToBounds = YES;
-    
-    toolBar.barTintColor = [Util   colorWithHexString:@"#d2d6db"];
-    toolBar.tintColor = [Util  shareInstance].themeColor;
-    toolBar.barStyle = UIBarStyleDefault;
-    
-    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(textFieldDone)];
-    toolBar.items = @[space, done];
-    
-    return toolBar;
-}
-
-
 - (void)textFieldDone{
     
     if (self.defaultValueInputText.text.length != 0) {
@@ -764,7 +755,7 @@
     }else{
         self.defaultValueInputText.text = [Util readDefaultValue];
     }
-    [self.defaultValueInputText   resignFirstResponder];
+//    [self.defaultValueInputText   resignFirstResponder];
 }
 
 - (void)takeScheduledTimeRequest{
@@ -785,6 +776,95 @@
         }
     });
 }
+
+
+#pragma mark
+#pragma mark      输入键盘
+
+- (IBAction)keyBoardClick:(UIButton *)sender {
+    
+    [self   addPopAnaitionClickButton:sender];
+    
+    NSString  *inputString = sender.titleLabel.text;
+    
+    if (self.textFieldText.length <=9) {
+        [self.textFieldText  appendString:inputString];
+    }
+    
+    self.defaultValueInputText.text = [Util  numberFormatterSetting:[NSString  stringWithFormat:@"%f",[Util numberFormatterForFloat:self.textFieldText]] withFractionDigits:2 withInput:YES];
+
+}
+
+- (IBAction)okButtonClick:(UIButton *)sender {
+    [self   addPopAnaitionClickButton:sender];
+    [self  textFieldDone];
+    [self   showOrHidenKeyBoard:NO];
+}
+
+- (IBAction)clearClick:(UIButton *)sender {
+    [self   addPopAnaitionClickButton:sender];
+    self.textFieldText = [NSMutableString string];
+    self.defaultValueInputText.text = @"0";
+}
+
+- (void)showOrHidenKeyBoard:(BOOL)show{
+
+    POPBasicAnimation   *basicAnimation = [POPBasicAnimation animation];
+    basicAnimation.property = [POPMutableAnimatableProperty  propertyWithName:kPOPLayoutConstraintConstant];
+    basicAnimation.duration = 0.5;
+    
+    if (show) {
+         basicAnimation.fromValue = [NSNumber numberWithFloat:1200];
+         basicAnimation.toValue = [NSNumber numberWithFloat:IPHONE_HEIGHT - self.keyBoardView.frame.size.height - 64];
+    }else{
+        basicAnimation.fromValue = [NSNumber numberWithFloat:IPHONE_HEIGHT - self.keyBoardView.frame.size.height - 64];
+         basicAnimation.toValue = [NSNumber numberWithFloat:1200];
+    }
+    
+    [self.keyBoardViewVerConstraint   pop_addAnimation:basicAnimation forKey:@"KeyBoardViewVerConstraint"];
+
+}
+
+
+- (void)addPopAnaitionClickButton:(UIButton*)button{
+    
+    POPBasicAnimation  *colcorAnimation = [POPBasicAnimation animation];
+    colcorAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLabelTextColor];
+    POPBasicAnimation  *scaleAnimation = [POPBasicAnimation animation];
+    scaleAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLayerScaleXY];
+    POPBasicAnimation  *scaleEndAnimation = [POPBasicAnimation animation];
+    scaleEndAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLayerScaleXY];
+    POPBasicAnimation  *colcorEndAnimation = [POPBasicAnimation animation];
+    colcorEndAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLabelTextColor];
+    colcorAnimation.toValue = [Util shareInstance].themeColor;
+    colcorEndAnimation.toValue = [UIColor  colorWithRed:98/255.0 green:98/255.0 blue:98/255.0 alpha:1.0];
+    scaleAnimation.toValue = [NSValue  valueWithCGPoint:CGPointMake(1.5, 1.5)];
+    scaleEndAnimation.toValue = [NSValue  valueWithCGPoint:CGPointMake(1.0, 1.0)];
+    colcorAnimation.duration = 0.15f;
+    scaleEndAnimation.duration = 0.15;
+    scaleAnimation.duration = 0.15;
+    colcorEndAnimation.duration = 0.15;
+    colcorEndAnimation.fromValue = [Util shareInstance].themeColor;
+    scaleAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        if (finished) {
+            [button.layer  pop_addAnimation:scaleEndAnimation forKey:@"scaleEnd"];
+        }
+    };
+    colcorAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        if (finished) {
+            [button.titleLabel  pop_addAnimation:colcorEndAnimation forKey:@"colorEnd"];
+        }
+    };
+    [button.layer pop_addAnimation:scaleAnimation forKey:@"scale"];
+    [button.titleLabel  pop_addAnimation:colcorAnimation forKey:@"pop"];
+    
+}
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

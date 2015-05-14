@@ -10,5 +10,5 @@
 
 @interface SplitDetailViweController : UIViewController<UIPopoverControllerDelegate, UISplitViewControllerDelegate>
 - (void)calculateValueUnderBaseCurrency:(NSString*)targetCurrency AndValue:(NSString*)baseValue;
-- (void)addbaseCurrencyList:(NSString*)baseCurrency;
+- (void)addbaseCurrencyList:(NSString*)baseCurrency  withValue:(NSString*)value;
 @end

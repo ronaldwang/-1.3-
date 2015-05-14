@@ -2022,8 +2022,6 @@ static  int  requestCount = 0;
 }
 
 
-
-
 -(NSInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;

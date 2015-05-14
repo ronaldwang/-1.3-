@@ -286,7 +286,7 @@
     
     NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:0];
     [self  calculateValueUnderBaseCurrency:currenctCurrency AndValue:[Util  readDefaultValue]];
-    [self  addbaseCurrencyList:currenctCurrency];
+    [self  addbaseCurrencyList:currenctCurrency withValue:[Util  readDefaultValue]];
 
 }
 
@@ -335,7 +335,7 @@
 }
 
 
-- (void)addbaseCurrencyList:(NSString*)baseCurrency{
+- (void)addbaseCurrencyList:(NSString*)baseCurrency  withValue:(NSString*)value{
 
     for (UIView  *a  in self.baseScrollView.subviews) {
         [a removeFromSuperview];
@@ -348,7 +348,7 @@
         BaseValueView  *view = [[BaseValueView  alloc ] initWithFrame:CGRectMake(5 + 150*i, 5, 140, 180)];
         view.currencyFlag.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_24.png",currncy]];
         view.currencyName.text = currncy;
-        view.baseValue.text = [Util  readDefaultValue];
+        view.baseValue.text = value;
         
         view.targetCurrencyFlag.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_24.png",baseCurrency]];
         view.targetCurrencyName.text = baseCurrency;
@@ -763,7 +763,7 @@
     
     NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:[Util  takeSelectedIndex].row];
     [self  calculateValueUnderBaseCurrency:currenctCurrency AndValue:[Util  readDefaultValue]];
-    [self  addbaseCurrencyList:currenctCurrency];
+    [self  addbaseCurrencyList:currenctCurrency withValue:[Util  readDefaultValue]];
 
 }
 
@@ -781,7 +781,7 @@
 - (void)dataTypeChanged:(NSNotification*)sender{
     NSString  *currenctCurrency = [[Util takeSelectedCountry]  objectAtIndex:[Util  takeSelectedIndex].row];
     [self  calculateValueUnderBaseCurrency:currenctCurrency AndValue:[Util  readDefaultValue]];
-    [self  addbaseCurrencyList:currenctCurrency];
+    [self  addbaseCurrencyList:currenctCurrency withValue:[Util  readDefaultValue]];
 }
 
 

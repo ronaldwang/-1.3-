@@ -57,13 +57,6 @@
 		181A9A621AFC9D3F003A17E8 /* DES.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A9A2D1AFC9B50003A17E8 /* DES.m */; };
 		181A9A631AFC9D54003A17E8 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A9A2F1AFC9B50003A17E8 /* GTMBase64.m */; };
 		181A9A641AFC9D54003A17E8 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A9A2F1AFC9B50003A17E8 /* GTMBase64.m */; };
-		181A9A6D1AFCA8F5003A17E8 /* 主题.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A9A661AFCA8F5003A17E8 /* 主题.png */; };
-		181A9A6E1AFCA8F5003A17E8 /* 右滑.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A9A671AFCA8F5003A17E8 /* 右滑.png */; };
-		181A9A6F1AFCA8F5003A17E8 /* 图表.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A9A681AFCA8F5003A17E8 /* 图表.png */; };
-		181A9A701AFCA8F5003A17E8 /* 定值目标汇率.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A9A691AFCA8F5003A17E8 /* 定值目标汇率.png */; };
-		181A9A711AFCA8F5003A17E8 /* 左滑.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A9A6A1AFCA8F5003A17E8 /* 左滑.png */; };
-		181A9A721AFCA8F5003A17E8 /* 计算机.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A9A6B1AFCA8F5003A17E8 /* 计算机.png */; };
-		181A9A731AFCA8F5003A17E8 /* 长按拖动.png in Resources */ = {isa = PBXBuildFile; fileRef = 181A9A6C1AFCA8F5003A17E8 /* 长按拖动.png */; };
 		181CFEF61A8071F100E8C39E /* #15bd39-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 181CFEEA1A8071F100E8C39E /* #15bd39-2.gif */; };
 		181CFEF71A8071F100E8C39E /* #15bd39.gif in Resources */ = {isa = PBXBuildFile; fileRef = 181CFEEB1A8071F100E8C39E /* #15bd39.gif */; };
 		181CFEF81A8071F100E8C39E /* #15bd39fangda-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 181CFEEC1A8071F100E8C39E /* #15bd39fangda-2.gif */; };
@@ -1393,13 +1386,6 @@
 		181A9A471AFC9B50003A17E8 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		181A9A491AFC9B50003A17E8 /* PullHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullHeaderView.h; sourceTree = "<group>"; };
 		181A9A4A1AFC9B50003A17E8 /* PullHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullHeaderView.m; sourceTree = "<group>"; };
-		181A9A661AFCA8F5003A17E8 /* 主题.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "主题.png"; sourceTree = "<group>"; };
-		181A9A671AFCA8F5003A17E8 /* 右滑.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右滑.png"; sourceTree = "<group>"; };
-		181A9A681AFCA8F5003A17E8 /* 图表.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图表.png"; sourceTree = "<group>"; };
-		181A9A691AFCA8F5003A17E8 /* 定值目标汇率.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定值目标汇率.png"; sourceTree = "<group>"; };
-		181A9A6A1AFCA8F5003A17E8 /* 左滑.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "左滑.png"; sourceTree = "<group>"; };
-		181A9A6B1AFCA8F5003A17E8 /* 计算机.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "计算机.png"; sourceTree = "<group>"; };
-		181A9A6C1AFCA8F5003A17E8 /* 长按拖动.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "长按拖动.png"; sourceTree = "<group>"; };
 		181CFEEA1A8071F100E8C39E /* #15bd39-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "#15bd39-2.gif"; sourceTree = "<group>"; };
 		181CFEEB1A8071F100E8C39E /* #15bd39.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "#15bd39.gif"; sourceTree = "<group>"; };
 		181CFEEC1A8071F100E8C39E /* #15bd39fangda-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "#15bd39fangda-2.gif"; sourceTree = "<group>"; };
@@ -2470,20 +2456,6 @@
 			path = "上提下拉";
 			sourceTree = "<group>";
 		};
-		181A9A651AFCA8F5003A17E8 /* 使用技巧 */ = {
-			isa = PBXGroup;
-			children = (
-				181A9A661AFCA8F5003A17E8 /* 主题.png */,
-				181A9A671AFCA8F5003A17E8 /* 右滑.png */,
-				181A9A681AFCA8F5003A17E8 /* 图表.png */,
-				181A9A691AFCA8F5003A17E8 /* 定值目标汇率.png */,
-				181A9A6A1AFCA8F5003A17E8 /* 左滑.png */,
-				181A9A6B1AFCA8F5003A17E8 /* 计算机.png */,
-				181A9A6C1AFCA8F5003A17E8 /* 长按拖动.png */,
-			);
-			path = "使用技巧";
-			sourceTree = "<group>";
-		};
 		18392EAF1AC0132600DA2B4B /* Currenci WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -3420,7 +3392,6 @@
 				181E69421B00AB9600A6C368 /* _增加国家@2x.png */,
 				181E69431B00AB9600A6C368 /* _增加国家@3x.png */,
 				181E69401B00AB8A00A6C368 /* _增加国家.png */,
-				181A9A651AFCA8F5003A17E8 /* 使用技巧 */,
 				18449DA01AF8B7A000FEBE16 /* 38-watch@2x.png */,
 				18449DA11AF8B7A000FEBE16 /* 42-watch@2x.png */,
 				18E6B8321AE0A8C0000391F5 /* appWatch - 42 */,
@@ -4117,7 +4088,6 @@
 				18EF42AC1B019B47002EBE4A /* JEP_24@2x.png in Resources */,
 				18EF42811B019B47002EBE4A /* CHF_24@2x.png in Resources */,
 				18E40C711A81F103007D21AC /* NZD@2x.png in Resources */,
-				181A9A6E1AFCA8F5003A17E8 /* 右滑.png in Resources */,
 				18E40D461A81F103007D21AC /* UZS@3x.png in Resources */,
 				18EF42601B019B47002EBE4A /* XPT_24@3x.png in Resources */,
 				18E40C231A81F103007D21AC /* CUC@2x.png in Resources */,
@@ -4169,7 +4139,6 @@
 				18E40D171A81F103007D21AC /* MZN@3x.png in Resources */,
 				18EF426C1B019B47002EBE4A /* ARS_24@2x.png in Resources */,
 				181CFEFC1A8071F100E8C39E /* #efcf1dfangda-2.gif in Resources */,
-				181A9A711AFCA8F5003A17E8 /* 左滑.png in Resources */,
 				18EF41C91B019B47002EBE4A /* BIF_24@3x.png in Resources */,
 				18E40CAB1A81F103007D21AC /* ZMK@2x.png in Resources */,
 				18E40C561A81F103007D21AC /* LBP@2x.png in Resources */,
@@ -4336,7 +4305,6 @@
 				18EF41ED1B019B47002EBE4A /* GHS_24@3x.png in Resources */,
 				18E40CA91A81F103007D21AC /* YER@2x.png in Resources */,
 				18DD64F91AA3FC5C00404F89 /* #00dbb3.gif in Resources */,
-				181A9A6F1AFCA8F5003A17E8 /* 图表.png in Resources */,
 				18EF41F31B019B47002EBE4A /* HKD_24@3x.png in Resources */,
 				18E40C9F1A81F103007D21AC /* XAF@2x.png in Resources */,
 				18E40CCE1A81F103007D21AC /* CRC@3x.png in Resources */,
@@ -4476,9 +4444,7 @@
 				18EF42991B019B47002EBE4A /* GHS_24@2x.png in Resources */,
 				18E40C0E1A81F103007D21AC /* BDT@2x.png in Resources */,
 				18E40D2B1A81F103007D21AC /* SAR@3x.png in Resources */,
-				181A9A6D1AFCA8F5003A17E8 /* 主题.png in Resources */,
 				18E40CCC1A81F103007D21AC /* CNY@3x.png in Resources */,
-				181A9A721AFCA8F5003A17E8 /* 计算机.png in Resources */,
 				18EF42201B019B47002EBE4A /* MXN_24@3x.png in Resources */,
 				18EF42651B019B47002EBE4A /* ZWL_24@3x.png in Resources */,
 				18E40D411A81F103007D21AC /* TZS@3x.png in Resources */,
@@ -4520,7 +4486,6 @@
 				18E40D4B1A81F103007D21AC /* XAF@3x.png in Resources */,
 				18E40C781A81F103007D21AC /* PLN@2x.png in Resources */,
 				18E2468C1A844F7D00F1A9F9 /* 计算机@2x.png in Resources */,
-				181A9A701AFCA8F5003A17E8 /* 定值目标汇率.png in Resources */,
 				18EF42B61B019B47002EBE4A /* KWD_24@2x.png in Resources */,
 				18E40CE91A81F103007D21AC /* HRK@3x.png in Resources */,
 				18E40CDC1A81F103007D21AC /* FJD@3x.png in Resources */,
@@ -4858,7 +4823,6 @@
 				18D08B2A1A5BC93000E6BFC8 /* #0ba287-2.gif in Resources */,
 				18EF41FC1B019B47002EBE4A /* INR_24@3x.png in Resources */,
 				18E40D261A81F103007D21AC /* QAR@3x.png in Resources */,
-				181A9A731AFCA8F5003A17E8 /* 长按拖动.png in Resources */,
 				18E40CDA1A81F103007D21AC /* ETB@3x.png in Resources */,
 				18DD64F81AA3FC5C00404F89 /* #00dbb3-2.gif in Resources */,
 				181A9A521AFC9B50003A17E8 /* iRate.bundle in Resources */,

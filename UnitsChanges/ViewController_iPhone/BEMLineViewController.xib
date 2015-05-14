@@ -173,7 +173,7 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeS-eh-Tls">
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeS-eh-Tls">
                     <rect key="frame" x="-25" y="100" width="39" height="86"/>
                     <subviews>
                         <button opaque="NO" alpha="0.40000000000000002" tag="20150301" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFI-l3-Ylc">
@@ -215,7 +215,7 @@
                                 <action selector="changTheCycleAction:" destination="-1" eventType="touchUpInside" id="kpj-LT-12o"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBr-dq-ndE">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBr-dq-ndE">
                             <rect key="frame" x="392" y="15" width="177" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="177" id="6uX-id-V3g">
