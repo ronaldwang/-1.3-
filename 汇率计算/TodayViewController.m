@@ -82,6 +82,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backButtonVerticalConstraint;
 
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalContraintToleft;
+
 
 @end
 
@@ -456,6 +458,13 @@
             button.hidden = YES;
             UIImageView  *imageView = (UIImageView*)[self.view  viewWithTag:20150305];
             imageView.hidden = YES;
+            
+//            UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIVibrancyEffect notificationCenterVibrancyEffect]];
+//            effectView.frame = imageView.bounds;
+//            [effectView.contentView  addSubview:effectView];
+//            [self.view addSubview:effectView];
+//            [self.view  sendSubviewToBack:effectView];
+            
             self.backButtonVerticalConstraint.constant =  140;
             self.preferredContentSize = CGSizeMake(self.preferredContentSize.width, self.backButtonVerticalConstraint.constant + 40);
         
