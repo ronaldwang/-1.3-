@@ -27,6 +27,7 @@
 @interface SettingViewController_Pad ()<MFMailComposeViewControllerDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 {
     BOOL    isTaped;
+    BOOL   isEditing;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *themeView;
@@ -117,6 +118,8 @@
     
     [self drawViewContraint];
     [self setViewContstraints];
+    
+    [self  addShadowForCalcuatorView];
     
     [self  addColorButtonsOnScrollview:self.colorArray];
     
@@ -287,9 +290,10 @@
 // App Store 评论
 - (void)praiseAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
+    if (isEditing) {
         [self  textFieldDone];
     }
+    
     NSString *str = [NSString stringWithFormat:
                      @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=946607423&pageNumber=0&sortOrdering=1&type=Purple+Software&mt=8"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
@@ -299,7 +303,7 @@
 // 意见反馈--邮件
 - (void)mailAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
+    if (isEditing) {
         [self  textFieldDone];
     }
     
@@ -387,7 +391,7 @@
 //  设置小数点
 - (void)decimalsAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
+    if (isEditing) {
         [self  textFieldDone];
     }
     
@@ -400,8 +404,8 @@
 // 设置语言
 - (void)languageAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
+    if (isEditing) {
+        [self  textFieldDone];
     }
     
     LanguageViewController    *languageVC = [[LanguageViewController  alloc ] initWithNibName:@"LanguageViewController" bundle:nil];
@@ -414,8 +418,8 @@
 //  设置主题颜色
 - (void)themeAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
+    if (isEditing) {
+        [self  textFieldDone];
     }
     
     isTaped  = !isTaped;
@@ -442,8 +446,8 @@
 // 升级版本-内购页面
 - (void)upgradeAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
+    if (isEditing) {
+        [self  textFieldDone];
     }
     
     AppPurcahseViewController  *appPurchase = [[AppPurcahseViewController  alloc ] initWithNibName:@"AppPurcahseViewController" bundle:nil];
@@ -464,13 +468,6 @@
     [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem   *leftItem = [[UIBarButtonItem  alloc ]  initWithCustomView:button];
     [self.navigationItem  setLeftBarButtonItem:leftItem animated:YES];
-    
-//    UIView  *view = [[UIView  alloc  ] initWithFrame:CGRectMake(0, 0, 100, 44)];
-//    view.backgroundColor = [UIColor  clearColor];
-//    UIImageView  *settingImage = [[UIImageView alloc ] initWithFrame:CGRectMake(38, 10, 24, 24)];
-//    settingImage.image = [[UIImage imageNamed:@"设置.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-//    [view  addSubview:settingImage];
-//    self.navigationItem.titleView = view;
 
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
@@ -478,10 +475,9 @@
 
 //   返回
 - (void)backAction:(UIButton*)sender{
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
+    if (isEditing) {
+        [self  textFieldDone];
     }
-    
    [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -755,6 +751,7 @@
     }else{
         self.defaultValueInputText.text = [Util readDefaultValue];
     }
+      [self   showOrHidenKeyBoard:NO];
 //    [self.defaultValueInputText   resignFirstResponder];
 }
 
@@ -798,7 +795,6 @@
 - (IBAction)okButtonClick:(UIButton *)sender {
     [self   addPopAnaitionClickButton:sender];
     [self  textFieldDone];
-    [self   showOrHidenKeyBoard:NO];
 }
 
 - (IBAction)clearClick:(UIButton *)sender {
@@ -808,6 +804,8 @@
 }
 
 - (void)showOrHidenKeyBoard:(BOOL)show{
+    
+    isEditing = show;
 
     POPBasicAnimation   *basicAnimation = [POPBasicAnimation animation];
     basicAnimation.property = [POPMutableAnimatableProperty  propertyWithName:kPOPLayoutConstraintConstant];
@@ -861,7 +859,11 @@
 }
 
 
-
+- (void)addShadowForCalcuatorView{
+    [self.keyBoardView.layer  setShadowOffset:CGSizeMake(0,-0.5)];
+    [self.keyBoardView.layer setShadowRadius:0.25];
+    [self.keyBoardView.layer  setShadowOpacity:0.08];
+}
 
 
 

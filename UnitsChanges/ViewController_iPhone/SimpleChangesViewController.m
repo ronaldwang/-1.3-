@@ -46,8 +46,7 @@
     
     self.simpleArray = [NSMutableArray  arrayWithArray:[Util  takeSelectedCountry]];
     self.currencyInfor = [self  takeCurrencyInfor];
-     [self  initializationBaseCurrenciInfor];
-    [self  calculateValueUnderBaseCurrency];
+    [self  addShadowForCalcuatorView];
     
     self.textFieldText = [NSMutableString  stringWithFormat:@"%d",(int)[Util  numberFormatterForFloat:self.baseValueInPut.text]];
     
@@ -57,6 +56,27 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableDictionary  *valueDic = [NSMutableDictionary  dictionary];
+        NSDictionary  *rateDic = [Util   takeAllCountryInfor];
+        NSString *baseRate = [rateDic  objectForKey:self.targetCurrency.text];
+        
+        for (int i = 0; i < self.simpleArray.count; i++) {
+            NSString *unitString = [self.simpleArray   objectAtIndex:i];
+            NSString  *   currentRate = [rateDic  objectForKey:unitString];
+            int   dataType  = [Util shareInstance].dataType;
+            float  resultFloat = [Util  numberFormatterForFloat:self.baseValueInPut.text]/[currentRate doubleValue]*[baseRate  doubleValue];
+            NSString  *result = [Util  roundUp:resultFloat afterPoint:dataType];
+            [valueDic setObject:[Util   numberFormatterSetting:result withFractionDigits:dataType withInput:NO] forKey:unitString];
+        }
+        self.resultDic = valueDic;
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self  initializationBaseCurrenciInfor];
+            [self.baseTableView  reloadData];
+        });
+        }
+    );
+
     AppDelegate  *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     delegate.allowRotation = NO;
 }
@@ -73,9 +93,7 @@
     return inforDic;
 }
 
-
 - (void)initializationBaseCurrenciInfor{
-    
     self.baseView.backgroundColor = [Util  shareInstance].themeColor;
     self.baseValueInPut.text = [Util  readDefaultValue];
     self.targetCurrency.text = [self.simpleArray  objectAtIndex:0];
@@ -89,7 +107,6 @@
     self.currencyInfor = [self  takeCurrencyInfor];
     [self  initializationBaseCurrenciInfor];
     [self  calculateValueUnderBaseCurrency];
-
 }
 
 
@@ -150,7 +167,6 @@
     [self  calculateValueUnderBaseCurrency];
 }
 
-
 #pragma mark 
 #pragma mark   UITextFieldDelegate
 
@@ -158,7 +174,6 @@
     [self  showOrHidenKeyBoard:YES];
     return NO;
 }
-
 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -218,21 +233,19 @@
 - (IBAction)keyBoardClick:(UIButton *)sender {
     
     [self   addPopAnaitionClickButton:sender];
-    
     NSString  *inputString = sender.titleLabel.text;
-    
     if (self.textFieldText.length <=9) {
         [self.textFieldText  appendString:inputString];
     }
     
     self.baseValueInPut.text = [Util  numberFormatterSetting:[NSString  stringWithFormat:@"%f",[Util numberFormatterForFloat:self.textFieldText]] withFractionDigits:2 withInput:YES];
-    
 }
 
 - (IBAction)okButtonClick:(UIButton *)sender {
     [self   addPopAnaitionClickButton:sender];
     [self  textFieldDone];
     [self   showOrHidenKeyBoard:NO];
+    [self  calculateValueUnderBaseCurrency];
 }
 
 - (IBAction)clearClick:(UIButton *)sender {
@@ -296,7 +309,11 @@
 }
 
 
-
+- (void)addShadowForCalcuatorView{
+    [self.keyBoardView.layer  setShadowOffset:CGSizeMake(0,-0.5)];
+    [self.keyBoardView.layer setShadowRadius:0.25];
+    [self.keyBoardView.layer  setShadowOpacity:0.08];
+}
 
 /*
 #pragma mark - Navigation

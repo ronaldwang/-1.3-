@@ -184,6 +184,7 @@ static  int  requestCount = 0;
     
     [self takeSayingLableContet];
     
+    [self  addShadowForCalcuatorView];
     
     [self    setPullRefresh];
     [self  drawErrorViewInterFace];
@@ -610,14 +611,7 @@ static  int  requestCount = 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    NSString   *currency = [self.unitsArray  objectAtIndex:indexPath.row];
-    [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
-    [self.detailViewController  addbaseCurrencyList:currency withValue:[Util  readDefaultValue]];
-
 }
-
-
 
 
 - (void)selectedCurrecyCell:(NSIndexPath*)indexPath{
@@ -1713,15 +1707,29 @@ static  int  requestCount = 0;
 
 #pragma mark     设置添加 gif 动画
 - (void)setPullRefresh{
+
+    NSLog(@"%@",[Util   deviceName]);
     
     [self.changeTable   removePullToRefreshActionHandler];
     
     __weak typeof(self) weakSelf =self;
     
-    NSString  *progressImage = [[NSString  stringWithFormat:@"%@fangda",[Util takeColorString]]  stringByAppendingString:@"-2.gif"] ;
+    NSString  *progressImage = nil ;
+    NSString  *loadingImage = nil;
     
-    NSString  *loadingImage = [[NSString  stringWithFormat:@"%@",[Util takeColorString]]  stringByAppendingString:@"-2.gif"];
-    
+    if ([[Util  deviceName]  isEqualToString:@"iPad2,1"] || [[Util  deviceName]  isEqualToString:@"iPad1,1"] || [[Util  deviceName]  isEqualToString:@"iPad2,2"]) {
+        
+        progressImage = [[NSString  stringWithFormat:@"%@fangda",[Util takeColorString]]  stringByAppendingString:@"_33.gif"] ;
+        
+        loadingImage = [[NSString  stringWithFormat:@"%@",[Util takeColorString]]  stringByAppendingString:@"_33.gif"];
+        
+    }else{
+        progressImage = [[NSString  stringWithFormat:@"%@fangda",[Util takeColorString]]  stringByAppendingString:@"-2.gif"] ;
+        
+        loadingImage = [[NSString  stringWithFormat:@"%@",[Util takeColorString]]  stringByAppendingString:@"-2.gif"];
+
+    }
+
     [self.changeTable addPullToRefreshActionHandler:^{
         [weakSelf ratesAndCountryRequest];
     } ProgressImagesGifName:progressImage
@@ -1747,6 +1755,13 @@ static  int  requestCount = 0;
     [self.view  addSubview:self.errorView];
     self.errorView.hidden = YES;
     
+}
+
+
+- (void)addShadowForCalcuatorView{
+    [self.calcuatorView.layer  setShadowOffset:CGSizeMake(0,-0.5)];
+    [self.calcuatorView.layer setShadowRadius:0.25];
+    [self.calcuatorView.layer  setShadowOpacity:0.08];
 }
 
 

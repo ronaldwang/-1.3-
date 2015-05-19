@@ -136,5 +136,8 @@
 + (NSString*)takeCurrentIndex;
 
 
++ (NSString*) deviceName;
+
+
 
 @end

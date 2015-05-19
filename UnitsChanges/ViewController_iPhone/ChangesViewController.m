@@ -487,8 +487,6 @@ static  int  requestCount = 0;
 }
 
 
-
-
 // 获取所有的国家信息
 - (NSMutableArray*)takeAllCountryInfo{
     NSString  *pathString = [NSString  stringWithFormat:@"country"];
@@ -658,7 +656,6 @@ static  int  requestCount = 0;
     }
     int  result = (int)([self.changesResult  doubleValue]*100);
     if (flag == 0) {
-       
         NSString  *changesRate = [[Util  takeAllCountryInfor]  objectForKey:unit];
         NSString  *selectedRate = [[Util  takeAllCountryInfor]   objectForKey:[self.unitsArray objectAtIndex:self.indexPath.row]];
         if (result == 0) {
@@ -807,6 +804,7 @@ static  int  requestCount = 0;
         [alert  show];
 
     }
+    
   }
 
 
@@ -1073,7 +1071,6 @@ static  int  requestCount = 0;
     if (self.changesDic.allKeys.count != 0) {
         [Util  saveChangeDic:self.changesDic];
     }
-    
     [self.changesTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     self.indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [Util  saveSelectedIndex:self.indexPath];

@@ -30,6 +30,7 @@
 @interface SettingViewController ()<MFMailComposeViewControllerDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 {
     BOOL    isTaped;
+    BOOL   isEditting;
 }
 
 @property (nonatomic,retain) NSMutableString  *textFieldText;
@@ -128,6 +129,8 @@
     
     [self drawViewContraint];
     [self setViewContstraints];
+    
+    [self   addShadowForCalcuatorView];
     
     [self  addColorButtonsOnScrollview:self.colorArray];
 
@@ -316,7 +319,7 @@
 // App Store 评论
 - (void)praiseAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
+    if (isEditting) {
         [self  textFieldDone];
     }
     NSString *str = [NSString stringWithFormat:
@@ -328,7 +331,7 @@
 // 意见反馈--邮件
 - (void)mailAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
+    if (isEditting) {
         [self  textFieldDone];
     }
 
@@ -416,14 +419,13 @@
 //  设置小数点
 - (void)decimalsAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
+    if (isEditting) {
         [self  textFieldDone];
     }
-
     LanguageViewController    *languageVC = [[LanguageViewController  alloc ] initWithNibName:@"LanguageViewController" bundle:nil];
     languageVC.isLanguage = NO;
     [self.navigationController  pushViewController:languageVC animated:YES];
-
+    
 }
 
 // 设置语言
@@ -444,8 +446,8 @@
 //  设置主题颜色
 - (void)themeAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
+    if (isEditting) {
+        [self  textFieldDone];
     }
 
     isTaped  = !isTaped;
@@ -472,8 +474,8 @@
 // 升级版本-内购页面
 - (void)upgradeAction:(UITapGestureRecognizer*)sender{
     
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
+    if (isEditting) {
+        [self  textFieldDone];
     }
 
     AppPurcahseViewController  *appPurchase = [[AppPurcahseViewController  alloc ] initWithNibName:@"AppPurcahseViewController" bundle:nil];
@@ -532,8 +534,8 @@
 
 //   返回
 - (void)backAction:(UIButton*)sender{
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
+    if (isEditting) {
+        [self  textFieldDone];
     }
     [self   dismissViewControllerAnimated:YES completion:^{
     }];
@@ -762,8 +764,8 @@
 
 - (IBAction)tutorialAction:(UIButton *)sender {
     
-    if (self.defaultValueInputText.isEditing) {
-        [self textFieldDone];
+    if (isEditting) {
+        [self  textFieldDone];
     }
 
     TtpsViewController  *tipVC = [[TtpsViewController  alloc ] initWithNibName:@"TtpsViewController" bundle:nil];
@@ -808,6 +810,7 @@
     }else{
         self.defaultValueInputText.text = [Util readDefaultValue];
     }
+    [self   showOrHidenKeyBoard:NO];
 }
 
 
@@ -867,7 +870,7 @@
 - (IBAction)okButtonClick:(UIButton *)sender {
     [self   addPopAnaitionClickButton:sender];
     [self  textFieldDone];
-    [self   showOrHidenKeyBoard:NO];
+    
 }
 
 - (IBAction)clearClick:(UIButton *)sender {
@@ -877,6 +880,8 @@
 }
 
 - (void)showOrHidenKeyBoard:(BOOL)show{
+    
+    isEditting = show;
     
     POPBasicAnimation   *basicAnimation = [POPBasicAnimation animation];
     basicAnimation.property = [POPMutableAnimatableProperty  propertyWithName:kPOPLayoutConstraintConstant];
@@ -928,6 +933,13 @@
     [button.layer pop_addAnimation:scaleAnimation forKey:@"scale"];
     [button.titleLabel  pop_addAnimation:colcorAnimation forKey:@"pop"];
     
+}
+
+
+- (void)addShadowForCalcuatorView{
+    [self.keyBoardView.layer  setShadowOffset:CGSizeMake(0,-0.5)];
+    [self.keyBoardView.layer setShadowRadius:0.25];
+    [self.keyBoardView.layer  setShadowOpacity:0.08];
 }
 
 

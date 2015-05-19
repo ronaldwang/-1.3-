@@ -14,6 +14,8 @@
 #import "Util.h"
 #import "BaseValueView.h"
 
+#import "AppPurcahseViewController.h"
+
 #import <pop/POP.h>
 
 @interface SplitDetailViweController ()<BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
@@ -51,6 +53,8 @@
 
 @property (nonatomic,retain) NSMutableArray  *currencyArray;
 @property (nonatomic,retain) NSMutableArray  *keepArray;
+
+@property  (nonatomic,retain) NSString  *timeString;
 
 // 基准
 
@@ -232,6 +236,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+     self.timeString = [NSString stringWithFormat:@"2018-01-01"];
 
     self.arrayOfValues = [NSMutableArray  array];
     self.arrayOfDates = [NSMutableArray  array];
@@ -254,6 +260,8 @@
     self.currencyInfor = [self  takeCurrencyInfor];
 
     [self  addobserverForSpliDetail];
+    
+    [self  takeScheduledTimeRequest];
     
 }
 
@@ -378,6 +386,16 @@
 
 - (void)swipeAction:(UISwipeGestureRecognizer*)sender{
     
+    NSString  *productIdPlus = @"plus";
+    NSString  *productIdChart = @"chart";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL  is_buy = [[defaults  objectForKey:productIdPlus]  boolValue];
+    BOOL  is_chart = [[defaults  objectForKey:productIdChart]  boolValue];
+    
+    if (!is_buy && !is_chart) {
+        return;
+    }
+    
     UISwipeGestureRecognizer  *swipe = sender;
     if (swipe.direction == UISwipeGestureRecognizerDirectionLeft) {
         if (indexButton > 0 && indexButton<= 5) {
@@ -432,13 +450,11 @@
     }
     
     self.keepArray = self.currencyArray;
-    
-   
 }
 
 
 - (void)drawCurrencyTableInterFace{
-    
+
     int  selectedaCount = (int)[Util  takeSelectedCountry].count;
     if (selectedaCount >= 4) {
         height = 120;
@@ -462,66 +478,124 @@
     
     [self.currencyTable.layer  setBorderWidth:1.0f];
     [self.currencyTable.layer setCornerRadius:8.0f];
-    [self.currencyTable.layer setBorderColor:[Util  shareInstance].themeColor.CGColor];
-    
+    [self.currencyTable.layer setBorderColor:[UIColor  whiteColor].CGColor];
     
     UIButton  * button = (UIButton*)[self.topItemView  viewWithTag:20150507];
     [button  setImage:[[UIImage  imageNamed:@"refresh.png"]  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [button  setTintColor:[Util  colorWithHexString:@"#434343"]];
     
-    
 }
 
 - (IBAction)chooseCurrencyAction:(UIButton*)sender{
     
-    if (sender == leftCurrencyBut) {
-        if (!isLeftSelected) {
-            isLeftSelected = YES;
-            isRightSelected = NO;
+    NSString  *productIdPlus = @"plus";
+    NSString  *productIdChart = @"chart";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL  is_buy = [[defaults  objectForKey:productIdPlus]  boolValue];
+    BOOL  is_chart = [[defaults  objectForKey:productIdChart]  boolValue];
+    
+    if (is_buy || is_chart) {
+        
+        if (sender == leftCurrencyBut) {
+            if (!isLeftSelected) {
+                isLeftSelected = YES;
+                isRightSelected = NO;
+            }
+            leftCount ++;
+            rightCount = 0;
+            self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 - 102,43, 40, 1);
+        }else{
+            
+            if (!isRightSelected) {
+                isRightSelected = YES;
+                isLeftSelected = NO;
+            }
+            rightCount ++;
+            leftCount = 0;
+            self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 + 58,43, 40, 1);
         }
-        leftCount ++;
-        rightCount = 0;
-        self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 - 102,43, 40, 1);
+        
+        [self  takeOutCurrentCurrency:sender.titleLabel.text];
+        
+        POPBasicAnimation  *basicAnimation = [POPBasicAnimation   animation];
+        basicAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPViewFrame];
+        basicAnimation.duration = 0.25;
+        
+        if (isLeftSelected) {
+            if (leftCount%2 == 1) {
+                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,40, 1)];
+                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, height)];
+                self.currencyTable.hidden = NO;
+            }else{
+                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,40, height)];
+                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, 1)];
+                self.currencyTable.hidden = YES;
+            }
+        }else if (isRightSelected){
+            if (rightCount%2 == 1) {
+                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,40, 1)];
+                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 40, height)];
+                self.currencyTable.hidden = NO;
+            }else{
+                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,40, height)];
+                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 40, 1)];
+                self.currencyTable.hidden = YES;
+            }
+        }
+        [self.currencyTable   pop_addAnimation:basicAnimation forKey:@"CurrencyTableFrame"];
+        
     }else{
         
-        if (!isRightSelected) {
-            isRightSelected = YES;
-            isLeftSelected = NO;
-        }
-        rightCount ++;
-        leftCount = 0;
-        self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 + 58,43, 40, 1);
+        UIAlertView  *alert = [[UIAlertView  alloc ] initWithTitle:LOCALIZATION(@"UpgradeAlert_Title") message:LOCALIZATION(@"UpgradeAlert_Message") delegate:self cancelButtonTitle:LOCALIZATION(@"UpgradeAlert_CancleButton") otherButtonTitles:LOCALIZATION(@"UpgradeAlert_SureButton"), nil];
+        [alert  show];
+        
     }
-    
-    [self  takeOutCurrentCurrency:sender.titleLabel.text];
-    
-    POPBasicAnimation  *basicAnimation = [POPBasicAnimation   animation];
-    basicAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPViewFrame];
-    basicAnimation.duration = 0.25;
-    
-    if (isLeftSelected) {
-        if (leftCount%2 == 1) {
-            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,40, 1)];
-            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, height)];
-            self.currencyTable.hidden = NO;
-        }else{
-            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,40, height)];
-            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, 1)];
-            self.currencyTable.hidden = YES;
-        }
-    }else if (isRightSelected){
-        if (rightCount%2 == 1) {
-            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,40, 1)];
-            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 40, height)];
-            self.currencyTable.hidden = NO;
-        }else{
-            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,40, height)];
-            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 40, 1)];
-            self.currencyTable.hidden = YES;
-        }
-    }
-    [self.currencyTable   pop_addAnimation:basicAnimation forKey:@"CurrencyTableFrame"];
 }
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if ([alertView.message   isEqualToString:LOCALIZATION(@"UpgradeAlert_Message")]) {
+        if (buttonIndex == 1) {
+            AppPurcahseViewController  *appPurchase = [[AppPurcahseViewController  alloc ] initWithNibName:@"AppPurcahseViewController" bundle:nil];
+            self.navigationController.navigationBarHidden = NO;
+            [self.navigationController  pushViewController:appPurchase animated:YES];
+        }else{
+            
+            NSString  *productIdPlus = @"plus";
+            NSString  *productIdChart = @"chart";
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            BOOL  is_buy = [[defaults  objectForKey:productIdPlus]  boolValue];
+            BOOL  is_chart = [[defaults  objectForKey:productIdChart]  boolValue];
+            
+            if (!is_chart && !is_buy) {
+                BOOL    isExpire = [Util takeTimeDifference:self.timeString];
+                if (isExpire) {
+                    UIAlertView  *alertView = [[UIAlertView alloc ] initWithTitle:LOCALIZATION(@"AppPurchaseFreeAlert_Title") message:LOCALIZATION(@"AppPurchaseFreeAlert_Message") delegate:self cancelButtonTitle:nil otherButtonTitles:LOCALIZATION(@"AppPurchaseFreeAlert_RateButton"),LOCALIZATION(@"AppPurchaseFreeAlert_CancleButton"), nil];
+                    alertView.cancelButtonIndex = 1;
+                    [alertView show];
+                }
+            }
+        }
+    }else{
+        
+        if (buttonIndex == 0) {
+            NSString *str = [NSString stringWithFormat:
+                             @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=946607423&pageNumber=0&sortOrdering=1&type=Purple+Software&mt=8"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            
+            for (NSString *product in @[@"plus",@"chart"]) {
+                [Util  saveAppPurchaseStateWithProductID:product];
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setBool:YES forKey:product];
+                [defaults synchronize];
+            }
+
+        }
+    }
+}
+
+
 
 - (void)takeOutCurrentCurrency:(NSString*)currency{
     
@@ -747,6 +821,28 @@
         }
     }
     return inforDic;
+}
+
+
+
+- (void)takeScheduledTimeRequest{
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString  *urlString = [NSString stringWithFormat:@"%s","http://121.40.203.232:8080/FetationWeb/apptime/time"];
+        NSURL  *url = [NSURL  URLWithString:urlString];
+        NSURLRequest  *request = [NSURLRequest  requestWithURL:url];
+        NSError  *error = nil;
+        NSData  *receiveData = [NSURLConnection  sendSynchronousRequest:request returningResponse:nil error:&error];
+        if (receiveData != nil || error == nil) {
+            NSDictionary  *dataDic = [NSJSONSerialization  JSONObjectWithData:receiveData options:NSJSONReadingMutableContainers error:&error];
+            if (error== nil) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    self.timeString = [dataDic  objectForKey:@"updatetime"];
+                });
+            }
+        }
+    });
+    
 }
 
 

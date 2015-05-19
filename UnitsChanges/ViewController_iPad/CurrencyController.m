@@ -47,6 +47,7 @@
     
     // The table view controller is in a nav controller, and so the containing nav controller is the 'search results controller'
     UINavigationController *searchResultsController = [[self storyboard] instantiateViewControllerWithIdentifier:@"TableSearchResultsNavController"];
+    searchResultsController.navigationBar.barTintColor = [UIColor  whiteColor];
     
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:searchResultsController];
     

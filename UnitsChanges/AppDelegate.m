@@ -44,11 +44,13 @@
         splitViewController.maximumPrimaryColumnWidth = 400; // 调整SplitViewController分割的宽度
         
         UINavigationController *detailNavigationController = [splitViewController.viewControllers objectAtIndex:1];
+        detailNavigationController.navigationBar.barTintColor = [UIColor  whiteColor];
         
         SplitDetailViweController *detailViewController = [detailNavigationController.viewControllers firstObject];
         splitViewController.delegate = detailViewController;
 
         UINavigationController *masterNavigationController = [splitViewController.viewControllers firstObject];
+        masterNavigationController.navigationBar.barTintColor = [UIColor  whiteColor];
         ChangesViewController_Pad *masterViewController = [masterNavigationController.viewControllers firstObject];
         masterViewController.detailViewController = detailViewController;
 
@@ -236,7 +238,6 @@
     }];
 }
 
-
 -(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
     
@@ -274,9 +275,6 @@
 
 - (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void(^)(NSDictionary *replyInfo))reply{
     
-    UINavigationController  *nv = (UINavigationController*)self.window.rootViewController;
-    ChangesViewController *changesVc = (ChangesViewController*)nv.visibleViewController;
-
     if ([[userInfo  objectForKey:@"infor" ]  isEqualToString:@"request"]) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -295,24 +293,12 @@
                         [Util  saveRequestDate:[Util  changeDateToStringWith:[NSDate  date]]];
                         [Util saveTextByNSUserDefaults:[Util  deaWithRequestData:[dataDic  objectForKey:@"list"]]];
                         [Util  saveAllCountryInfor:[Util  deaWithRequestData:[dataDic  objectForKey:@"list"]]];
-                        
-                        if ([changesVc  respondsToSelector:@selector(resetNumberUnderMove:)]) {
-                            changesVc.rateDic = [NSMutableDictionary  dictionaryWithDictionary:[Util  deaWithRequestData:[dataDic  objectForKey:@"list"]]];
-                            
-                            [changesVc   resetNumberUnderMove:nil];
-                            [changesVc.changesTableView  reloadData];
-                        }
-                
-                    });
+                });
                 }
             }
         });
     }else{
         reply(@{@"TextInput":@"app has received inputText"});
-        if ([changesVc  respondsToSelector:@selector(resetNumberUnderMove:)]) {
-            [changesVc   resetNumberUnderMove:nil];
-            [changesVc.changesTableView  reloadData];
-        }
     }
     
 }

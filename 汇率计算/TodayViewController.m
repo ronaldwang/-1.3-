@@ -57,17 +57,31 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
 
-@property (weak, nonatomic) IBOutlet UIButton *leftCountry;
-@property (weak, nonatomic) IBOutlet UIButton *rightCountry;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *topButton;
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *currencyLable_one;
+@property (weak, nonatomic) IBOutlet UILabel *currencyLable_two;
+
 @property (weak, nonatomic) IBOutlet UILabel *currencyLable_three;
 @property (weak, nonatomic) IBOutlet UILabel *currencyLable_four;
 @property (weak, nonatomic) IBOutlet UILabel *valueLable_three;
 @property (weak, nonatomic) IBOutlet UILabel *valueLable_four;
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *currecnyFlag_1;
+
+@property (weak, nonatomic) IBOutlet UIImageView *currecnyFlag_2;
+
+@property (weak, nonatomic) IBOutlet UIImageView *currecnyFlag_3;
+
+@property (weak, nonatomic) IBOutlet UIImageView *currecnyFlag_4;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backButtonVerticalConstraint;
+
+
 
 @end
 
@@ -84,6 +98,7 @@
             self.appButton.hidden = YES;
             self.refreshButton.hidden = YES;
             self.expandButton.hidden = NO;
+            self.preferredContentSize = CGSizeMake(self.preferredContentSize.width, self.backButtonVerticalConstraint.constant + 40 + 210);
         }];
     }else{
         [UIView  animateWithDuration:0.2 animations:^{
@@ -92,6 +107,7 @@
             self.appButton.hidden = NO;
             self.refreshButton.hidden = NO;
             self.expandButton.hidden = YES;
+            self.preferredContentSize = CGSizeMake(self.preferredContentSize.width, self.backButtonVerticalConstraint.constant + 40);
         } completion:^(BOOL finished) {
             self.isExpand = NO;
         }];
@@ -163,6 +179,7 @@
     self.viewHeightConstraint.constant = 0.0;
     self.calculateView.hidden = YES;
     self.expandButton.hidden = YES;
+    
 
     BOOL  isAppPurchase = NO;
     
@@ -192,8 +209,12 @@
     
     self.currencyLable_four.hidden = isAppPurchase;
     self.valueLable_four.hidden = isAppPurchase;
+    self.currecnyFlag_4.hidden = isAppPurchase;
+    
     self.currencyLable_three.hidden = isAppPurchase;
     self.valueLable_three.hidden = isAppPurchase;
+    self.currecnyFlag_3.hidden = isAppPurchase;
+    
     
     UIButton  *button = (UIButton*)[self.view  viewWithTag:20150303];
     button.hidden = isAppPurchase;
@@ -208,10 +229,12 @@
     imageView.hidden = isAppPurchase;
 
     if (isAppPurchase) {
-        self.backButtonVerticalConstraint.constant =  60;
+        self.backButtonVerticalConstraint.constant =  110;
     }else{
-        self.backButtonVerticalConstraint.constant =  126;
+        self.backButtonVerticalConstraint.constant =  190;
     }
+    
+    self.preferredContentSize = CGSizeMake(self.preferredContentSize.width, self.backButtonVerticalConstraint.constant + 40);
 }
 
 
@@ -245,13 +268,13 @@
     NSString  *colorString = [Util  readColorString];
     if (colorString == nil ) {
         self.topLable.textColor =[UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0];
-        [self.rightCountry  setTitleColor:[UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0] forState:UIControlStateNormal];
+        self.currencyLable_one.textColor = [UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0];
     }else{
         self.topLable.textColor = [Util  colorWithHexString:[Util  readColorString]];
-        [self.rightCountry  setTitleColor:[Util  colorWithHexString:[Util  readColorString]] forState:UIControlStateNormal];
+        self.currencyLable_one.textColor =  [Util  colorWithHexString:[Util  readColorString]];
     }
     
-    [self.leftCountry setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.currencyLable_two.textColor = [UIColor whiteColor];
     self.bottomLable.textColor = [UIColor whiteColor];
     self.currencyLable_three.textColor = [UIColor  whiteColor];
     self.valueLable_three.textColor = [UIColor  whiteColor];
@@ -274,14 +297,14 @@
     NSString  *colorString = [Util  readColorString];
     if (colorString == nil ) {
         self.bottomLable.textColor =[UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0];
-        [self.leftCountry  setTitleColor:[UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0] forState:UIControlStateNormal];
+        self.currencyLable_two.textColor = [UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0];
     }else{
         self.bottomLable.textColor = [Util  colorWithHexString:[Util  readColorString]];
-        [self.leftCountry  setTitleColor:[Util  colorWithHexString:[Util  readColorString]] forState:UIControlStateNormal];
+        self.currencyLable_two.textColor = [Util  colorWithHexString:[Util  readColorString]];
     }
     
     self.topLable.textColor = [UIColor whiteColor];
-    [self.rightCountry setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.currencyLable_one.textColor = [UIColor  whiteColor];
     
     self.currencyLable_three.textColor = [UIColor  whiteColor];
     self.valueLable_three.textColor = [UIColor  whiteColor];
@@ -313,17 +336,16 @@
     }
     
     self.topLable.textColor = [UIColor whiteColor];
-    [self.rightCountry setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.currencyLable_one.textColor = [UIColor  whiteColor];
     
     self.bottomLable.textColor = [UIColor whiteColor];
-    [self.leftCountry  setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.currencyLable_two.textColor = [UIColor  whiteColor];
     
     self.currencyLable_four.textColor = [UIColor whiteColor];
     self.valueLable_four.textColor = [UIColor whiteColor];
     
     [self  resetLable];
 
-    
 }
 
 - (IBAction)fourButtonAction:(UIButton *)sender {
@@ -346,10 +368,10 @@
     }
     
     self.topLable.textColor = [UIColor whiteColor];
-    [self.rightCountry setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.currencyLable_one.textColor = [UIColor  whiteColor];
     
     self.bottomLable.textColor = [UIColor whiteColor];
-    [self.leftCountry  setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.currencyLable_two.textColor = [UIColor  whiteColor];
     
     self.currencyLable_three.textColor = [UIColor whiteColor];
     self.valueLable_three.textColor = [UIColor whiteColor];
@@ -394,8 +416,8 @@
     isAppPurchase = (is_buy || is_chart);
 
     if (selectCount == 0) {
-        [self.leftCountry  setTitle:@"USD" forState:UIControlStateNormal];
-        [self.rightCountry setTitle:@"CNY" forState:UIControlStateNormal];
+        self.currencyLable_one.text = @"USD";
+        self.currencyLable_two.text = @"CNY";
     }else if(selectCount == 1){
         NSString  *first = [selcetCountry  objectAtIndex:0];
         NSString  *second = nil;
@@ -406,14 +428,15 @@
         }else{
             second = [[NSLocale  currentLocale]   objectForKey:NSLocaleCurrencyCode];
         }
-        [self.leftCountry  setTitle:first  forState:UIControlStateNormal];
-        [self.rightCountry setTitle:second forState:UIControlStateNormal];
+        self.currencyLable_one.text = first;
+        self.currencyLable_two.text = second;
     }else if (selectCount ==  2){
-        [self.leftCountry  setTitle:[selcetCountry  objectAtIndex:1] forState:UIControlStateNormal];  //  USD
-        [self.rightCountry setTitle:[selcetCountry  objectAtIndex:0] forState:UIControlStateNormal]; //   CNY
+        self.currencyLable_one.text = [selcetCountry  objectAtIndex:0] ;
+        self.currencyLable_two.text = [selcetCountry  objectAtIndex:1];
+        
     }else{
-        [self.leftCountry  setTitle:[selcetCountry  objectAtIndex:1] forState:UIControlStateNormal];  //  USD
-        [self.rightCountry setTitle:[selcetCountry  objectAtIndex:0] forState:UIControlStateNormal]; //   CNY
+        self.currencyLable_one.text = [selcetCountry  objectAtIndex:0] ;
+        self.currencyLable_two.text = [selcetCountry  objectAtIndex:1];
     }
     
     if (isAppPurchase) {
@@ -423,8 +446,8 @@
         }
         
         if(selectCount == 3){
-            [self.leftCountry  setTitle:[selcetCountry  objectAtIndex:1] forState:UIControlStateNormal];  //  USD
-            [self.rightCountry setTitle:[selcetCountry  objectAtIndex:0] forState:UIControlStateNormal]; //   CNY
+            self.currencyLable_one.text = [selcetCountry  objectAtIndex:0] ;
+            self.currencyLable_two.text = [selcetCountry  objectAtIndex:1];
             self.currencyLable_three.text = [selcetCountry  objectAtIndex:2];
             
             self.currencyLable_four.hidden = YES;
@@ -433,11 +456,12 @@
             button.hidden = YES;
             UIImageView  *imageView = (UIImageView*)[self.view  viewWithTag:20150305];
             imageView.hidden = YES;
-            self.backButtonVerticalConstraint.constant =  90;
+            self.backButtonVerticalConstraint.constant =  140;
+            self.preferredContentSize = CGSizeMake(self.preferredContentSize.width, self.backButtonVerticalConstraint.constant + 40);
         
         }else if(selectCount > 3){
-            [self.leftCountry  setTitle:[selcetCountry  objectAtIndex:1] forState:UIControlStateNormal];  //  USD
-            [self.rightCountry setTitle:[selcetCountry  objectAtIndex:0] forState:UIControlStateNormal]; //   CNY
+            self.currencyLable_one.text = [selcetCountry  objectAtIndex:0] ;
+            self.currencyLable_two.text = [selcetCountry  objectAtIndex:1];
             self.currencyLable_three.text = [selcetCountry  objectAtIndex:2];
             self.currencyLable_four.text = [selcetCountry  objectAtIndex:3];
         }
@@ -451,9 +475,9 @@
         result = [Util  readDefaultValue];
     }
     // bottom
-    CGFloat rateTwo = [[self.rateDic objectForKey:self.leftCountry.titleLabel.text]  floatValue];
+    CGFloat rateTwo = [[self.rateDic objectForKey:self.currencyLable_two.text]  floatValue];
     // top
-    CGFloat  rateOne = [[self.rateDic objectForKey:self.rightCountry.titleLabel.text]  floatValue];
+    CGFloat  rateOne = [[self.rateDic objectForKey:self.currencyLable_one.text]  floatValue];
     // three
     CGFloat rateThree = [[self.rateDic objectForKey:self.currencyLable_three.text]  floatValue];
     // four
@@ -463,10 +487,10 @@
         
         if (colorString == nil ) {
             self.topLable.textColor =[UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0];
-            [self.rightCountry  setTitleColor:[UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0] forState:UIControlStateNormal];
+            self.currencyLable_one.textColor = [UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0];
         }else{
             self.topLable.textColor = [Util  colorWithHexString:[Util  readColorString]];
-            [self.rightCountry  setTitleColor:[Util  colorWithHexString:[Util  readColorString]] forState:UIControlStateNormal];
+            self.currencyLable_one.textColor = [Util  colorWithHexString:[Util  readColorString]];
         }
 
         self.topLable.text = [Util numberFormatterSetting:result withFractionDigits:4 withInput:YES];
@@ -478,10 +502,10 @@
         
         if (colorString == nil ) {
             self.bottomLable.textColor =[UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0];
-            [self.leftCountry  setTitleColor:[UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0] forState:UIControlStateNormal];
+            self.currencyLable_two.textColor = [UIColor colorWithRed:26/255.0 green:183/255.0 blue:234/255.0 alpha:1.0];
         }else{
             self.bottomLable.textColor = [Util  colorWithHexString:[Util  readColorString]];
-            [self.leftCountry  setTitleColor:[Util  colorWithHexString:[Util  readColorString]] forState:UIControlStateNormal];
+            self.currencyLable_two.textColor = [Util  colorWithHexString:[Util  readColorString]];
         }
 
          self.bottomLable.text = [Util numberFormatterSetting:result withFractionDigits:4 withInput:YES];
@@ -523,6 +547,12 @@
         self.valueLable_three.text = [self takeCurrcncyValueBy:[Util  numberFormatterForFloat:self.topLable.text] andRate1:rateThree andRate2:rateOne];
         self.valueLable_four.text = [self takeCurrcncyValueBy:[Util  numberFormatterForFloat:self.topLable.text] andRate1:rateFour andRate2:rateOne];
     }
+    
+    
+    self.currecnyFlag_1.image = [UIImage  imageNamed:[NSString  stringWithFormat:@"%@.png",self.currencyLable_one.text]];
+    self.currecnyFlag_2.image = [UIImage  imageNamed:[NSString  stringWithFormat:@"%@.png",self.currencyLable_two.text]];
+    self.currecnyFlag_3.image = [UIImage  imageNamed:[NSString  stringWithFormat:@"%@.png",self.currencyLable_three.text]];
+     self.currecnyFlag_4.image = [UIImage  imageNamed:[NSString  stringWithFormat:@"%@.png",self.currencyLable_four.text]];
 }
 
 #pragma  mak
@@ -541,8 +571,8 @@
 //   计算汇率
 - (void)calculateChanges:(NSString*)result{
     
-    CGFloat rateTwo = [[self.rateDic objectForKey:self.leftCountry.titleLabel.text]  floatValue];
-    CGFloat  rateOne = [[self.rateDic objectForKey:self.rightCountry.titleLabel.text]  floatValue];
+    CGFloat rateTwo = [[self.rateDic objectForKey:self.currencyLable_two.text]  floatValue];
+    CGFloat  rateOne = [[self.rateDic objectForKey:self.currencyLable_one.text]  floatValue];
     CGFloat rateThree = [[self.rateDic objectForKey:self.currencyLable_three.text]  floatValue];
     CGFloat  rateFour = [[self.rateDic objectForKey:self.currencyLable_four.text]  floatValue];
     
