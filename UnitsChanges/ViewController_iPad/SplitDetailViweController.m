@@ -633,6 +633,7 @@
     
     if (self.arrayOfDates.count != 0 && self.arrayOfValues.count != 0) {
         [self.myGraphView  reloadGraph];
+         [self  performSelector:@selector(findOutMaxAndMinValue) withObject:nil afterDelay:2.55];
     }
     
 }
@@ -646,13 +647,6 @@
     NSString  *min =  [NSString stringWithFormat:@"L:%.4f",minimumValue];
     self.maxValueLable.text = [NSString  stringWithFormat:@"%@    %@",max,min];
     
-}
-
-
-#pragma mark
-#pragma mark     BEMSimpleLineGraphDelegate
-- (void)lineGraphDidFinishLoading:(BEMSimpleLineGraphView *)graph{
-    [self  findOutMaxAndMinValue];
 }
 
 
@@ -686,6 +680,7 @@
 }
 
 - (void)lineGraph:(BEMSimpleLineGraphView *)graph didTouchGraphWithClosestIndex:(NSInteger)index {
+    
     if (self.arrayOfDates.count != 0 && self.arrayOfValues.count != 0) {
         if (index < self.arrayOfDates.count) {
             datestring = [self  changeDateFormat:[self.arrayOfDates  objectAtIndex:index]];

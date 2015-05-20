@@ -36,6 +36,9 @@
     // 友盟
     [self umengTrack];
     [self  takeLocaleLanguage];
+    //   fetch background
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     
     if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
         
@@ -55,8 +58,7 @@
 
     }else{
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        //   fetch background
-        [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+        
         //  摇一摇
         [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -286,7 +288,6 @@
                 NSDictionary  *dataDic = [NSJSONSerialization  JSONObjectWithData:receiveData options:NSJSONReadingMutableContainers error:&error];
                 if (error== nil) {
                     dispatch_sync(dispatch_get_main_queue(), ^{
-                        
                          reply(@{@"appData":[Util  deaWithRequestData:[dataDic  objectForKey:@"list"]]});
                         [Util  saveRequestDate:[Util  changeDateToStringWith:[NSDate  date]]];
                         [Util saveTextByNSUserDefaults:[Util  deaWithRequestData:[dataDic  objectForKey:@"list"]]];

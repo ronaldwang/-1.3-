@@ -495,7 +495,7 @@
     
     if (self.arrayOfDates.count != 0 && self.arrayOfValues.count != 0) {
         [self.myGraphView  reloadGraph];
-        [self  performSelector:@selector(findOutMaxAndMinValue) withObject:nil afterDelay:1.55];
+        [self  performSelector:@selector(findOutMaxAndMinValue) withObject:nil afterDelay:2.55];
     }
     
 }
@@ -559,10 +559,6 @@
     }];
 }
 
-
-- (void)lineGraphDidFinishLoading:(BEMSimpleLineGraphView *)graph {
-    
-}
 
 - (NSString *)popUpSuffixForlineGraph:(BEMSimpleLineGraphView *)graph {
     
