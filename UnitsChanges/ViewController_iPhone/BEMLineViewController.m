@@ -352,16 +352,10 @@
 
 - (void)drawCurrencyTableInterFace{
     
-    int  selectedaCount = (int)[Util  takeSelectedCountry].count;
-    if (selectedaCount >= 4) {
-        height = 120;
-    }else if (selectedaCount >= 2 && selectedaCount<4){
-        height = 30*selectedaCount;
-    }else{
-        height = 60;
-    }
+    int  selectedaCount = (int)[Util  takeSelectedCountry].count - 1;
+    height = 30*selectedaCount;
     
-    self.currencyTable = [[UITableView alloc ] initWithFrame:CGRectMake(self.view.frame.size.width/2-30,43, 40, height) style:UITableViewStylePlain];
+    self.currencyTable = [[UITableView alloc ] initWithFrame:CGRectMake(self.view.frame.size.width/2-30,45, 40, height) style:UITableViewStylePlain];
     self.currencyTable.dataSource = self;
     self.currencyTable.delegate = self;
     self.currencyTable.userInteractionEnabled = YES;
@@ -406,7 +400,7 @@
         }
         leftCount ++;
         rightCount = 0;
-        self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 - 64,43, 40, 1);
+        self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 - 64,45, 40, 1);
     }else{
         
         if (!isRightSelected) {
@@ -415,7 +409,7 @@
         }
         rightCount ++;
         leftCount = 0;
-        self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 + 26,43, 40, 1);
+        self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 + 26,45, 40, 1);
     }
 
    [self  takeOutCurrentCurrency:sender.titleLabel.text];
@@ -426,22 +420,22 @@
     
     if (isLeftSelected) {
         if (leftCount%2 == 1) {
-            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,40, 1)];
-            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, height)];
+            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,45,40, 1)];
+            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,45, 40, height)];
              self.currencyTable.hidden = NO;
         }else{
-            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,40, height)];
-            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, 1)];
+            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,45,40, height)];
+            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,45, 40, 1)];
              self.currencyTable.hidden = YES;
         }
     }else if (isRightSelected){
         if (rightCount%2 == 1) {
-            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,40, 1)];
-            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 40, height)];
+            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 45,40, 1)];
+            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 45, 40, height)];
             self.currencyTable.hidden = NO;
         }else{
-            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,40, height)];
-            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 40, 1)];
+            basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 45,40, height)];
+            basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 45, 40, 1)];
             self.currencyTable.hidden = YES;
         }
     }
@@ -547,8 +541,12 @@
 
 - (void)lineGraph:(BEMSimpleLineGraphView *)graph didTouchGraphWithClosestIndex:(NSInteger)index {
     if (self.arrayOfDates.count != 0 && self.arrayOfValues.count != 0) {
-        datestring = [self  changeDateFormat:[self.arrayOfDates  objectAtIndex:index]];
-        valuestring = [self.arrayOfValues  objectAtIndex:index];
+        if (index < self.arrayOfDates.count) {
+            datestring = [self  changeDateFormat:[self.arrayOfDates  objectAtIndex:index]];
+        }
+        if (index < self.arrayOfValues.count) {
+            valuestring = [self.arrayOfValues  objectAtIndex:index];
+        }
     }
   }
 
@@ -628,8 +626,8 @@
     POPBasicAnimation  *basicAnimation = [POPBasicAnimation   animation];
     basicAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPViewFrame];
     basicAnimation.duration = 0.25;
-    basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, height)];
-    basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, 1)];
+    basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,45, 40, height)];
+    basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,45, 40, 1)];
     basicAnimation.completionBlock =^(POPAnimation *anim, BOOL finished) {
         if (finished) {
             self.currencyTable.hidden = YES;

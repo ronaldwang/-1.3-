@@ -779,8 +779,9 @@
 #pragma mark   UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    
-    [self  showOrHidenKeyBoard:YES];
+    if (isEditting == NO) {
+         [self  showOrHidenKeyBoard:YES];
+    }
     return NO;
 
 }

@@ -908,7 +908,7 @@
                         }
                     }
                 }
-                
+    
             }else {
                 isBackDelete = NO;
             }
@@ -1117,7 +1117,7 @@
     edgeInsets.bottom =  0.0;
     edgeInsets.top = 0.0;
     edgeInsets.right = 0.0;
-    edgeInsets.left = 0.0;
+//  edgeInsets.left = 0.0;
     return edgeInsets;
 }
 
@@ -1127,8 +1127,5 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
 }
-
-
-
 
 @end

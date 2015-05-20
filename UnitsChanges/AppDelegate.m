@@ -47,8 +47,7 @@
         detailNavigationController.navigationBar.barTintColor = [UIColor  whiteColor];
         
         SplitDetailViweController *detailViewController = [detailNavigationController.viewControllers firstObject];
-        splitViewController.delegate = detailViewController;
-
+        
         UINavigationController *masterNavigationController = [splitViewController.viewControllers firstObject];
         masterNavigationController.navigationBar.barTintColor = [UIColor  whiteColor];
         ChangesViewController_Pad *masterViewController = [masterNavigationController.viewControllers firstObject];
@@ -289,7 +288,6 @@
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         
                          reply(@{@"appData":[Util  deaWithRequestData:[dataDic  objectForKey:@"list"]]});
-                        
                         [Util  saveRequestDate:[Util  changeDateToStringWith:[NSDate  date]]];
                         [Util saveTextByNSUserDefaults:[Util  deaWithRequestData:[dataDic  objectForKey:@"list"]]];
                         [Util  saveAllCountryInfor:[Util  deaWithRequestData:[dataDic  objectForKey:@"list"]]];

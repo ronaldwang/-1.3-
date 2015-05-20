@@ -276,8 +276,6 @@
 }
 
 
-
-
 - (void)viewWillAppear:(BOOL)animated{
     [self  drawNav];
     [self setPropretyForGraphView];
@@ -455,22 +453,16 @@
 
 - (void)drawCurrencyTableInterFace{
 
-    int  selectedaCount = (int)[Util  takeSelectedCountry].count;
-    if (selectedaCount >= 4) {
-        height = 120;
-    }else if (selectedaCount >= 2 && selectedaCount<4){
-        height = 30*selectedaCount;
-    }else{
-        height = 60;
-    }
+    int  selectedaCount = (int)[Util  takeSelectedCountry].count - 1;
+    height = 30*selectedaCount;
     
-    self.currencyTable = [[UITableView alloc ] initWithFrame:CGRectMake(self.view.frame.size.width/2-102,43, 40, height) style:UITableViewStylePlain];
+    self.currencyTable = [[UITableView alloc ] initWithFrame:CGRectMake(self.view.frame.size.width/2-102,43, 45, height) style:UITableViewStylePlain];
     self.currencyTable.dataSource = self;
     self.currencyTable.delegate = self;
     self.currencyTable.userInteractionEnabled = YES;
     self.currencyTable.scrollEnabled = YES;
     self.currencyTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.currencyTable.showsVerticalScrollIndicator = NO;
+    self.currencyTable.showsVerticalScrollIndicator = YES;
     self.currencyTable.backgroundColor = [UIColor  whiteColor];
     [self.view  addSubview:self.currencyTable];
     [self.view  bringSubviewToFront:self.currencyTable];
@@ -478,7 +470,7 @@
     
     [self.currencyTable.layer  setBorderWidth:1.0f];
     [self.currencyTable.layer setCornerRadius:8.0f];
-    [self.currencyTable.layer setBorderColor:[UIColor  whiteColor].CGColor];
+    [self.currencyTable.layer setBorderColor:[UIColor  clearColor].CGColor];
     
     UIButton  * button = (UIButton*)[self.topItemView  viewWithTag:20150507];
     [button  setImage:[[UIImage  imageNamed:@"refresh.png"]  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
@@ -503,7 +495,7 @@
             }
             leftCount ++;
             rightCount = 0;
-            self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 - 102,43, 40, 1);
+            self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 - 102,43, 45, 1);
         }else{
             
             if (!isRightSelected) {
@@ -512,7 +504,7 @@
             }
             rightCount ++;
             leftCount = 0;
-            self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 + 58,43, 40, 1);
+            self.currencyTable.frame = CGRectMake(self.view.frame.size.width/2 + 58,43, 45, 1);
         }
         
         [self  takeOutCurrentCurrency:sender.titleLabel.text];
@@ -523,22 +515,22 @@
         
         if (isLeftSelected) {
             if (leftCount%2 == 1) {
-                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,40, 1)];
-                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, height)];
+                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,45, 1)];
+                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 45, height)];
                 self.currencyTable.hidden = NO;
             }else{
-                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,40, height)];
-                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, 1)];
+                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43,45, height)];
+                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 45, 1)];
                 self.currencyTable.hidden = YES;
             }
         }else if (isRightSelected){
             if (rightCount%2 == 1) {
-                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,40, 1)];
-                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 40, height)];
+                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,45, 1)];
+                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 45, height)];
                 self.currencyTable.hidden = NO;
             }else{
-                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,40, height)];
-                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 40, 1)];
+                basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43,45, height)];
+                basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x, 43, 45, 1)];
                 self.currencyTable.hidden = YES;
             }
         }
@@ -641,12 +633,12 @@
     
     if (self.arrayOfDates.count != 0 && self.arrayOfValues.count != 0) {
         [self.myGraphView  reloadGraph];
-        [self  performSelector:@selector(findOutMaxAndMinValue) withObject:nil afterDelay:2.55];
     }
     
 }
 
 - (void)findOutMaxAndMinValue{
+
     float minimumValue =[self.myGraphView calculateMinimumPointValue].floatValue;
     float maximumValue = [self.myGraphView calculateMaximumPointValue].floatValue;
     
@@ -655,6 +647,14 @@
     self.maxValueLable.text = [NSString  stringWithFormat:@"%@    %@",max,min];
     
 }
+
+
+#pragma mark
+#pragma mark     BEMSimpleLineGraphDelegate
+- (void)lineGraphDidFinishLoading:(BEMSimpleLineGraphView *)graph{
+    [self  findOutMaxAndMinValue];
+}
+
 
 #pragma mark - SimpleLineGraph Data Source
 
@@ -687,8 +687,12 @@
 
 - (void)lineGraph:(BEMSimpleLineGraphView *)graph didTouchGraphWithClosestIndex:(NSInteger)index {
     if (self.arrayOfDates.count != 0 && self.arrayOfValues.count != 0) {
-        datestring = [self  changeDateFormat:[self.arrayOfDates  objectAtIndex:index]];
-        valuestring = [self.arrayOfValues  objectAtIndex:index];
+        if (index < self.arrayOfDates.count) {
+            datestring = [self  changeDateFormat:[self.arrayOfDates  objectAtIndex:index]];
+        }
+        if (index < self.arrayOfValues.count) {
+            valuestring = [self.arrayOfValues  objectAtIndex:index];
+        }
     }
 }
 
@@ -702,18 +706,12 @@
 }
 
 
-- (void)lineGraphDidFinishLoading:(BEMSimpleLineGraphView *)graph {
-    
-}
-
 - (NSString *)popUpSuffixForlineGraph:(BEMSimpleLineGraphView *)graph {
     
     if (datestring == nil) {
-        
         if (self.arrayOfDates.count != 0) {
             datestring  = [self.arrayOfDates  objectAtIndex:0];
         }
-        
     }
     return datestring;
 }
@@ -769,8 +767,8 @@
     POPBasicAnimation  *basicAnimation = [POPBasicAnimation   animation];
     basicAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPViewFrame];
     basicAnimation.duration = 0.25;
-    basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, height)];
-    basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 40, 1)];
+    basicAnimation.fromValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 45, height)];
+    basicAnimation.toValue = [NSValue   valueWithCGRect:CGRectMake(self.currencyTable.frame.origin.x,43, 45, 1)];
     basicAnimation.completionBlock =^(POPAnimation *anim, BOOL finished) {
         if (finished) {
             self.currencyTable.hidden = YES;
@@ -849,6 +847,11 @@
 #pragma mark
 #pragma mark      NSNotification 
 - (void)selectedCurrecyChanged:(NSNotification*)sender{
+    
+    int  selectedaCount = (int)[Util  takeSelectedCountry].count - 1;
+    height = 30*selectedaCount;
+    
+    self.currencyTable.frame = CGRectMake(self.currencyTable.frame.origin.x, self.currencyTable.frame.origin.y, self.currencyTable.frame.size.width, height);
     
     self.currencyArray = [NSMutableArray  arrayWithArray:[Util  takeSelectedCountry]];
     [self  drawNav];

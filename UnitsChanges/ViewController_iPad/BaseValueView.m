@@ -31,6 +31,7 @@
         self.baseValue.textColor = [Util  colorWithHexString:@"#707070"];
         self.baseValue.font = [UIFont  fontWithName:@"HelveticaNeue" size:23.0];
         self.baseValue.textAlignment = NSTextAlignmentRight;
+        self.baseValue.adjustsFontSizeToFitWidth = YES;
         [self addSubview:self.baseValue];
         
         self.targetCurrencyFlag = [[UIImageView alloc ] initWithFrame:CGRectMake(self.currencyFlag.frame.origin.x, self.baseValue.frame.origin.y + self.baseValue.frame.size.height + 25, 24, 24)];

@@ -46,6 +46,7 @@
     
     self.simpleArray = [NSMutableArray  arrayWithArray:[Util  takeSelectedCountry]];
     self.currencyInfor = [self  takeCurrencyInfor];
+    [self  initializationBaseCurrenciInfor];
     [self  addShadowForCalcuatorView];
     
     self.textFieldText = [NSMutableString  stringWithFormat:@"%d",(int)[Util  numberFormatterForFloat:self.baseValueInPut.text]];
@@ -163,6 +164,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (self.keyBoardView.hidden == NO) {
+        [self showOrHidenKeyBoard:NO];
+    }
+    
     self.targetCurrency.text = [self.simpleArray  objectAtIndex:indexPath.row];
     [self  calculateValueUnderBaseCurrency];
 }
@@ -171,7 +176,11 @@
 #pragma mark   UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    [self  showOrHidenKeyBoard:YES];
+    
+    if (self.keyBoardView.hidden) {
+         [self  showOrHidenKeyBoard:YES];
+    }
+
     return NO;
 }
 
@@ -198,6 +207,7 @@
 - (void)textFieldDone{
     if (self.baseValueInPut.text.length != 0) {
             self.baseValueInPut.text = [Util  numberFormatterSetting:[NSString  stringWithFormat:@"%f",[Util numberFormatterForFloat:self.textFieldText]] withFractionDigits:2 withInput:YES];
+
     }else{
         self.baseValueInPut.text = [Util readDefaultValue];
     }
@@ -268,6 +278,8 @@
         basicAnimation.fromValue = [NSNumber numberWithFloat:IPHONE_HEIGHT - self.keyBoardView.frame.size.height];
         basicAnimation.toValue = [NSNumber numberWithFloat:1000];
     }
+    
+    self.keyBoardView.hidden = !show;
     
     [self.keyBoardViewVerConstraint   pop_addAnimation:basicAnimation forKey:@"KeyBoardViewVerConstraint"];
     

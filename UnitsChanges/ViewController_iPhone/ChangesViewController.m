@@ -397,8 +397,12 @@ static  int  requestCount = 0;
     }
     self.localeSeparator= [theLocale  objectForKey:NSLocaleDecimalSeparator];
     if (![self.unitsArray  containsObject:currencyCode]) {
-        [self.unitsArray insertObject:currencyCode atIndex:0];
-        [self  initializeArray];
+        
+        if (currencyCode != nil) {
+            [self.unitsArray insertObject:currencyCode atIndex:0];
+            [self  initializeArray];
+        }
+
     }
     [self saveSelectCountryForExtension:self.unitsArray];
     [Util saveSelectedCounrty:self.unitsArray];
@@ -466,6 +470,10 @@ static  int  requestCount = 0;
 }
 
 - (void)resetNumberUnderMove:(id)sender{
+    
+    if (self.unitsArray.count == 0) {
+        return;
+    }
     
     NSString  *localeRate = [self.rateDic  objectForKey:[self.unitsArray objectAtIndex:0]];
     NSString  *baseValue = [Util  readDefaultValue];
@@ -637,6 +645,10 @@ static  int  requestCount = 0;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
+    if (indexPath.row >= self.unitsArray.count) {
+        return nil;
+    }
+    
     cell.delegate = self;
     cell.mainView.tag = indexPath.row + 1000;
     cell.unitValueLable.tag = indexPath.row + 10;
@@ -656,6 +668,11 @@ static  int  requestCount = 0;
     }
     int  result = (int)([self.changesResult  doubleValue]*100);
     if (flag == 0) {
+        
+        if (self.indexPath.row >= self.unitsArray.count) {
+            return nil;
+        }
+        
         NSString  *changesRate = [[Util  takeAllCountryInfor]  objectForKey:unit];
         NSString  *selectedRate = [[Util  takeAllCountryInfor]   objectForKey:[self.unitsArray objectAtIndex:self.indexPath.row]];
         if (result == 0) {
@@ -1059,6 +1076,7 @@ static  int  requestCount = 0;
     if (indexPath.row >= self.unitsArray.count) {
         return;
     }
+    
     NSString  *cerrcuy = [self.unitsArray objectAtIndex:indexPath.row];
     [self.flagDic removeObjectForKey:cerrcuy];
     [self.changesDic  removeObjectForKey:cerrcuy];
@@ -1080,7 +1098,6 @@ static  int  requestCount = 0;
     }
     
     [[NSNotificationCenter  defaultCenter]  postNotificationName:@"SelectedCountryChanged" object:nil];
-
 }
 
 #pragma   mark     —————计算器
@@ -2017,7 +2034,6 @@ static  int  requestCount = 0;
     });
     
 }
-
 
 -(NSInteger)supportedInterfaceOrientations
 {

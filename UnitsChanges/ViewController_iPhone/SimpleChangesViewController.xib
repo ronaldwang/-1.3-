@@ -121,7 +121,7 @@
                         <outlet property="delegate" destination="-1" id="Fi3-m3-M0C"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhy-hm-K66">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhy-hm-K66">
                     <rect key="frame" x="0.0" y="1000" width="600" height="280"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1x-FQ-M0q">

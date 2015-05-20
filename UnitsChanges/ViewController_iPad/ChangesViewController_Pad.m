@@ -275,8 +275,10 @@ static  int  requestCount = 0;
     }
     self.localeSeparator= [theLocale  objectForKey:NSLocaleDecimalSeparator];
     if (![self.unitsArray  containsObject:currencyCode]) {
-        [self.unitsArray insertObject:currencyCode atIndex:0];
-        [self  initializeArray];
+        if (currencyCode != nil) {
+            [self.unitsArray insertObject:currencyCode atIndex:0];
+            [self  initializeArray];
+        }
     }
     [self saveSelectCountryForExtension:self.unitsArray];
     [Util saveSelectedCounrty:self.unitsArray];
@@ -345,6 +347,9 @@ static  int  requestCount = 0;
 
 - (void)resetNumberUnderMove:(id)sender{
     
+    if (self.unitsArray.count == 0) {
+        return;
+    }
     NSString  *localeRate = [self.rateDic  objectForKey:[self.unitsArray objectAtIndex:0]];
     NSString  *baseValue = [Util  readDefaultValue];
     int  dataType = [Util shareInstance].dataType;
@@ -604,15 +609,9 @@ static  int  requestCount = 0;
 
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     [self  selectedCurrecyCell:indexPath];
     return indexPath;
-    
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-}
-
 
 - (void)selectedCurrecyCell:(NSIndexPath*)indexPath{
     

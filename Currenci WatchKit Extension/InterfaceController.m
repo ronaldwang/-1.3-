@@ -68,7 +68,22 @@
         [elementRow.currencyName  setText:string];
         [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
         [elementRow.currencyValue  setText:[self.valueDic  objectForKey:string]];
+       
+        NSLog(@"%d   %@",(int)idx,[self.valueDic  objectForKey:string]);
+
     }];
+    
+//    for (NSInteger   i = 0; i < self.interFaceTable.numberOfRows; i++) {
+//        CurrencyRowController *elementRow = [self.interFaceTable rowControllerAtIndex:i];
+//        NSString  *string = [self.currencyArray  objectAtIndex:i];
+//        
+//        [elementRow.currencyName  setText:string];
+//        [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
+//        [elementRow.currencyValue  setText:[self.valueDic  objectForKey:string]];
+//        
+//        NSLog(@"%d   %@",(int)i,[self.valueDic  objectForKey:string]);
+//    }
+    
 }
 
 
