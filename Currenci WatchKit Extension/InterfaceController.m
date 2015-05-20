@@ -69,20 +69,7 @@
         [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
         [elementRow.currencyValue  setText:[self.valueDic  objectForKey:string]];
        
-        NSLog(@"%d   %@",(int)idx,[self.valueDic  objectForKey:string]);
-
     }];
-    
-//    for (NSInteger   i = 0; i < self.interFaceTable.numberOfRows; i++) {
-//        CurrencyRowController *elementRow = [self.interFaceTable rowControllerAtIndex:i];
-//        NSString  *string = [self.currencyArray  objectAtIndex:i];
-//        
-//        [elementRow.currencyName  setText:string];
-//        [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
-//        [elementRow.currencyValue  setText:[self.valueDic  objectForKey:string]];
-//        
-//        NSLog(@"%d   %@",(int)i,[self.valueDic  objectForKey:string]);
-//    }
     
 }
 
@@ -140,6 +127,15 @@
 }
 
 - (void)communicatingWithCurrenci{
+    
+    self.currencyArray = [Util  readSeclectCountry];
+    if (self.currencyArray.count == 0) {
+        self.currencyArray = [NSMutableArray  arrayWithObjects:@"USD",@"EUR",nil];
+    }
+    [self  addMenuItems];
+    [self  takeValueDic:[Util  readDefaultValue]];
+    [self  loadTableRows];
+    
     NSDictionary *applicationData = @{@"infor":@"request"};
     [WKInterfaceController openParentApplication:applicationData reply:^(NSDictionary *replyInfo, NSError *error) {
         self.currencyArray = [Util  readSeclectCountry];
@@ -151,7 +147,6 @@
         [self  loadTableRows];
     }];
 }
-
 
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex{
     
