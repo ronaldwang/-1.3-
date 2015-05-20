@@ -68,7 +68,6 @@
         [elementRow.currencyName  setText:string];
         [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
         [elementRow.currencyValue  setText:[self.valueDic  objectForKey:string]];
-       
     }];
     
 }
@@ -178,6 +177,13 @@
     }
 
     self.valueDic = dic;
+    
+    self.currencyArray = [Util  readSeclectCountry];
+    if (self.currencyArray.count == 0) {
+        self.currencyArray = [NSMutableArray  arrayWithObjects:@"USD",@"EUR",nil];
+    }
+    [self  loadTableRows];
+    
     
     NSDictionary *applicationData = @{@"infor":@"request"};
     [WKInterfaceController openParentApplication:applicationData reply:^(NSDictionary *replyInfo, NSError *error) {
