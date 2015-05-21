@@ -20,6 +20,8 @@
 @property (nonatomic,retain)  NSArray  *valueArray;
 @property(nonatomic,assign)  NSInteger  currentIndex;
 @property (nonatomic,assign)  BOOL  isUserInput;
+@property (nonatomic,copy) NSString *inputValue;
+
 @end
 
 @implementation InterfaceController
@@ -27,7 +29,7 @@
 
 - (void)keyBoardUserInput:(NSString *)input{
     self.isUserInput = YES;
-    [self dealWithUserInput:input];
+    self.inputValue = input;
 }
 
 - (void)menuAction {
@@ -59,15 +61,25 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     self.currentIndex = [[Util  takeCurrentIndex]  intValue];
+    self.inputValue = @"";
 }
 
 - (void)loadTableRows {
     [self.interFaceTable setNumberOfRows:self.currencyArray.count withRowType:@"CurrencyRowIdentifier"];
+    
     [self.currencyArray enumerateObjectsUsingBlock:^(NSString  *string, NSUInteger idx, BOOL *stop) {
-        CurrencyRowController *elementRow = [self.interFaceTable rowControllerAtIndex:idx];
+       
+//        [self.interFaceTable  removeRowsAtIndexes:[NSIndexSet  indexSetWithIndex:idx]];
+//        [self.interFaceTable  insertRowsAtIndexes:[NSIndexSet  indexSetWithIndex:idx] withRowType:@"CurrencyRowIdentifier"];
+        
+         CurrencyRowController *elementRow = [self.interFaceTable rowControllerAtIndex:idx];
+        
         [elementRow.currencyName  setText:string];
         [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
         [elementRow.currencyValue  setText:[self.valueDic  objectForKey:string]];
+        
+        NSLog(@"index is %d     string is %@",(int)idx,[self.valueDic  objectForKey:string]);
+        
     }];
     
 }
@@ -97,9 +109,9 @@
 
 - (void)loadTableViewWith:(NSString*)value{
     self.isUserInput = NO;
+    self.inputValue = @"";
     [Util  saveUserInput:@"0"];
     [Util saveDefaultVauleByNsuer:[Util  numberFormatterSetting:value withFractionDigits:2 withInput:YES]];
-    [self  communicatingWithCurrenci];
 }
 
 // add  Menu  on  Run-time
@@ -127,14 +139,6 @@
 
 - (void)communicatingWithCurrenci{
     
-    self.currencyArray = [Util  readSeclectCountry];
-    if (self.currencyArray.count == 0) {
-        self.currencyArray = [NSMutableArray  arrayWithObjects:@"USD",@"EUR",nil];
-    }
-    [self  addMenuItems];
-    [self  takeValueDic:[Util  readDefaultValue]];
-    [self  loadTableRows];
-    
     NSDictionary *applicationData = @{@"infor":@"request"};
     [WKInterfaceController openParentApplication:applicationData reply:^(NSDictionary *replyInfo, NSError *error) {
         self.currencyArray = [Util  readSeclectCountry];
@@ -159,7 +163,7 @@
 }
 
 - (void)dealWithUserInput:(NSString*)input{
-
+    
     NSMutableDictionary  *dic = [NSMutableDictionary  dictionary];
     NSString *localeRate = [[Util readDataFromNSUserDefaults]  objectForKey:[self.currencyArray  objectAtIndex:self.currentIndex]];
     NSArray  *rateArray = [Util  readSeclectCountry];
@@ -177,15 +181,8 @@
     }
 
     self.valueDic = dic;
-    
-    self.currencyArray = [Util  readSeclectCountry];
-    if (self.currencyArray.count == 0) {
-        self.currencyArray = [NSMutableArray  arrayWithObjects:@"USD",@"EUR",nil];
-    }
-    [self  loadTableRows];
-    
-    
-    NSDictionary *applicationData = @{@"infor":@"request"};
+
+    NSDictionary *applicationData = @{@"infor":@"requestInput"};
     [WKInterfaceController openParentApplication:applicationData reply:^(NSDictionary *replyInfo, NSError *error) {
         self.currencyArray = [Util  readSeclectCountry];
         if (self.currencyArray.count == 0) {
@@ -193,12 +190,39 @@
         }
         [self  loadTableRows];
     }];
+    
+    self.isUserInput = NO;
+}
+
+- (void)loadDataAfterUser{
+   
+     dispatch_async(dispatch_get_main_queue(), ^{
+         
+         
+         for (NSInteger  idx = 0; idx< self.interFaceTable.numberOfRows; idx++) {
+             
+             NSString  *string = [self.currencyArray  objectAtIndex:idx];
+             
+             CurrencyRowController *elementRow = [self.interFaceTable rowControllerAtIndex:idx];
+             
+             [elementRow.currencyName  setText:string];
+             [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
+             [elementRow.currencyValue  setText:[self.valueDic  objectForKey:string]];
+             
+              NSLog(@"index is %d     string is %@",(int)idx,[self.valueDic  objectForKey:string]);
+         }
+     });
 }
 
 - (void)willActivate {
     [super willActivate];
     if (!self.isUserInput) {
+        if (![self.inputValue isEqualToString:@""]) {
+             return;
+        }
         [self  communicatingWithCurrenci];
+    }else{
+        [self dealWithUserInput:self.inputValue];
     }
 }
 

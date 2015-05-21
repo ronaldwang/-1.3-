@@ -296,7 +296,10 @@
                 }
             }
         });
-    }else{
+    }else if ([[userInfo  objectForKey:@"infor" ]  isEqualToString:@"requestInput"]){
+         reply(@{@"appData":@"1234"});
+    }
+    else{
         reply(@{@"TextInput":@"app has received inputText"});
     }
     
