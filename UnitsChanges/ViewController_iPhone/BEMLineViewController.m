@@ -103,9 +103,9 @@
 
 - (NSString*)changeDateFormat:(NSString*)dateString {
     
-    NSLocale *theLocale = [NSLocale currentLocale];
-    NSString  *localeIdenfifer = [theLocale  objectForKey:NSLocaleIdentifier];
+    NSLocale *theLocale = [NSLocale  localeWithLocaleIdentifier:[Localisator sharedInstance].currentLanguage];
     
+    NSString  *localeIdenfifer = [theLocale  objectForKey:NSLocaleIdentifier];
     NSDateFormatter * dateFormatter1 = [[NSDateFormatter alloc]init];
     [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
     NSDate  *date = [dateFormatter1  dateFromString:dateString];

@@ -61,29 +61,27 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     self.currentIndex = [[Util  takeCurrentIndex]  intValue];
-    self.inputValue = @"";
+    self.inputValue = [NSString stringWithFormat:@""];
 }
 
 - (void)loadTableRows {
+    
     [self.interFaceTable setNumberOfRows:self.currencyArray.count withRowType:@"CurrencyRowIdentifier"];
     
     [self.currencyArray enumerateObjectsUsingBlock:^(NSString  *string, NSUInteger idx, BOOL *stop) {
-       
+        
 //        [self.interFaceTable  removeRowsAtIndexes:[NSIndexSet  indexSetWithIndex:idx]];
 //        [self.interFaceTable  insertRowsAtIndexes:[NSIndexSet  indexSetWithIndex:idx] withRowType:@"CurrencyRowIdentifier"];
         
          CurrencyRowController *elementRow = [self.interFaceTable rowControllerAtIndex:idx];
-        
         [elementRow.currencyName  setText:string];
         [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
         [elementRow.currencyValue  setText:[self.valueDic  objectForKey:string]];
         
-        NSLog(@"index is %d     string is %@",(int)idx,[self.valueDic  objectForKey:string]);
-        
-    }];
-    
-}
+        NSLog(@"index is %d   string is %@",(int)idx,[self.valueDic  objectForKey:string]);
 
+    }];
+}
 
 - (void)takeValueDic:(NSString*)valueString{
 
@@ -112,6 +110,7 @@
     self.inputValue = @"";
     [Util  saveUserInput:@"0"];
     [Util saveDefaultVauleByNsuer:[Util  numberFormatterSetting:value withFractionDigits:2 withInput:YES]];
+     [self  communicatingWithCurrenci];
 }
 
 // add  Menu  on  Run-time
@@ -139,17 +138,26 @@
 
 - (void)communicatingWithCurrenci{
     
+    [self  aboutCurrency];
+    
     NSDictionary *applicationData = @{@"infor":@"request"};
     [WKInterfaceController openParentApplication:applicationData reply:^(NSDictionary *replyInfo, NSError *error) {
-        self.currencyArray = [Util  readSeclectCountry];
-        if (self.currencyArray.count == 0) {
-            self.currencyArray = [NSMutableArray  arrayWithObjects:@"USD",@"EUR",nil];
-        }
-        [self  addMenuItems];
-        [self  takeValueDic:[Util  readDefaultValue]];
-        [self  loadTableRows];
+        [self  aboutCurrency];
     }];
 }
+
+- (void)aboutCurrency{
+   
+    self.currencyArray = [Util  readSeclectCountry];
+    if (self.currencyArray.count == 0) {
+        self.currencyArray = [NSMutableArray  arrayWithObjects:@"USD",@"EUR",nil];
+    }
+    [self  addMenuItems];
+    [self  takeValueDic:[Util  readDefaultValue]];
+    [self  loadTableRows];
+}
+
+
 
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex{
     
@@ -181,18 +189,27 @@
     }
 
     self.valueDic = dic;
+    [self aboutUserInput];
 
     NSDictionary *applicationData = @{@"infor":@"requestInput"};
     [WKInterfaceController openParentApplication:applicationData reply:^(NSDictionary *replyInfo, NSError *error) {
-        self.currencyArray = [Util  readSeclectCountry];
-        if (self.currencyArray.count == 0) {
-            self.currencyArray = [NSMutableArray  arrayWithObjects:@"USD",@"EUR",nil];
-        }
-        [self  loadTableRows];
+        [self aboutUserInput];
     }];
-    
     self.isUserInput = NO;
 }
+
+
+- (void)aboutUserInput{
+ 
+    self.currencyArray = [Util  readSeclectCountry];
+    if (self.currencyArray.count == 0) {
+        self.currencyArray = [NSMutableArray  arrayWithObjects:@"USD",@"EUR",nil];
+    }
+    [self  loadTableRows];
+}
+
+
+
 
 - (void)loadDataAfterUser{
    
@@ -217,10 +234,9 @@
 - (void)willActivate {
     [super willActivate];
     if (!self.isUserInput) {
-        if (![self.inputValue isEqualToString:@""]) {
-             return;
+        if ([self.inputValue isEqualToString:@""]) {
+            [self  communicatingWithCurrenci];
         }
-        [self  communicatingWithCurrenci];
     }else{
         [self dealWithUserInput:self.inputValue];
     }

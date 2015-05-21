@@ -402,7 +402,6 @@ static  int  requestCount = 0;
             [self.unitsArray insertObject:currencyCode atIndex:0];
             [self  initializeArray];
         }
-
     }
     [self saveSelectCountryForExtension:self.unitsArray];
     [Util saveSelectedCounrty:self.unitsArray];
@@ -685,7 +684,7 @@ static  int  requestCount = 0;
             [self.changesDic setObject:cell.unitValueLable.text forKey:unit];
         }
     }else{
-    
+        
         cell.unitValueLable.textColor =  [Util shareInstance].themeColor;
         if (result == 0) {
             cell.unitValueLable.text = [self.changesDic  objectForKey:unit];
@@ -697,16 +696,10 @@ static  int  requestCount = 0;
     return cell;
 }
 
-
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
       [self  selectedCurrecyCell:indexPath];
       return indexPath;
-
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [self  selectedCurrecyCell:indexPath];
 }
 
 - (void)selectedCurrecyCell:(NSIndexPath*)indexPath{

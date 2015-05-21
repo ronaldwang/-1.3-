@@ -135,7 +135,8 @@
 
 - (NSString*)changeDateFormat:(NSString*)dateString {
     
-    NSLocale *theLocale = [NSLocale currentLocale];
+    NSLocale *theLocale = [NSLocale  localeWithLocaleIdentifier:[Localisator sharedInstance].currentLanguage];
+
     NSString  *localeIdenfifer = [theLocale  objectForKey:NSLocaleIdentifier];
     
     NSDateFormatter * dateFormatter1 = [[NSDateFormatter alloc]init];
@@ -582,12 +583,9 @@
                 [defaults setBool:YES forKey:product];
                 [defaults synchronize];
             }
-
         }
     }
 }
-
-
 
 - (void)takeOutCurrentCurrency:(NSString*)currency{
     
@@ -635,7 +633,6 @@
         [self.myGraphView  reloadGraph];
          [self  performSelector:@selector(findOutMaxAndMinValue) withObject:nil afterDelay:2.55];
     }
-    
 }
 
 - (void)findOutMaxAndMinValue{
@@ -646,7 +643,6 @@
     NSString  *max = [NSString stringWithFormat:@"H:%.4f",maximumValue];
     NSString  *min =  [NSString stringWithFormat:@"L:%.4f",minimumValue];
     self.maxValueLable.text = [NSString  stringWithFormat:@"%@    %@",max,min];
-    
 }
 
 
@@ -659,7 +655,6 @@
 - (CGFloat)lineGraph:(BEMSimpleLineGraphView *)graph valueForPointAtIndex:(NSInteger)index {
     return [[self.arrayOfValues objectAtIndex:index] floatValue];
 }
-
 
 -(NSInteger)numberOfYAxisLabelsOnLineGraph:(BEMSimpleLineGraphView *)graph{
     return 3;
@@ -799,9 +794,7 @@
         NSString  *result = [Util  roundUp:resultFloat afterPoint:dataType];
         [valueDic setObject:[Util   numberFormatterSetting:result withFractionDigits:dataType withInput:NO] forKey:unitString];
     }
-    
     self.resultDic = valueDic;
-
 }
 
 - (NSMutableDictionary*)takeCurrencyInfor{

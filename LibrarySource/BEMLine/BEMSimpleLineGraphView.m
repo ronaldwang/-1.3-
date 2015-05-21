@@ -1069,8 +1069,7 @@ typedef NS_ENUM(NSInteger, BEMInternalTags)
                      range:NSMakeRange(suffixString.length, popUpStirng.length - suffixString.length)];
     
           self.popUpLabel.attributedText = attrtext;
-        
-        NSLog(@"%@",self.popUpLabel.attributedText);
+
     }
     else
         self.popUpLabel.text = [NSString stringWithFormat:@"%.4f", (float)[dataPoints[(NSInteger) closestDot.tag - DotFirstTag100] floatValue]];

@@ -353,14 +353,11 @@
 
 
 +(BOOL)dataTypeIsSave{
-
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.company.liuWei"];
     return [[shared valueForKey:@"DataTypeIsSave"]  boolValue];
-
 }
 
 +(int)readDataType{
-    
     if ([Util  dataTypeIsSave]) {
         NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.company.liuWei"];
         return [[shared valueForKey:@"DataType"]  intValue];

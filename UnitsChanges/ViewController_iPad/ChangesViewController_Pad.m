@@ -922,7 +922,6 @@ static  int  requestCount = 0;
                 NSString   *currency = [self.unitsArray  objectAtIndex:0];
                 [self.detailViewController   calculateValueUnderBaseCurrency:currency AndValue:[Util  readDefaultValue]];
                 [self.detailViewController  addbaseCurrencyList:currency withValue:[Util  readDefaultValue]];
-                
             }];
             break;
         }

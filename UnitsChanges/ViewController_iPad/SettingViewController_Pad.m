@@ -283,7 +283,11 @@
     
     UITapGestureRecognizer  *themeTap = [[UITapGestureRecognizer  alloc ] initWithTarget:self action:@selector(themeAction:)];
     [self.colorView  addGestureRecognizer:themeTap];
-
+    
+    
+    UITapGestureRecognizer  *contentViewTap = [[UITapGestureRecognizer  alloc ] initWithTarget:self action:@selector(contentViewTapAction:)];
+    [self.contentView  addGestureRecognizer:contentViewTap];
+    
 }
 
 
@@ -453,6 +457,12 @@
     AppPurcahseViewController  *appPurchase = [[AppPurcahseViewController  alloc ] initWithNibName:@"AppPurcahseViewController" bundle:nil];
     [self.navigationController  pushViewController:appPurchase animated:YES];
     
+}
+
+- (void)contentViewTapAction:(UITapGestureRecognizer*)sender{
+    if (isEditing) {
+        [self  textFieldDone];
+    }
 }
 
 
@@ -823,7 +833,7 @@
     }
     
     [self.keyBoardViewVerConstraint   pop_addAnimation:basicAnimation forKey:@"KeyBoardViewVerConstraint"];
-
+    
 }
 
 

@@ -9,16 +9,26 @@
 #import "WatchSettingViewController.h"
 #import "WatchSettingCell.h"
 #import "Util.h"
+#import <pop/POP.h>
 
 @interface WatchSettingViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,UITextFieldDelegate>
 {
-    UIToolbar *toolBar;
-    UITextField   *activeField;
+        NSInteger   currentIndex;
+        BOOL  isEditting;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *valueTable;
 
 @property (nonatomic,retain) NSMutableArray   *valueArray;
+
+@property (nonatomic,retain) NSMutableString *textFieldText;
+
+
+//  输入 键盘
+@property (weak, nonatomic) IBOutlet UIView *keyBoardView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyBoardViewVerConstraint;
+
 
 @end
 
@@ -32,11 +42,9 @@
         self.valueArray = [NSMutableArray  arrayWithObjects:@"10",@"20",@"50",@"100",@"500",@"1000", nil];
         [Util  saveObligateValuesList:self.valueArray];
     }
-    
     [self  drawNav];
-    
     self.valueTable.contentSize = CGSizeMake(self.valueTable.frame.size.width,600);
-    [self  registerForKeyboardNotifications];
+    [self   addShadowForCalcuatorView];
 }
 
 - (void)addTapGesture{
@@ -93,15 +101,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    [cell.inPutTextField  addTarget:self action:@selector(textInputAction:) forControlEvents:UIControlEventEditingDidEnd];
-    
-    [cell.inPutTextField  addTarget:self action:@selector(textFieldBegianAction:) forControlEvents:UIControlEventEditingDidBegin];
+    cell.inPutTextField.delegate = self;
     
     cell.inPutTextField.tag = indexPath.row + 2015;
     cell.inPutTextField.text = [self.valueArray  objectAtIndex:indexPath.row];
     cell.inPutTextField.keyboardType = UIKeyboardTypeNumberPad;
-    
-    cell.inPutTextField.inputAccessoryView = [self  createToolbar];
     
     cell.settingImage.image = [[UIImage imageNamed:[NSString stringWithFormat:@"%d-38.png",(int)indexPath.row+1]]  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     cell.settingImage.tintColor = [Util  shareInstance].themeColor;
@@ -112,13 +116,13 @@
 }
 
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-       activeField = nil;
-}
-
-- (void)textFieldBegianAction:(UITextField*)sender{
-    activeField = sender;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    currentIndex = textField.tag - 2015;
+    self.textFieldText =[NSMutableString  stringWithString:textField.text];
+    if (!isEditting) {
+        [self   showOrHidenKeyBoard:YES];
+    }
+    return NO;
 }
 
 - (void)textInputAction:(UITextField*)sender{
@@ -133,80 +137,134 @@
     }
 
     [self.valueTable  reloadRowsAtIndexPaths:[NSArray  arrayWithObjects:[NSIndexPath  indexPathForRow:sender.tag-2015 inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
-
 }
-
 
 - (void)tapAction:(UITapGestureRecognizer*)sender{
-    [self.view  endEditing:YES];
-}
-
-
--(UIToolbar*) createToolbar {
-    
-    CGFloat   height = 34;
-    if (iPhone6plus) {
-        height = 42;
+    if (isEditting) {
+        [self  showOrHidenKeyBoard:NO];
     }
-    
-    toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height)];
-    toolBar.clipsToBounds = YES;
-    
-    toolBar.barTintColor = [Util   colorWithHexString:@"#d2d6db"];
-    toolBar.tintColor = [Util  shareInstance].themeColor;
-    toolBar.barStyle = UIBarStyleDefault;
-    
-    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(textFieldDone)];
-    toolBar.items = @[space, done];
-    return toolBar;
 }
 
 
 - (void)textFieldDone{
     
-      [self.view  endEditing:YES];
-}
-
-
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:)
-                                                 name:UIKeyboardDidShowNotification object:nil];
+    UITextField   *textField = (UITextField*)[self.valueTable   viewWithTag:currentIndex + 2015];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-    
-}
-
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    int   tag = (int)activeField.tag - 2015;
-    
-    if (tag > 3) {
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-        self.valueTable.contentInset = contentInsets;
-        CGRect aRect = self.view.frame;
-        aRect.size.height -= kbSize.height;
-        if (!CGRectContainsPoint(aRect, activeField.frame.origin)) {
-            [self.valueTable scrollRectToVisible:activeField.frame animated:YES];
+    if (textField.text.length != 0) {
+        if (![self.valueArray  containsObject:textField.text]) {
+            [self.valueArray  replaceObjectAtIndex:currentIndex withObject:textField.text];
+            [Util  saveObligateValuesList:self.valueArray];
         }
+    }else{
+        textField.text = [self.valueArray  objectAtIndex:currentIndex - 2015];
     }
+    
+    [self.valueTable  reloadRowsAtIndexPaths:[NSArray  arrayWithObjects:[NSIndexPath  indexPathForRow:currentIndex-2015 inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self  showOrHidenKeyBoard:NO];
 }
 
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(64, 0, 0, 0);
-    self.valueTable.contentInset = contentInsets;
-    [self.valueTable setContentOffset:CGPointMake(0.0, -64.0) animated:YES];
+
+#pragma mark
+#pragma mark      输入键盘
+
+- (IBAction)keyBoardClick:(UIButton *)sender {
+    
+    [self   addPopAnaitionClickButton:sender];
+    
+    NSString  *inputString = sender.titleLabel.text;
+    
+    if (self.textFieldText.length <=9) {
+        [self.textFieldText  appendString:inputString];
+    }
+    
+    UITextField  *textField = (UITextField*)[self.valueTable  viewWithTag:currentIndex + 2015];
+    textField.text = [Util  numberFormatterSetting:[NSString  stringWithFormat:@"%f",[Util numberFormatterForFloat:self.textFieldText]] withFractionDigits:2 withInput:YES];
+    [self.valueArray  replaceObjectAtIndex:currentIndex withObject:textField.text];
+    [Util  saveObligateValuesList:self.valueArray];
+    [self.valueTable  reloadData];
+    
 }
+
+- (IBAction)okButtonClick:(UIButton *)sender {
+    [self   addPopAnaitionClickButton:sender];
+    [self  textFieldDone];
+    
+}
+
+- (IBAction)clearClick:(UIButton *)sender {
+    [self   addPopAnaitionClickButton:sender];
+    self.textFieldText = [NSMutableString string];
+    UITextField  *textField = (UITextField*)[self.valueTable  viewWithTag:currentIndex + 2015];
+    textField.text = @"0";
+}
+
+- (void)showOrHidenKeyBoard:(BOOL)show{
+    
+    isEditting = show;
+    
+    POPBasicAnimation   *basicAnimation = [POPBasicAnimation animation];
+    basicAnimation.property = [POPMutableAnimatableProperty  propertyWithName:kPOPLayoutConstraintConstant];
+    basicAnimation.duration = 0.5;
+    
+    if (show) {
+        basicAnimation.fromValue = [NSNumber numberWithFloat:1000];
+        basicAnimation.toValue = [NSNumber numberWithFloat:IPHONE_HEIGHT - self.keyBoardView.frame.size.height];
+    }else{
+        
+        basicAnimation.fromValue = [NSNumber numberWithFloat:IPHONE_HEIGHT - self.keyBoardView.frame.size.height];
+        basicAnimation.toValue = [NSNumber numberWithFloat:1000];
+    }
+    
+    [self.keyBoardViewVerConstraint   pop_addAnimation:basicAnimation forKey:@"KeyBoardViewVerConstraint"];
+    
+}
+
+
+- (void)addPopAnaitionClickButton:(UIButton*)button{
+    
+    POPBasicAnimation  *colcorAnimation = [POPBasicAnimation animation];
+    colcorAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLabelTextColor];
+    POPBasicAnimation  *scaleAnimation = [POPBasicAnimation animation];
+    scaleAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLayerScaleXY];
+    POPBasicAnimation  *scaleEndAnimation = [POPBasicAnimation animation];
+    scaleEndAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLayerScaleXY];
+    POPBasicAnimation  *colcorEndAnimation = [POPBasicAnimation animation];
+    colcorEndAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLabelTextColor];
+    colcorAnimation.toValue = [Util shareInstance].themeColor;
+    colcorEndAnimation.toValue = [UIColor  colorWithRed:98/255.0 green:98/255.0 blue:98/255.0 alpha:1.0];
+    scaleAnimation.toValue = [NSValue  valueWithCGPoint:CGPointMake(1.5, 1.5)];
+    scaleEndAnimation.toValue = [NSValue  valueWithCGPoint:CGPointMake(1.0, 1.0)];
+    colcorAnimation.duration = 0.15f;
+    scaleEndAnimation.duration = 0.15;
+    scaleAnimation.duration = 0.15;
+    colcorEndAnimation.duration = 0.15;
+    colcorEndAnimation.fromValue = [Util shareInstance].themeColor;
+    scaleAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        if (finished) {
+            [button.layer  pop_addAnimation:scaleEndAnimation forKey:@"scaleEnd"];
+        }
+    };
+    colcorAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        if (finished) {
+            [button.titleLabel  pop_addAnimation:colcorEndAnimation forKey:@"colorEnd"];
+        }
+    };
+    [button.layer pop_addAnimation:scaleAnimation forKey:@"scale"];
+    [button.titleLabel  pop_addAnimation:colcorAnimation forKey:@"pop"];
+    
+}
+
+
+- (void)addShadowForCalcuatorView{
+    [self.keyBoardView.layer  setShadowOffset:CGSizeMake(0,-0.5)];
+    [self.keyBoardView.layer setShadowRadius:0.25];
+    [self.keyBoardView.layer  setShadowOpacity:0.08];
+}
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -146,7 +146,7 @@
         if (![[Localisator sharedInstance].availableLanguagesArray  containsObject:currentLanguage]) {
                currentLanguage = @"en";
         }
-           [[Localisator  sharedInstance]  setLanguage:currentLanguage];
+          [[Localisator  sharedInstance]  setLanguage:currentLanguage];
           [[Localisator  sharedInstance]  setSaveInUserDefaults:YES];
     }
 }
@@ -263,7 +263,6 @@
     }
 }
 
-
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     if([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad) {
@@ -275,9 +274,8 @@
 
 
 - (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void(^)(NSDictionary *replyInfo))reply{
-    
+
     if ([[userInfo  objectForKey:@"infor" ]  isEqualToString:@"request"]) {
-        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSString  *urlString = [NSString stringWithFormat:@"%s","http://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote?format=json"];
             NSURL  *url = [NSURL  URLWithString:urlString];
@@ -302,9 +300,7 @@
     else{
         reply(@{@"TextInput":@"app has received inputText"});
     }
-    
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
