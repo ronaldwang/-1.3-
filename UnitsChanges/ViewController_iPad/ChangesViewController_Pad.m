@@ -626,24 +626,25 @@ static  int  requestCount = 0;
     return indexPath;
 }
 
+
 - (void)selectedCurrecyCell:(NSIndexPath*)indexPath{
     
-    if (indexPath.row >= self.unitsArray.count) {
-        return;
-    }
-    
-    [self  changeFlagSatateWith:indexPath];
-    
-    if (self.calcuatorView.hidden || [self.indexPath  isEqual:indexPath]) {
-        [self  showCalculateViewBy:indexPath];
-    }
-    
-    self.changesResult = @"0";
-    self.indexPath = indexPath;
-    [Util  saveSelectedIndex:indexPath];
-    [self.changeTable  reloadData];
-    [self  calculator_init];
-    
+     if (indexPath.row >= self.unitsArray.count) {
+          return;
+     }
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+         [self  changeFlagSatateWith:indexPath];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (self.calcuatorView.hidden || [self.indexPath  isEqual:indexPath]) {
+                [self  showCalculateViewBy:indexPath];
+            }
+            self.changesResult = @"0";
+            self.indexPath = indexPath;
+            [Util  saveSelectedIndex:indexPath];
+            [self.changeTable  reloadData];
+            [self  calculator_init];
+        });
+    });
 }
 
 - (void)showCalculateViewBy:(NSIndexPath*)index{

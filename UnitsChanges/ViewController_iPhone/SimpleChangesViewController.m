@@ -54,7 +54,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
+    self.baseValueInPut.text = [Util  readDefaultValue];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableDictionary  *valueDic = [NSMutableDictionary  dictionary];
         NSDictionary  *rateDic = [Util   takeAllCountryInfor];
@@ -94,11 +94,8 @@
 
 - (void)initializationBaseCurrenciInfor{
     self.baseView.backgroundColor = [Util  shareInstance].themeColor;
-    self.baseValueInPut.text = [Util  readDefaultValue];
     self.targetCurrency.text = [self.simpleArray  objectAtIndex:0];
-    
     self.textFieldText = [NSMutableString  stringWithFormat:@"%d",(int)[Util  numberFormatterForFloat:self.baseValueInPut.text]];
-
     self.baseLbale.text = LOCALIZATION(@"ReferenceValue");
     self.targetLable.text = LOCALIZATION(@"TargetCurrency");
 }

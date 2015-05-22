@@ -663,7 +663,6 @@ static  int  requestCount = 0;
     int  flag = [[self.flagDic  objectForKey:[self.unitsArray objectAtIndex:indexPath.row]]  intValue];
     NSString  *unit = [self.unitsArray  objectAtIndex:indexPath.row];
     cell.countryFlag.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",unit]];
-
     cell.currencyName.text = [self  takeCurrencyInfoByName:unit];
     
     if ([unit  isEqualToString:[[NSLocale currentLocale]  objectForKey:NSLocaleCurrencyCode]]) {
@@ -678,7 +677,6 @@ static  int  requestCount = 0;
         if (self.indexPath.row >= self.unitsArray.count) {
             return nil;
         }
-        
         NSString  *changesRate = [[Util  takeAllCountryInfor]  objectForKey:unit];
         NSString  *selectedRate = [[Util  takeAllCountryInfor]   objectForKey:[self.unitsArray objectAtIndex:self.indexPath.row]];
         if (result == 0) {
@@ -714,18 +712,22 @@ static  int  requestCount = 0;
     if (indexPath.row >= self.unitsArray.count) {
         return;
     }
+   
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+          [self  changeFlagSatateWith:indexPath];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (self.calcuatorView.hidden || [self.indexPath  isEqual:indexPath]) {
+                [self  showCalculateViewBy:indexPath];
+            }
+            self.changesResult = @"0";
+            self.indexPath = indexPath;
+            [Util  saveSelectedIndex:indexPath];
+            [self.changesTableView  reloadData];
+            [self  calculator_init];
+        });
+    });
     
-    [self  changeFlagSatateWith:indexPath];
     
-    if (self.calcuatorView.hidden || [self.indexPath  isEqual:indexPath]) {
-        [self  showCalculateViewBy:indexPath];
-    }
-    
-    self.changesResult = @"0";
-    self.indexPath = indexPath;
-    [Util  saveSelectedIndex:indexPath];
-    [self.changesTableView  reloadData];
-    [self  calculator_init];
     
 }
 

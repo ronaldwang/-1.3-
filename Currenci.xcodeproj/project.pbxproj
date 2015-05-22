@@ -6535,8 +6535,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Currenci WatchKit Extension/Currenci WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Liu (2KGMBNK95S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Liu (2KGMBNK95S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -6545,7 +6545,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "bc97f1c8-47d3-44f2-a77e-7e1d3fc566c4";
+				PROVISIONING_PROFILE = "6bacd1e2-224b-4113-ac57-82a97559e8d1";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -6554,14 +6554,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Currenci WatchKit Extension/Currenci WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Liu (2KGMBNK95S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Liu (2KGMBNK95S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = "Currenci WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "bc97f1c8-47d3-44f2-a77e-7e1d3fc566c4";
+				PROVISIONING_PROFILE = "6bacd1e2-224b-4113-ac57-82a97559e8d1";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -6570,8 +6570,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Liu (2KGMBNK95S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Liu (2KGMBNK95S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -6580,7 +6580,7 @@
 				INFOPLIST_FILE = "Currenci WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "294691df-e953-4c48-9ab0-a9d338615ea3";
+				PROVISIONING_PROFILE = "04c7b53d-b18e-49d2-b647-73d091ecdaec";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -6591,14 +6591,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Liu (2KGMBNK95S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Liu (2KGMBNK95S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
 				COPY_PHASE_STRIP = NO;
 				IBSC_MODULE = Currenci_WatchKit_Extension;
 				INFOPLIST_FILE = "Currenci WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "294691df-e953-4c48-9ab0-a9d338615ea3";
+				PROVISIONING_PROFILE = "04c7b53d-b18e-49d2-b647-73d091ecdaec";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -6694,8 +6694,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UnitsChanges/UnitsChanges.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Liu (2KGMBNK95S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Liu (2KGMBNK95S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
 				INFOPLIST_FILE = UnitsChanges/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -6707,7 +6707,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Currenci;
-				PROVISIONING_PROFILE = "5f4bbbef-01a1-45f0-be90-6c146442a825";
+				PROVISIONING_PROFILE = "50a83a67-ea26-4e88-b6d5-99a6c3704f9e";
 				SWIFT_OBJC_BRIDGING_HEADER = "UnitsChanges/UnitsChanges-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -6724,8 +6724,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UnitsChanges/UnitsChanges.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Liu (2KGMBNK95S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Liu (2KGMBNK95S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
 				INFOPLIST_FILE = UnitsChanges/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -6737,7 +6737,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Currenci;
-				PROVISIONING_PROFILE = "5f4bbbef-01a1-45f0-be90-6c146442a825";
+				PROVISIONING_PROFILE = "50a83a67-ea26-4e88-b6d5-99a6c3704f9e";
 				SWIFT_OBJC_BRIDGING_HEADER = "UnitsChanges/UnitsChanges-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -6749,8 +6749,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_ENTITLEMENTS = "汇率计算/汇率计算.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Liu (2KGMBNK95S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Liu (2KGMBNK95S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -6759,7 +6759,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Currenci;
-				PROVISIONING_PROFILE = "0f895cdf-412d-4a1e-83f4-44e2b9569b87";
+				PROVISIONING_PROFILE = "fcb69c4d-b155-44c6-b410-95ba92b79033";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -6769,13 +6769,13 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_ENTITLEMENTS = "汇率计算/汇率计算.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Wei Liu (2KGMBNK95S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Liu (2KGMBNK95S)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Davetech Co., Ltd. (7FF4CG4UK2)";
 				INFOPLIST_FILE = "汇率计算/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Currenci;
-				PROVISIONING_PROFILE = "0f895cdf-412d-4a1e-83f4-44e2b9569b87";
+				PROVISIONING_PROFILE = "fcb69c4d-b155-44c6-b410-95ba92b79033";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
