@@ -69,10 +69,7 @@
     [self.interFaceTable setNumberOfRows:self.currencyArray.count withRowType:@"CurrencyRowIdentifier"];
     
     [self.currencyArray enumerateObjectsUsingBlock:^(NSString  *string, NSUInteger idx, BOOL *stop) {
-        
-//        [self.interFaceTable  removeRowsAtIndexes:[NSIndexSet  indexSetWithIndex:idx]];
-//        [self.interFaceTable  insertRowsAtIndexes:[NSIndexSet  indexSetWithIndex:idx] withRowType:@"CurrencyRowIdentifier"];
-        
+
          CurrencyRowController *elementRow = [self.interFaceTable rowControllerAtIndex:idx];
         [elementRow.currencyName  setText:string];
         [elementRow.currcncyImage setImageNamed:[NSString  stringWithFormat:@"%@.png",string]];
@@ -109,7 +106,7 @@
     self.isUserInput = NO;
     self.inputValue = @"";
     [Util  saveUserInput:@"0"];
-    [Util saveDefaultVauleByNsuer:[Util  numberFormatterSetting:value withFractionDigits:2 withInput:YES]];
+    [Util saveDefaultVauleByNsuer:value];
      [self  communicatingWithCurrenci];
 }
 

@@ -58,7 +58,6 @@
     
     self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y, self.searchController.searchBar.frame.size.width, 44.0);
     
-    
     self.navigationController.navigationBar.tintColor = [Util shareInstance].themeColor;
     
     self.tableView.tableHeaderView = self.searchController.searchBar;
@@ -66,12 +65,10 @@
     
     [[NSNotificationCenter  defaultCenter]  removeObserver:self name:@"LanguageChanged" object:nil];
     [[NSNotificationCenter  defaultCenter]  removeObserver:self name:@"SelectedColorChanged" object:nil];
-
     
     [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedLanguageChanged:) name:@"LanguageChanged" object:nil];
     
     [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedColorChanged:) name:@"SelectedColorChanged" object:nil];
-
 }
 
 

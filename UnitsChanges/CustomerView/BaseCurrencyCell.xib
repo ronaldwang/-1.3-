@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -62,14 +62,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIC-1j-c11">
-                                <rect key="frame" x="145" y="24" width="160" height="25"/>
+                                <rect key="frame" x="165" y="24" width="140" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="P4z-uW-tNA"/>
-                                    <constraint firstAttribute="width" constant="160" id="SGe-R9-ezW"/>
+                                    <constraint firstAttribute="width" constant="137" id="SGe-R9-ezW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                 <color key="textColor" red="0.58431372549019611" green="0.58431372549019611" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SGe-R9-ezW"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,6 +89,7 @@
                             <constraint firstItem="6dz-BP-nMO" firstAttribute="top" secondItem="0Pg-CH-dhx" secondAttribute="top" id="ZgJ-eD-AG5"/>
                             <constraint firstItem="6dz-BP-nMO" firstAttribute="leading" secondItem="0Pg-CH-dhx" secondAttribute="leading" id="fBp-th-mmV"/>
                             <constraint firstItem="3Du-Wn-t5B" firstAttribute="leading" secondItem="OQV-V3-JH0" secondAttribute="trailing" constant="8" id="lcj-qZ-PMw"/>
+                            <constraint firstItem="DIC-1j-c11" firstAttribute="leading" secondItem="3Du-Wn-t5B" secondAttribute="trailing" constant="5" id="pN5-Pk-NmF"/>
                             <constraint firstItem="3Du-Wn-t5B" firstAttribute="centerX" secondItem="OIq-qx-VQQ" secondAttribute="centerX" constant="-6" id="pYY-bj-M9n"/>
                             <constraint firstItem="OQV-V3-JH0" firstAttribute="top" secondItem="0Pg-CH-dhx" secondAttribute="top" constant="18" id="xZK-Jc-YVR"/>
                         </constraints>

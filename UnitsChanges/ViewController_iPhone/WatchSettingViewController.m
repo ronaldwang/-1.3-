@@ -90,7 +90,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
+    return 60;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -105,7 +105,11 @@
     
     cell.inPutTextField.tag = indexPath.row + 2015;
     cell.inPutTextField.text = [self.valueArray  objectAtIndex:indexPath.row];
-    cell.inPutTextField.keyboardType = UIKeyboardTypeNumberPad;
+    if (currentIndex == indexPath.row && isEditting) {
+        cell.inPutTextField.textColor = [Util  shareInstance].themeColor;
+    }else{
+        cell.inPutTextField.textColor = [UIColor  darkGrayColor];
+    }
     
     cell.settingImage.image = [[UIImage imageNamed:[NSString stringWithFormat:@"%d-38.png",(int)indexPath.row+1]]  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     cell.settingImage.tintColor = [Util  shareInstance].themeColor;
@@ -115,29 +119,26 @@
     return cell;
 }
 
-
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
     currentIndex = textField.tag - 2015;
-    self.textFieldText =[NSMutableString  stringWithString:textField.text];
+    double   value = [Util  numberFormatterForFloat:textField.text];
+    self.textFieldText =[NSMutableString  stringWithFormat:@"%d",(int)value];
+    
     if (!isEditting) {
         [self   showOrHidenKeyBoard:YES];
     }
+    [self changeCurrentTextFieldColor:textField];
     return NO;
 }
 
-- (void)textInputAction:(UITextField*)sender{
 
-    if (sender.text.length != 0) {
-        if (![self.valueArray  containsObject:sender.text]) {
-            [self.valueArray  replaceObjectAtIndex:sender.tag - 2015 withObject:sender.text];
-            [Util  saveObligateValuesList:self.valueArray];
-        }
-    }else{
-        sender.text = [self.valueArray  objectAtIndex:sender.tag - 2015];
-    }
+- (void)changeCurrentTextFieldColor:(UITextField*)textField{
+    
+    [self.valueTable  reloadData];
 
-    [self.valueTable  reloadRowsAtIndexPaths:[NSArray  arrayWithObjects:[NSIndexPath  indexPathForRow:sender.tag-2015 inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
 }
+
 
 - (void)tapAction:(UITapGestureRecognizer*)sender{
     if (isEditting) {
@@ -162,6 +163,7 @@
     [self.valueTable  reloadRowsAtIndexPaths:[NSArray  arrayWithObjects:[NSIndexPath  indexPathForRow:currentIndex-2015 inSection:0], nil] withRowAnimation:UITableViewRowAnimationFade];
     
     [self  showOrHidenKeyBoard:NO];
+    [self  changeCurrentTextFieldColor:nil];
 }
 
 
@@ -171,6 +173,10 @@
 - (IBAction)keyBoardClick:(UIButton *)sender {
     
     [self   addPopAnaitionClickButton:sender];
+    
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
     
     NSString  *inputString = sender.titleLabel.text;
     
@@ -188,12 +194,18 @@
 
 - (IBAction)okButtonClick:(UIButton *)sender {
     [self   addPopAnaitionClickButton:sender];
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
     [self  textFieldDone];
     
 }
 
 - (IBAction)clearClick:(UIButton *)sender {
     [self   addPopAnaitionClickButton:sender];
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
     self.textFieldText = [NSMutableString string];
     UITextField  *textField = (UITextField*)[self.valueTable  viewWithTag:currentIndex + 2015];
     textField.text = @"0";

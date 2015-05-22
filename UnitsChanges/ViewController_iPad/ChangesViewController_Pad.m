@@ -13,7 +13,7 @@
 #import "ChangesCell.h"
 #import "CurrencyController.h"
 #import <pop/POP.h>
-#import <AudioToolbox/AudioToolbox.h>
+
 
 #import "UIScrollView+UzysAnimatedGifPullToRefresh.h"
 
@@ -132,6 +132,9 @@ static  int  requestCount = 0;
         [self.changesDic  setObject:rate forKey:currency];
         [Util  saveChangeDic:self.changesDic];
         [self.changeTable  reloadData];
+        
+        self.nameLable.hidden = YES;
+        self.sayingLable.hidden = YES;
         
         [[NSNotificationCenter  defaultCenter] postNotificationName:@"CurrencyChanged" object:nil userInfo:nil];
     }
@@ -535,8 +538,13 @@ static  int  requestCount = 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static   NSString  *identifier = @"changes";
     ChangesCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (indexPath.row >= self.unitsArray.count) {
+        return  nil;
+    }
     
     cell.delegate = self;
     cell.unitValueLable.tag = indexPath.row + 10;
@@ -556,6 +564,11 @@ static  int  requestCount = 0;
     }
     int  result = (int)([self.changesResult  doubleValue]*100);
     if (flag == 0) {
+        
+        if (self.indexPath.row >= self.unitsArray.count) {
+            return nil;
+        }
+
         cell.unitValueLable.textColor =  [Util colorWithHexString:@"#434343"];
         NSString  *changesRate = [[Util  takeAllCountryInfor]  objectForKey:unit];
         NSString  *selectedRate = [[Util  takeAllCountryInfor]   objectForKey:[self.unitsArray objectAtIndex:self.indexPath.row]];
@@ -751,9 +764,7 @@ static  int  requestCount = 0;
             
             if (i == 0) {
                 //  更新 基准汇率
-                
                 NSString  *valueString = [Util   numberFormatterSetting:resultString withFractionDigits:4 withInput:YES];
-               
                 [self.detailViewController   calculateValueUnderBaseCurrency:unitString AndValue:valueString];
                 [self.detailViewController  addbaseCurrencyList:unitString withValue:valueString];
             }
@@ -968,7 +979,11 @@ static  int  requestCount = 0;
     if (self.unitsArray.count!= 0) {
         [Util  saveSelectedCounrty:self.unitsArray];
         [self  saveSelectCountryForExtension:self.unitsArray];
+    }else{
+        self.sayingLable.hidden = NO;
+        self.nameLable.hidden = NO;
     }
+    
     if (self.changesDic.allKeys.count != 0) {
         [Util  saveChangeDic:self.changesDic];
     }
@@ -1319,7 +1334,6 @@ static  int  requestCount = 0;
 {
     if ([Util  isKeepingSound]) {
         AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
-//        [self  playSoundsForButton]; //  播放自定义声音文件
     }
     
     if ([str  isEqualToString:self.localeSeparator]) {

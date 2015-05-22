@@ -49,8 +49,6 @@
     [self  initializationBaseCurrenciInfor];
     [self  addShadowForCalcuatorView];
     
-    self.textFieldText = [NSMutableString  stringWithFormat:@"%d",(int)[Util  numberFormatterForFloat:self.baseValueInPut.text]];
-    
     [[NSNotificationCenter  defaultCenter]  addObserver:self selector:@selector(selectedCountryChanged:) name:@"SelectedCountryChanged" object:nil];
     
 }
@@ -98,6 +96,8 @@
     self.baseView.backgroundColor = [Util  shareInstance].themeColor;
     self.baseValueInPut.text = [Util  readDefaultValue];
     self.targetCurrency.text = [self.simpleArray  objectAtIndex:0];
+    
+    self.textFieldText = [NSMutableString  stringWithFormat:@"%d",(int)[Util  numberFormatterForFloat:self.baseValueInPut.text]];
 
     self.baseLbale.text = LOCALIZATION(@"ReferenceValue");
     self.targetLable.text = LOCALIZATION(@"TargetCurrency");
@@ -180,7 +180,6 @@
     if (self.keyBoardView.hidden) {
          [self  showOrHidenKeyBoard:YES];
     }
-
     return NO;
 }
 
@@ -242,6 +241,10 @@
 
 - (IBAction)keyBoardClick:(UIButton *)sender {
     
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
+    
     [self   addPopAnaitionClickButton:sender];
     NSString  *inputString = sender.titleLabel.text;
     if (self.textFieldText.length <=9) {
@@ -252,6 +255,11 @@
 }
 
 - (IBAction)okButtonClick:(UIButton *)sender {
+    
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
+    
     [self   addPopAnaitionClickButton:sender];
     [self  textFieldDone];
     [self   showOrHidenKeyBoard:NO];
@@ -259,6 +267,9 @@
 }
 
 - (IBAction)clearClick:(UIButton *)sender {
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
     [self   addPopAnaitionClickButton:sender];
     self.textFieldText = [NSMutableString string];
     self.baseValueInPut.text = @"0";

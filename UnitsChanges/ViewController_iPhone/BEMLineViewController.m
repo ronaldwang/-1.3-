@@ -465,6 +465,7 @@
 - (void)sendRequestWithTime:(NSString*)beginningTime andEndTime:(NSString*)endTime andCurrcncy:(NSString*)currency andBaseCurrency:(NSString*)baseCurrcncy{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSString  *urlString = [NSString stringWithFormat:@"http://currencies.apps.grandtrunk.net/getrange/%@/%@/%@/%@",beginningTime,endTime,currency,baseCurrcncy];
+            
             NSURL  *url = [NSURL  URLWithString:urlString];
             NSURLRequest  *request = [NSURLRequest  requestWithURL:url];
             NSError  *error = nil;
@@ -492,7 +493,7 @@
             [self.arrayOfValues  addObject:valueString];
         }
     }
-    
+
     if (self.arrayOfDates.count != 0 && self.arrayOfValues.count != 0) {
         [self.myGraphView  reloadGraph];
         [self  performSelector:@selector(findOutMaxAndMinValue) withObject:nil afterDelay:2.55];

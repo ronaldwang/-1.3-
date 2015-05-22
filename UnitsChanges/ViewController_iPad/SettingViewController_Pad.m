@@ -24,7 +24,7 @@
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
-@interface SettingViewController_Pad ()<MFMailComposeViewControllerDelegate,UITextFieldDelegate,UIAlertViewDelegate>
+@interface SettingViewController_Pad ()<MFMailComposeViewControllerDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate>
 {
     BOOL    isTaped;
     BOOL   isEditing;
@@ -296,6 +296,7 @@
     
     if (isEditing) {
         [self  textFieldDone];
+        return;
     }
     
     NSString *str = [NSString stringWithFormat:
@@ -309,6 +310,7 @@
     
     if (isEditing) {
         [self  textFieldDone];
+        return;
     }
     
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
@@ -397,6 +399,7 @@
     
     if (isEditing) {
         [self  textFieldDone];
+        return;
     }
     
     LanguageViewController    *languageVC = [[LanguageViewController  alloc ] initWithNibName:@"LanguageViewController" bundle:nil];
@@ -410,6 +413,7 @@
     
     if (isEditing) {
         [self  textFieldDone];
+        return;
     }
     
     LanguageViewController    *languageVC = [[LanguageViewController  alloc ] initWithNibName:@"LanguageViewController" bundle:nil];
@@ -424,6 +428,7 @@
     
     if (isEditing) {
         [self  textFieldDone];
+        return;
     }
     
     isTaped  = !isTaped;
@@ -452,6 +457,7 @@
     
     if (isEditing) {
         [self  textFieldDone];
+        return;
     }
     
     AppPurcahseViewController  *appPurchase = [[AppPurcahseViewController  alloc ] initWithNibName:@"AppPurcahseViewController" bundle:nil];
@@ -567,7 +573,6 @@
 #pragma mark   颜色 按钮  布局
 //   颜色 按钮  布局
 - (void)addColorButtonsOnScrollview:(NSArray*)colorArray{
-    
     float  space = (self.themeViewWidthConstraint.constant - 50*3 - 40)/2;
     int k = 0;
     for (int i = 0; i < 3; i++) {
@@ -717,6 +722,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (isEditing == NO) {
+        textField.textColor = [Util shareInstance].themeColor;
          [self  showOrHidenKeyBoard:YES];
     }
    
@@ -749,7 +755,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [self  textFieldDone];
-
     return NO;
 
 }
@@ -764,8 +769,10 @@
     }else{
         self.defaultValueInputText.text = [Util readDefaultValue];
     }
-      [self   showOrHidenKeyBoard:NO];
-//    [self.defaultValueInputText   resignFirstResponder];
+    
+    self.defaultValueInputText.textColor = [UIColor darkGrayColor];
+    [self   showOrHidenKeyBoard:NO];
+
 }
 
 - (void)takeScheduledTimeRequest{
@@ -795,6 +802,10 @@
     
     [self   addPopAnaitionClickButton:sender];
     
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
+    
     NSString  *inputString = sender.titleLabel.text;
     
     if (self.textFieldText.length <=9) {
@@ -806,11 +817,17 @@
 }
 
 - (IBAction)okButtonClick:(UIButton *)sender {
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
     [self   addPopAnaitionClickButton:sender];
     [self  textFieldDone];
 }
 
 - (IBAction)clearClick:(UIButton *)sender {
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
     [self   addPopAnaitionClickButton:sender];
     self.textFieldText = [NSMutableString string];
     self.defaultValueInputText.text = @"0";

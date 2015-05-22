@@ -274,11 +274,9 @@
     [fmt setMaximumFractionDigits:1]; // to avoid any decimal
     fmt.locale = [NSLocale   currentLocale];
     NSNumber  *number = [fmt  numberFromString:string];
-    double result = [number  floatValue];
+    double result = [number  doubleValue];
     return result;
-
 }
-
 
 #pragma mark
 #pragma  mark        数据处理

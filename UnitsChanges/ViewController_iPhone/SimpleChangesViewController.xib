@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SimpleChangesViewController">
@@ -28,23 +28,22 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O00-Ik-W5W">
                             <rect key="frame" x="0.0" y="0.0" width="299" height="70"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="基准值" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgd-wz-hPU">
-                                    <rect key="frame" x="71" y="17" width="148" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="基准值" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgd-wz-hPU">
+                                    <rect key="frame" x="20" y="17" width="149" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="V5n-7Y-59r"/>
-                                        <constraint firstAttribute="width" constant="148" id="xMb-oh-ia6"/>
+                                        <constraint firstAttribute="width" constant="149" id="xMb-oh-ia6"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmG-ef-MWd">
-                                    <rect key="frame" x="14" y="37" width="263" height="25"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmG-ef-MWd">
+                                    <rect key="frame" x="20" y="38" width="263" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="Ysm-Ze-6Ki"/>
-                                        <constraint firstAttribute="width" constant="263" id="mr9-AX-hlI"/>
                                     </constraints>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="4G2-8U-eUe"/>
@@ -53,10 +52,11 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="hmG-ef-MWd" firstAttribute="top" secondItem="Pgd-wz-hPU" secondAttribute="bottom" id="8xd-Vy-TJq"/>
-                                <constraint firstItem="hmG-ef-MWd" firstAttribute="centerX" secondItem="Pgd-wz-hPU" secondAttribute="centerX" id="CNl-Qh-rr9"/>
+                                <constraint firstAttribute="centerY" secondItem="hmG-ef-MWd" secondAttribute="centerY" constant="-15" id="Kje-rV-wga"/>
+                                <constraint firstAttribute="trailing" secondItem="hmG-ef-MWd" secondAttribute="trailing" constant="16" id="V7A-kU-Krf"/>
+                                <constraint firstItem="hmG-ef-MWd" firstAttribute="leading" secondItem="O00-Ik-W5W" secondAttribute="leading" constant="20" id="Ybn-6e-z6V"/>
                                 <constraint firstItem="Pgd-wz-hPU" firstAttribute="top" secondItem="O00-Ik-W5W" secondAttribute="top" constant="17" id="a74-cm-XcS"/>
-                                <constraint firstAttribute="centerX" secondItem="Pgd-wz-hPU" secondAttribute="centerX" constant="4.5" id="ita-1P-7xN"/>
+                                <constraint firstItem="Pgd-wz-hPU" firstAttribute="leading" secondItem="O00-Ik-W5W" secondAttribute="leading" constant="20" id="tLg-iA-0F0"/>
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="竖分割线.png" translatesAutoresizingMaskIntoConstraints="NO" id="GYy-hl-dXM">
@@ -69,8 +69,18 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Rg-5A-y36">
                             <rect key="frame" x="301" y="0.0" width="299" height="70"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目标货币" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="422-pr-qGS">
-                                    <rect key="frame" x="71" y="17" width="148" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNY" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OJ-RI-ngU">
+                                    <rect key="frame" x="189" y="38" width="95" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="eos-I7-12i"/>
+                                        <constraint firstAttribute="width" constant="95" id="ja2-so-mXe"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目标货币" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="422-pr-qGS">
+                                    <rect key="frame" x="136" y="17" width="148" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="148" id="Uk9-k6-abt"/>
                                         <constraint firstAttribute="height" constant="20" id="XsC-3w-aeK"/>
@@ -78,24 +88,20 @@
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OJ-RI-ngU">
-                                    <rect key="frame" x="96" y="37" width="95" height="25"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="25" id="eos-I7-12i"/>
-                                        <constraint firstAttribute="width" constant="95" id="ja2-so-mXe"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="6OJ-RI-ngU" firstAttribute="top" secondItem="422-pr-qGS" secondAttribute="bottom" id="PfU-0o-b62"/>
+                                <constraint firstAttribute="trailing" secondItem="422-pr-qGS" secondAttribute="trailing" constant="15" id="12i-CL-i0e"/>
+                                <constraint firstItem="422-pr-qGS" firstAttribute="leading" secondItem="6Rg-5A-y36" secondAttribute="leading" constant="-17" id="RaP-dr-L1H"/>
+                                <constraint firstAttribute="centerY" secondItem="6OJ-RI-ngU" secondAttribute="centerY" constant="-15" id="Vln-QR-K5Y"/>
+                                <constraint firstAttribute="trailing" secondItem="6OJ-RI-ngU" secondAttribute="trailing" constant="15" id="Zi3-mV-fdr"/>
                                 <constraint firstItem="422-pr-qGS" firstAttribute="top" secondItem="6Rg-5A-y36" secondAttribute="top" constant="17" id="asi-zj-9Ix"/>
-                                <constraint firstAttribute="centerX" secondItem="422-pr-qGS" secondAttribute="centerX" constant="4.5" id="nit-o1-KQ8"/>
-                                <constraint firstItem="422-pr-qGS" firstAttribute="centerX" secondItem="6OJ-RI-ngU" secondAttribute="centerX" constant="1.5" id="zgz-hT-Kf3"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="RaP-dr-L1H"/>
+                                </mask>
+                            </variation>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.11764705882352941" green="0.6588235294117647" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>

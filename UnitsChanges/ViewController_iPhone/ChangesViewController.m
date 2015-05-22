@@ -88,7 +88,6 @@ static  int  requestCount = 0;
 
 @implementation ChangesViewController
 
-
 - (IBAction)packUpCalculateView:(UIButton *)sender {
     
     if (sender != nil) {
@@ -146,7 +145,7 @@ static  int  requestCount = 0;
         [self.changesTableView  reloadData];
         
         [[NSNotificationCenter  defaultCenter]  postNotificationName:@"SelectedCountryChanged" object:nil];
-    
+        
     }
 }
 
@@ -155,7 +154,6 @@ static  int  requestCount = 0;
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
     
     self.timeString = [NSString stringWithFormat:@"2018-01-01"];
     
@@ -381,6 +379,15 @@ static  int  requestCount = 0;
     NSString  *name = [sayingDic   objectForKey:@"name"];
     self.sayingLable.text = sayingContent;
     self.nameLable.text = [NSString stringWithFormat:@"—%@",name];
+    
+    if (self.unitsArray.count == 0) {
+        self.sayingLable.hidden = NO;
+        self.nameLable.hidden = NO;
+    }else{
+        self.sayingLable.hidden = YES;
+        self.nameLable.hidden = YES;
+    }
+    
 }
 
 #pragma  mark
@@ -707,19 +714,19 @@ static  int  requestCount = 0;
     if (indexPath.row >= self.unitsArray.count) {
         return;
     }
-
+    
     [self  changeFlagSatateWith:indexPath];
     
     if (self.calcuatorView.hidden || [self.indexPath  isEqual:indexPath]) {
         [self  showCalculateViewBy:indexPath];
     }
-
+    
     self.changesResult = @"0";
     self.indexPath = indexPath;
     [Util  saveSelectedIndex:indexPath];
     [self.changesTableView  reloadData];
     [self  calculator_init];
-
+    
 }
 
 - (void)showCalculateViewBy:(NSIndexPath*)index{
@@ -741,7 +748,6 @@ static  int  requestCount = 0;
            UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, calcuatorViewHeight, 0.0);
         
            self.cacutorViewHeightContraint.constant = calcuatorViewHeight;
-        
         
           POPBasicAnimation   *calcutorViewVerticalAnimation = [POPBasicAnimation  animation];
            calcutorViewVerticalAnimation.property = [POPAnimatableProperty  propertyWithName:kPOPLayoutConstraintConstant];
@@ -1078,7 +1084,11 @@ static  int  requestCount = 0;
     if (self.unitsArray.count!= 0) {
         [Util  saveSelectedCounrty:self.unitsArray];
         [self  saveSelectCountryForExtension:self.unitsArray];
+    }else{
+        self.sayingLable.hidden = NO;
+        self.nameLable.hidden = NO;
     }
+    
     if (self.changesDic.allKeys.count != 0) {
         [Util  saveChangeDic:self.changesDic];
     }

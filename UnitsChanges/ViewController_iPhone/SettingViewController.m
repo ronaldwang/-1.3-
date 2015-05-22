@@ -20,7 +20,6 @@
 #import "ASBanker.h"
 
 
-
 #define IPHONE_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 #define IPHONE_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -309,8 +308,10 @@
     
     UITapGestureRecognizer  *watchSettingTap = [[UITapGestureRecognizer  alloc ] initWithTarget:self action:@selector(watchSettingAction:)];
     [self.watchSettingView  addGestureRecognizer:watchSettingTap];
-
-
+    
+    UITapGestureRecognizer  *contentViewTap = [[UITapGestureRecognizer  alloc ] initWithTarget:self action:@selector(contentViewTapAction:)];
+    [self.contentView  addGestureRecognizer:contentViewTap];
+    
     [self.tipButton  setBackgroundImage:[[UIImage  imageNamed:@"椭圆.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     
 }
@@ -321,6 +322,7 @@
     
     if (isEditting) {
         [self  textFieldDone];
+        return;
     }
     NSString *str = [NSString stringWithFormat:
                      @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=946607423&pageNumber=0&sortOrdering=1&type=Purple+Software&mt=8"];
@@ -333,6 +335,7 @@
     
     if (isEditting) {
         [self  textFieldDone];
+        return;
     }
 
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
@@ -421,6 +424,7 @@
     
     if (isEditting) {
         [self  textFieldDone];
+        return;
     }
     LanguageViewController    *languageVC = [[LanguageViewController  alloc ] initWithNibName:@"LanguageViewController" bundle:nil];
     languageVC.isLanguage = NO;
@@ -433,6 +437,7 @@
     
     if (self.defaultValueInputText.isEditing) {
         [self textFieldDone];
+        return;
     }
 
     LanguageViewController    *languageVC = [[LanguageViewController  alloc ] initWithNibName:@"LanguageViewController" bundle:nil];
@@ -448,6 +453,7 @@
     
     if (isEditting) {
         [self  textFieldDone];
+        return;
     }
 
     isTaped  = !isTaped;
@@ -476,6 +482,7 @@
     
     if (isEditting) {
         [self  textFieldDone];
+        return;
     }
 
     AppPurcahseViewController  *appPurchase = [[AppPurcahseViewController  alloc ] initWithNibName:@"AppPurcahseViewController" bundle:nil];
@@ -614,6 +621,13 @@
     }
     [button4.layer setCornerRadius:20.0f];
     [button4.layer  setMasksToBounds:YES];
+}
+
+
+- (void)contentViewTapAction:(UITapGestureRecognizer*)sender{
+    if (isEditting) {
+        [self  textFieldDone];
+    }
 }
 
 #pragma mark   颜色 按钮  布局
@@ -766,6 +780,7 @@
     
     if (isEditting) {
         [self  textFieldDone];
+        return;
     }
 
     TtpsViewController  *tipVC = [[TtpsViewController  alloc ] initWithNibName:@"TtpsViewController" bundle:nil];
@@ -775,11 +790,13 @@
     
 }
 
+
 #pragma mark
 #pragma mark   UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (isEditting == NO) {
+        textField.textColor = [Util  shareInstance].themeColor;
          [self  showOrHidenKeyBoard:YES];
     }
     return NO;
@@ -811,6 +828,7 @@
     }else{
         self.defaultValueInputText.text = [Util readDefaultValue];
     }
+    self.defaultValueInputText.textColor = [UIColor  darkGrayColor];
     [self   showOrHidenKeyBoard:NO];
 }
 
@@ -856,6 +874,10 @@
 
 - (IBAction)keyBoardClick:(UIButton *)sender {
     
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
+    
     [self   addPopAnaitionClickButton:sender];
     
     NSString  *inputString = sender.titleLabel.text;
@@ -869,12 +891,18 @@
 }
 
 - (IBAction)okButtonClick:(UIButton *)sender {
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
     [self   addPopAnaitionClickButton:sender];
     [self  textFieldDone];
     
 }
 
 - (IBAction)clearClick:(UIButton *)sender {
+    if ([Util  isKeepingSound]) {
+        AudioServicesPlaySystemSound(0x450);  //  系统自带按键声音
+    }
     [self   addPopAnaitionClickButton:sender];
     self.textFieldText = [NSMutableString string];
     self.defaultValueInputText.text = @"0";

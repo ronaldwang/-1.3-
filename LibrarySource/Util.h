@@ -11,6 +11,7 @@
 #import "MHFileTool.h"
 #import "DES.h"
 #import "Localisator.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 #define IPHONE_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define IPHONE_WIDTH [UIScreen mainScreen].bounds.size.width

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2DR-Ha-WY3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2DR-Ha-WY3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQq-Cs-AbH">
-                                <rect key="frame" x="160" y="385" width="280" height="55"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQq-Cs-AbH">
+                                <rect key="frame" x="160" y="273" width="280" height="55"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="ZJG-Wy-EVl"/>
@@ -28,8 +28,8 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1T-bZ-0cF">
-                                <rect key="frame" x="160" y="430" width="280" height="30"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1T-bZ-0cF">
+                                <rect key="frame" x="160" y="318" width="280" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9gS-Mf-AE8"/>
@@ -398,8 +398,14 @@
                             <constraint firstItem="dwk-8E-6lr" firstAttribute="leading" secondItem="aI8-xA-8gE" secondAttribute="leading" id="kmd-Fl-xnG"/>
                             <constraint firstItem="CZ4-vz-s4Y" firstAttribute="top" secondItem="dwk-8E-6lr" secondAttribute="bottom" id="nSS-az-Us1"/>
                             <constraint firstItem="E1T-bZ-0cF" firstAttribute="top" secondItem="BQq-Cs-AbH" secondAttribute="bottom" constant="-10" id="njR-0n-Jtg"/>
+                            <constraint firstAttribute="centerY" secondItem="BQq-Cs-AbH" secondAttribute="centerY" id="wfs-JQ-Dzc"/>
                             <constraint firstAttribute="trailing" secondItem="dwk-8E-6lr" secondAttribute="trailing" id="yNF-b0-H4V"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SAU-7p-Hgq"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="cacutorViewHeightContraint" destination="aau-aS-1Ef" id="2iX-AC-gdi"/>
